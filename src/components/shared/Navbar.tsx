@@ -38,6 +38,14 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-4">
+          {/* Navigation Links */}
+          <Link href="/product" className="text-gray-700 hover:text-primary font-medium">
+            <p>Product</p>
+          </Link>
+          <Link href="/about" className="text-gray-700 hover:text-primary font-medium">
+            <p>About</p>
+          </Link>
+
           {/* Wishlist */}
           <Button variant="outline" className="rounded-full p-0 size-10">
             <Heart />
@@ -49,9 +57,9 @@ export default function Navbar() {
           </Button>
 
           {/* Create Shop */}
-          <Link href="/create-shop">
+          {/* <Link href="/create-shop">
             <Button className="rounded-full">Create Shop</Button>
-          </Link>
+          </Link> */}
 
           {/* User Menu */}
           <DropdownMenu>
@@ -102,9 +110,16 @@ export default function Navbar() {
               className="w-full border border-gray-300 rounded-full py-2 px-4"
             />
 
-            <Link href="/create-shop" className="w-full">
+            {/* <Link href="/create-shop" className="w-full">
               <Button className="w-full">Create Shop</Button>
-            </Link>
+            </Link> */}
+             {/* Navigation Links */}
+          <Link href="/product" className="text-gray-700 hover:text-primary font-medium">
+            <p>Product</p>
+          </Link>
+          <Link href="/about" className="text-gray-700 hover:text-primary font-medium">
+            <p>About</p>
+          </Link>
 
             <Link href="/login" className="w-full">
               <Button className="w-full" variant="outline">

@@ -3,6 +3,7 @@
 import { Button } from "../ui/button";
 import { Heart, LogOut, Menu, ShoppingBag } from "lucide-react";
 import Link from "next/link";
+import { FaCartArrowDown } from "react-icons/fa";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -53,7 +54,7 @@ export default function Navbar() {
 
           {/* Cart */}
           <Button variant="outline" className="rounded-full p-0 size-10">
-            <ShoppingBag />
+          <FaCartArrowDown />
           </Button>
 
           {/* Create Shop */}
@@ -133,7 +134,7 @@ export default function Navbar() {
                 <Heart />
               </Button>
               <Button variant="outline" className="rounded-full p-0 size-10">
-                <ShoppingBag />
+              <FaCartArrowDown />
               </Button>
             </div>
           </div>

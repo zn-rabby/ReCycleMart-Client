@@ -1,7 +1,7 @@
 const HomePage = async () => {
     return (
       <div>
-        <h2>This is home page</h2>
+        <h2>This is home pages</h2>
       </div>
     );
   };

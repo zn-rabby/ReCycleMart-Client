@@ -13,9 +13,8 @@ import { Input } from "@/components/ui/input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginUser, reCaptchaTokenVerification } from "@/services/AuthService";
+import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
-import { useState } from "react";
 import Logo from "@/assets/svgs/Logo";
 import { loginSchema } from "./loginValidation";
 
@@ -24,13 +23,9 @@ export default function LoginForm() {
     resolver: zodResolver(loginSchema),
   });
 
-
-
   const {
     formState: { isSubmitting },
   } = form;
-
-
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
@@ -82,11 +77,7 @@ export default function LoginForm() {
               </FormItem>
             )}
           />
-
-          
-
-          <Button
-            
+          <Button 
             type="submit"
             className="mt-5 w-full"
           >

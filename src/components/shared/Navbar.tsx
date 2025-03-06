@@ -15,9 +15,26 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/assets/svgs/Logo";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
+import { useUser } from "@/context/UserContext";
+import { logout } from "@/services/AuthService";
+import { protectedRoutes } from "@/contants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, setIsLoading } = useUser();
+  const pathname = usePathname();
+  // const router = useRouter();
+
+  const handleLogOut = () => {
+    logout();
+    setIsLoading(true);
+    if (protectedRoutes.some((route) => pathname.match(route))) {
+      // router.push("/");
+    }
+  };
+
 
   return (
     <header className="border-b w-full bg-white shadow-sm">
@@ -63,33 +80,43 @@ export default function Navbar() {
           </Link> */}
 
           {/* User Menu */}
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>User</AvatarFallback>
-              </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Dashboard</DropdownMenuItem>
-              <DropdownMenuItem>My Shop</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="bg-red-500 cursor-pointer text-white">
-                <LogOut />
-                <span>Log Out</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {user ? (
+            <>
+              {/* <Link href="/create-shop">
+                <Button className="rounded-full">Create Shop</Button>
+              </Link> */}
 
-          {/* Login Button */}
-          <Link href="/login">
-            <Button className="rounded-full" variant="outline">
-              Login
-            </Button>
-          </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>User</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Dashboard</DropdownMenuItem>
+                  <DropdownMenuItem>My Shop</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    className="bg-red-500 cursor-pointer"
+                    onClick={handleLogOut}
+                  >
+                    <LogOut />
+                    <span>Log Out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </>
+          ) : (
+            <Link href="/login">
+              <Button className="rounded-full" variant="outline">
+                Login
+              </Button>
+            </Link>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}

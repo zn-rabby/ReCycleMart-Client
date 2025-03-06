@@ -17,7 +17,7 @@ export const registerUser = async (userData: FieldValues) => {
     const result = await res.json();
 
     if (result.success) {
-      (await cookies()).set("accessToken", result.data.accessToken);
+      (await cookies()).set("accessToken", result.data.token);
     }
 
     return result;
@@ -39,7 +39,7 @@ export const loginUser = async (userData: FieldValues) => {
     const result = await res.json();
 
     if (result.success) {
-      (await cookies()).set("accessToken", result.data.accessToken);
+      (await cookies()).set("accessToken", result.data.token);
     }
 
     return result;
@@ -60,21 +60,6 @@ export const getCurrentUser = async () => {
   }
 };
 
-export const reCaptchaTokenVerification = async (token: string) => {
-  try {
-    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        secret: process.env.NEXT_PUBLIC_RECAPTCHA_SERVER_KEY!,
-        response: token,
-      }),
-    });
-
-    return res.json();
-  } catch (err: any) {
-    return Error(err);
-  }
+export const logout = async () => {
+  (await cookies()).delete("accessToken");
 };

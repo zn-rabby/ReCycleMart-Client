@@ -13,5 +13,6 @@ export interface IProduct{
   createdAt?: Date;
   updatedAt?: Date;
   negotiable?: boolean; 
-  ratingCount:number
+  ratingCount:number;
+  stock:number
 }

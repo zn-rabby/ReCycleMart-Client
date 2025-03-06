@@ -34,17 +34,14 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           onError={handleImageError}
         />
         {product?.condition === "used" && (
-          <div className="absolute left-2 top-1 bg-red-500 text-white px-2 py-1 text-xs rounded-full">
+          <div className="absolute right-2 top-1 bg-red-500 text-white px-2 py-1 text-xs rounded-full">
             Used
           </div>
         )}
-        <div className="absolute right-2 top-1 bg-white p-1 rounded-full shadow-sm">
-          <Heart className="h-5 w-5 text-gray-600 hover:text-red-500 cursor-pointer" />
-        </div>
+        
       </CardHeader>
 
       <CardContent className="p-0 mt-3">
-        <Link href={`/products/${product?._id}`} passHref>
           <CardTitle
             title={product?.title}
             className="font-semibold cursor-pointer text-sm hover:text-blue-600 transition-colors duration-300"
@@ -53,7 +50,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
               ? product?.title?.slice(0, 20) + "..."
               : product?.title}
           </CardTitle>
-        </Link>
+       
 
         <div className="flex items-center justify-between my-2">
           <p className="text-sm text-gray-600">
@@ -86,14 +83,16 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 
       <CardFooter className="block p-0 mt-3">
         <div className="flex gap-2 items-center justify-between">
+        <Link href={`/products/${product?._id}`} passHref>
+     
           <Button
             disabled={product?.status !== "available"}
             size="sm"
             variant="default"
             className="w-32 bg-blue-600 hover:bg-blue-700 text-white"
           >
-            Buy Now
-          </Button>
+            Details
+          </Button>   </Link>
           <Button
             disabled={product?.status !== "available"}
             variant="outline"

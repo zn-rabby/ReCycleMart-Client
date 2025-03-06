@@ -16,7 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/assets/svgs/Logo";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
+import {  useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { logout } from "@/services/AuthService";
 import { protectedRoutes } from "@/contants";
@@ -25,13 +25,13 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, setIsLoading } = useUser();
   const pathname = usePathname();
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleLogOut = () => {
     logout();
     setIsLoading(true);
     if (protectedRoutes.some((route) => pathname.match(route))) {
-      // router.push("/");
+      router.push("/");
     }
   };
 
@@ -65,14 +65,12 @@ export default function Navbar() {
           </Link>
 
           {/* Wishlist */}
-          <Button variant="outline" className="rounded-full p-0 size-10">
+          {/* <Button variant="outline" className="rounded-full p-0 size-10">
             <Heart />
-          </Button>
+          </Button> */}
 
           {/* Cart */}
-          <Button variant="outline" className="rounded-full p-0 size-10">
-          <FaCartArrowDown />
-          </Button>
+          
 
           {/* Create Shop */}
           {/* <Link href="/create-shop">
@@ -85,6 +83,9 @@ export default function Navbar() {
               {/* <Link href="/create-shop">
                 <Button className="rounded-full">Create Shop</Button>
               </Link> */}
+              <Button variant="outline" className="rounded-full p-0 size-10">
+          <FaCartArrowDown />
+          </Button>
 
               <DropdownMenu>
                 <DropdownMenuTrigger>

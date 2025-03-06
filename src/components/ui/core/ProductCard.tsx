@@ -15,6 +15,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png";
+  };
+
   return (
     <Card className="p-3 hover:shadow-lg transition-shadow duration-300">
       <CardHeader className="relative p-0 h-48">
@@ -27,6 +31,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           height={500}
           alt="product image"
           className="rounded-sm h-52 w-full object-cover"
+          onError={handleImageError}
         />
         {product?.condition === "used" && (
           <div className="absolute left-2 top-1 bg-red-500 text-white px-2 py-1 text-xs rounded-full">
@@ -59,24 +64,24 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           </p>
         </div>
 
-        {/* <div className="flex items-center mt-2">
+        <div className="flex items-center mt-2">
           {Array.from({ length: 5 }).map((_, index) => (
             <Star
               key={index}
               className={`h-4 w-4 ${
-                index < (product?.rating || 0)
+                index < (product?.ratingCount || 0)
                   ? "text-yellow-400"
                   : "text-gray-300"
               }`}
               fill={
-                index < (product?.rating || 0) ? "currentColor" : "transparent"
+                index < (product?.ratingCount || 0) ? "currentColor" : "transparent"
               }
             />
           ))}
           <span className="text-sm text-gray-500 ml-2">
-            ({product?.reviewsCount || 0})
+            ({product?.ratingCount || 0})
           </span>
-        </div> */}
+        </div>
       </CardContent>
 
       <CardFooter className="block p-0 mt-3">

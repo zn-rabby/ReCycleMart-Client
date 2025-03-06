@@ -9,8 +9,6 @@ const HomePage = async () => {
         <HeroSection></HeroSection>
         <CategorySection></CategorySection>
         <FeaturedProducts></FeaturedProducts>
-        <h2>This is home pages</h2>
-        <Button>Hello</Button>
       </div>
     );
   };

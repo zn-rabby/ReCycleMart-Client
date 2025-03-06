@@ -42,10 +42,13 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           onError={handleImageError}
         />
         {product?.condition === "used" && (
-          <div className="absolute right-2 top-1 bg-red-500 text-white px-2 py-1 text-xs rounded-full">
+          <div className="absolute left-2 top-1 bg-red-500 text-white px-2 py-1 text-xs rounded-full">
             Used
           </div>
         )}
+        <div className="absolute right-2 top-1 bg-white p-1 rounded-full shadow-sm">
+          <Heart className="h-5 w-5 text-gray-600 hover:text-red-500 cursor-pointer" />
+        </div>
         
       </CardHeader>
 
@@ -96,7 +99,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             disabled={product?.status !== "available"}
             size="sm"
             variant="default"
-            className="w-32 bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-24 bg-blue-600 hover:bg-blue-700 text-white"
           >
             Details
           </Button>   </Link>
@@ -105,11 +108,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             disabled={product?.status !== "available"}
             size="sm"
             variant="default"
-            className="w-32 bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-24 bg-blue-600 hover:bg-blue-700 text-white"
           >
             Buy
           </Button>   </Link>
-          <Button
+          {/* <Button
             // onClick={() => handleAddProduct(product)}
             disabled={product?.status !== "available"}
             variant="outline"
@@ -117,7 +120,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             className="w-8 h-8 p-0 flex items-center justify-center rounded-full border-gray-300 hover:border-blue-600"
           >
             <ShoppingCart className="h-4 w-4 text-gray-600 hover:text-blue-600" />
-          </Button>
+          </Button> */}
         </div>
       </CardFooter>
     </Card>

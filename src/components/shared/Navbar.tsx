@@ -85,7 +85,7 @@ export default function Navbar() {
               </Link> */}
                   <Link href="/cart">
               <Button variant="outline" className="rounded-full p-0 size-10">
-          <FaCartArrowDown />
+          <Heart />
           </Button>
           </Link>
               <DropdownMenu>

@@ -83,14 +83,15 @@ export default function Navbar() {
               {/* <Link href="/create-shop">
                 <Button className="rounded-full">Create Shop</Button>
               </Link> */}
+                  <Link href="/cart">
               <Button variant="outline" className="rounded-full p-0 size-10">
           <FaCartArrowDown />
           </Button>
-
+          </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarImage className="h-8 w-8" src="https://res.cloudinary.com/daxjf1buu/image/upload/v1741228886/users_jauzzl.jpg" />
                     <AvatarFallback>User</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>

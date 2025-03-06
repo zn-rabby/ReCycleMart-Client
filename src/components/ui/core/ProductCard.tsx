@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useAppDispatch } from "@/redux/hooks";
+import { addProduct } from "@/services/Product";
 
 import { IProduct } from "@/types";
 import { Heart, ShoppingCart, Star } from "lucide-react";
@@ -18,6 +20,12 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src = "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png";
   };
+
+  // const dispatch = useAppDispatch();
+
+  // const handleAddProduct = (product: IProduct) => {
+  //   dispatch(addProduct(product));
+  // };
 
   return (
     <Card className="p-3 hover:shadow-lg transition-shadow duration-300">
@@ -84,7 +92,6 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       <CardFooter className="block p-0 mt-3">
         <div className="flex gap-2 items-center justify-between">
         <Link href={`/products/${product?._id}`} passHref>
-     
           <Button
             disabled={product?.status !== "available"}
             size="sm"
@@ -93,7 +100,17 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           >
             Details
           </Button>   </Link>
+        <Link href={`/buy/${product?._id}`} passHref>
           <Button
+            disabled={product?.status !== "available"}
+            size="sm"
+            variant="default"
+            className="w-32 bg-blue-600 hover:bg-blue-700 text-white"
+          >
+            Buy
+          </Button>   </Link>
+          <Button
+            // onClick={() => handleAddProduct(product)}
             disabled={product?.status !== "available"}
             variant="outline"
             size="sm"

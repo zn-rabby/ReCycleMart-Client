@@ -1,54 +1,70 @@
 import { Button } from "@/components/ui/button";
 import { IProduct } from "@/types";
-import { Minus, Plus, Trash } from "lucide-react";
 import Image from "next/image";
+import { Trash, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
-export default function CartProductCard({ product }: { product: IProduct }) {
+export default function WishlistProductCard({ product }: { product: IProduct }) {
+  const handleRemoveFromWishlist = () => {
+    // Add logic to remove the product from the wishlist
+    console.log("Removing product from wishlist:", product._id);
+  };
+
   return (
-    <div className="bg-white rounded-lg flex p-5 gap-5">
-      <div className="h-full w-32 rounded-md overflow-hidden">
+    <div className="bg-white rounded-lg flex items-center p-5 gap-5 shadow-sm hover:shadow-md transition-shadow">
+      {/* Product Image with Link */}
+      <Link href={`/products/${product?._id}`} className="h-32 w-32 rounded-md overflow-hidden flex-shrink-0">
         <Image
           src={product?.images?.[0]}
           height={200}
           width={200}
-          alt="product"
-          className="aspect-square object-cover"
+          alt={product?.title}
+          className="aspect-square object-cover hover:scale-105 transition-transform"
         />
+      </Link>
+
+      {/* Product Details (Middle Section) */}
+      <div className="flex flex-col justify-center flex-grow">
+        {/* Title and Price */}
+        <Link href={`/products/${product?._id}`}>
+          <h1 className="text-xl font-semibold hover:text-blue-600 transition-colors">
+            {product?.title}
+          </h1>
+          <p className="text-gray-600 mt-1">${product?.price}</p>
+        </Link>
+
+        {/* Stock Availability */}
+        <p className="text-sm text-gray-500 mt-2">
+          <span>Stock:</span>{" "}
+          <span className={product?.stock > 0 ? "text-green-500" : "text-red-500"}>
+            {product?.stock > 0 ? "In Stock" : "Out of Stock"}
+          </span>
+        </p>
       </div>
-      <div className="flex flex-col justify-between flex-grow">
-        <h1 className="text-xl font-semibold">{product?.title}</h1>
-        <div className="flex gap-5 my-2">
-          <p>
-            <span className="text-gray-500">Color:</span>{" "}
-            <span className="font-semibold">Black</span>
-          </p>
-          <p>
-            <span className="text-gray-500">Stock Availability:</span>{" "}
-            <span className="font-semibold">{product?.stock}</span>
-          </p>
-        </div>
-        <hr className="my-1" />
-        <div className="flex items-center justify-between">
-          <h2>
-            Price:
-            { product.price}
-          </h2>
-          <div className="flex items-center gap-2">
-            <p className="text-gray-500 font-semibold">Quantity</p>
-            <Button variant="outline" className="size-8 rounded-sm">
-              <Minus />
-            </Button>
-            <p className="font-semibold text-xl p-2">
-              {/* {product?.orderQuantity} */}1
-            </p>
-            <Button variant="outline" className="size-8 rounded-sm">
-              <Plus />
-            </Button>
-            <Button variant="outline" className="size-8 rounded-sm">
-              <Trash className="text-red-500/50" />
-            </Button>
-          </div>
-        </div>
+
+      {/* Buttons (Right Section) */}
+      <div className="flex flex-col items-end gap-3">
+        {/* Remove from Wishlist Button */}
+        <Button
+          variant="ghost"
+          className="text-red-500 hover:bg-red-50"
+          onClick={handleRemoveFromWishlist}
+          aria-label="Remove from Wishlist"
+        >
+          <Trash className="w-8 h-8"/>
+        </Button>
+
+        {/* Buy Now Button */}
+        <Link href={`/products/${product?._id}`}>
+          <Button
+            variant="default"
+            className="w-28 flex items-center gap-2"
+            disabled={product?.stock <= 0}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span>Buy Now</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );

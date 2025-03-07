@@ -8,8 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { addProduct } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { addProduct } from "@/services/Product";
 
 import { IProduct } from "@/types";
 import { Heart, ShoppingCart, Star } from "lucide-react";
@@ -21,11 +21,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
     e.currentTarget.src = "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png";
   };
 
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-  // const handleAddProduct = (product: IProduct) => {
-  //   dispatch(addProduct(product));
-  // };
+  const handleAddProduct = (product: IProduct) => {
+    dispatch(addProduct(product));
+  };
 
   return (
     <Card className="p-3 hover:shadow-lg transition-shadow duration-300">
@@ -46,7 +46,9 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             Used
           </div>
         )}
-        <div className="absolute right-2 top-1 bg-white p-1 rounded-full shadow-sm">
+        <div 
+        onClick={()=>handleAddProduct(product)}
+        className="absolute right-2 top-1 bg-white p-1 rounded-full shadow-sm">
           <Heart className="h-5 w-5 text-gray-600 hover:text-red-500 cursor-pointer" />
         </div>
         

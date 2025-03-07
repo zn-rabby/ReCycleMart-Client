@@ -6,8 +6,7 @@ const CartPage = () => {
   return (
     <NMContainer>
       <div className="grid grid-cols-12 gap-8 my-5">
-        {/* <CartProducts /> */}
-        hhh
+        <CartProducts />
       </div>
     </NMContainer>
   );

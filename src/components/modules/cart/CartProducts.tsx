@@ -6,7 +6,7 @@ import { useAppSelector } from "@/redux/hooks";
 import { orderedProductSelector } from "@/redux/features/cartSlice";
 
 
-export default async function CartProducts() {
+export default  function CartProducts() {
 
   const products= useAppSelector(orderedProductSelector)
 
@@ -19,9 +19,7 @@ export default async function CartProducts() {
             Looks like your wish is on vacation—bring it back to work by adding
             some items!
           </p>
-          <div className="flex justify-center items-center ">
-            {/* <Image src={emptyCart} alt="empty cart" /> */}
-          </div>
+         
         </div>
       )}
       {products.map((product: IProduct) => (

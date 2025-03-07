@@ -1,13 +1,17 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { IProduct } from "@/types";
 import Image from "next/image";
 import { Trash, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { useAppDispatch } from "@/redux/hooks";
+import { removeProduct } from "@/redux/features/cartSlice";
 
 export default function WishlistProductCard({ product }: { product: IProduct }) {
-  const handleRemoveFromWishlist = () => {
-    // Add logic to remove the product from the wishlist
-    console.log("Removing product from wishlist:", product._id);
+  const dispatch = useAppDispatch();
+ 
+  const handleRemoveProduct = (id: string) => {
+    dispatch(removeProduct(id));
   };
 
   return (
@@ -48,7 +52,7 @@ export default function WishlistProductCard({ product }: { product: IProduct }) 
         <Button
           variant="ghost"
           className="text-red-500 hover:bg-red-50"
-          onClick={handleRemoveFromWishlist}
+          onClick={() => handleRemoveProduct(product._id)}
           aria-label="Remove from Wishlist"
         >
           <Trash className="w-8 h-8"/>

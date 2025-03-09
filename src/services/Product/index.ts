@@ -1,6 +1,8 @@
 "use server";
+import { IProduct } from "@/types";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
+import { json } from "stream/consumers";
 
 // get all products
 export const getAllProducts = async (page?: string, limit?: string) => {
@@ -39,17 +41,18 @@ export const getSingleProduct = async (productId: string) => {
 };
 
 // add product
-export const addProduct = async (productData: FormData): Promise<any> => {
+export const addProduct = async (productData: any) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/listings`, {
       method: "POST",
-      body: productData,
+      body: JSON.stringify(productData),
       headers: {
+        "Content-Type": "application/json",
         Authorization: (await cookies()).get("accessToken")!.value,
       },
     });
     revalidateTag("PRODUCT");
-    return res.json();
+    return await res.json();
   } catch (error: any) {
     return Error(error);
   }

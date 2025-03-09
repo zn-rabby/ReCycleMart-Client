@@ -35,7 +35,7 @@ export default function LoginForm() {
       } else {
         toast.error(res?.message);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
     }
   };

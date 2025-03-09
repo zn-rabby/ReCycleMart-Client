@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 // import DiscountModal from "./DiscountModal";
 import TablePagination from "@/components/ui/core/NMTable/TablePagination";
 import Link from "next/link";
+import { toast } from "sonner";
+import { deleteProduct } from "@/services/Product";
 
 const ManageProducts = ({
   products,
@@ -26,8 +28,22 @@ const ManageProducts = ({
     console.log("Viewing product:", product);
   };
 
-  const handleDelete = (productId: string) => {
+  const handleDelete = async(productId: string) => {
     console.log("Deleting product with ID:", productId);
+    try {
+      if (productId) {
+        const res = await deleteProduct(productId);
+        console.log(res);
+        if (res.success) {
+          toast.success(res.message);
+          // setModalOpen(false);
+        } else {
+          toast.error(res.message);
+        }
+      }
+    } catch (err: any) {
+      console.error(err?.message);
+    }
   };
 
   const columns: ColumnDef<IProduct>[] = [

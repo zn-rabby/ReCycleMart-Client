@@ -37,24 +37,36 @@ const data = {
       isActive: true,
     },
     {
-        title: "Track Purchases",
-        url: "/dashboard/purchase-history",
-        icon: Bot,
-        items: [
-          {
-            title: "Manage Products",
-            url: "/user/shop/all-products",
-          },
-          {
-            title: "Manage Categories",
-            url: "/user/shop/category",
-          },
-          {
-            title: "Manage Brands",
-            url: "/user/shop/brand",
-          },
-        ],
-      },
+      title: "Track Purchases",
+      url: "/dashboard/purchase-history",
+      icon: SquareTerminal,
+      isActive: true,
+    },
+    {
+      title: "Track Sales",
+      url: "/dashboard/sales-history",
+      icon: SquareTerminal,
+      isActive: true,
+    },
+    // {
+    //     title: "Track Purchases",
+    //     url: "/dashboard/purchase-history",
+    //     icon: Bot,
+    //     items: [
+    //       {
+    //         title: "Manage Products",
+    //         url: "/user/shop/all-products",
+    //       },
+    //       {
+    //         title: "Manage Categories",
+    //         url: "/user/shop/category",
+    //       },
+    //       {
+    //         title: "Manage Brands",
+    //         url: "/user/shop/brand",
+    //       },
+    //     ],
+    //   },
     {
       title: "Shop",
       url: "/user/shop/all-products",

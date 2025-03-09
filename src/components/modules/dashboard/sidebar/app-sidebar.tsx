@@ -32,10 +32,29 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/user/dashboard",
+      url: "/dashboard",
       icon: SquareTerminal,
       isActive: true,
     },
+    {
+        title: "Track Purchases",
+        url: "/dashboard/purchase-history",
+        icon: Bot,
+        items: [
+          {
+            title: "Manage Products",
+            url: "/user/shop/all-products",
+          },
+          {
+            title: "Manage Categories",
+            url: "/user/shop/category",
+          },
+          {
+            title: "Manage Brands",
+            url: "/user/shop/brand",
+          },
+        ],
+      },
     {
       title: "Shop",
       url: "/user/shop/all-products",
@@ -101,7 +120,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -111,7 +130,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Logo />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <h2 className="font-bold text-xl">NextMart</h2>
+                  <h2 className="font-bold text-xl">Used Sell</h2>
                 </div>
               </Link>
             </SidebarMenuButton>

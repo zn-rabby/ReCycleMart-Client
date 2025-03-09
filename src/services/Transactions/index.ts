@@ -21,6 +21,30 @@ export const createTransactions = async (order: ITransactions) => {
   }
 };
 
+
+// get all Track Purchases
+export const getPurchases = async (productId: string) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/transactions/purchases/${productId}`,
+      {
+        next: {
+          tags: ["PRODUCT"],
+        },
+      }
+    );
+    const data = await res.json();
+    return data;
+  } catch (error: any) {
+    return Error(error.message);
+  }
+};
+
+
+
+
+
+
 // "use server";
 
 // import { cookies } from "next/headers";

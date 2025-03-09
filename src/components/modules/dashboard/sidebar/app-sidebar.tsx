@@ -48,42 +48,15 @@ const data = {
       icon: SquareTerminal,
       isActive: true,
     },
-    // {
-    //     title: "Track Purchases",
-    //     url: "/dashboard/purchase-history",
-    //     icon: Bot,
-    //     items: [
-    //       {
-    //         title: "Manage Products",
-    //         url: "/user/shop/all-products",
-    //       },
-    //       {
-    //         title: "Manage Categories",
-    //         url: "/user/shop/category",
-    //       },
-    //       {
-    //         title: "Manage Brands",
-    //         url: "/user/shop/brand",
-    //       },
-    //     ],
-    //   },
     {
-      title: "Shop",
-      url: "/user/shop/all-products",
+      title: "Listing",
+      url: "/dashboard/listing",
       icon: Bot,
       items: [
         {
-          title: "Manage Products",
-          url: "/user/shop/all-products",
-        },
-        {
-          title: "Manage Categories",
-          url: "/user/shop/category",
-        },
-        {
-          title: "Manage Brands",
-          url: "/user/shop/brand",
-        },
+          title: "Manage Listing",
+          url: "/dashboard/listing",
+        }
       ],
     },
 

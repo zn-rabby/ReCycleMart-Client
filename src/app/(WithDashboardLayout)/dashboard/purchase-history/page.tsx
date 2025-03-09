@@ -1,8 +1,17 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/context/UserContext";
+import { getPurchases } from "@/services/Transactions";
 import { Check } from "lucide-react";
 import Link from "next/link";
 
 const PurchaseHistory = () => {
+
+  const user= useUser()
+  
+  // const {pp}= getPurchases(user._id)
+  console.log(user)
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">

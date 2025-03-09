@@ -1,7 +1,7 @@
 export interface IProduct{
-    _id: string;
-    name: string;
-    title: string;
+  _id: string;
+  name: string;
+  title: string;
   description: string;
   price: number;
   condition: 'new' | 'used' | 'refurbished';

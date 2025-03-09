@@ -30,22 +30,19 @@ export default function AddProductsForm() {
   const [imageLinks, setImageLinks] = useState<string[]>([]);
   const router = useRouter();
 
-  
-
   const form = useForm<IProduct>({
     defaultValues: {
       name: "",
       title: "",
       description: "",
-      ratingCount: 4, // Default value for ratingCount
-      price: 0, // Default value for price
+      ratingCount: 4,
+      price: 0,
       condition: "new",
       images: [],
       category: "electronics",
       location: "",
       status: "available",
-      // negotiable: false,
-      stock: 0, // Default value for stock
+      stock: 0,
     },
   });
 
@@ -62,11 +59,11 @@ export default function AddProductsForm() {
     // Add image links to the data
     data.images = imageLinks;
 
-    console.log( data);
+    console.log(data);
 
     try {
       const res = await addProduct(data);
-      console.log(res)
+      console.log(res);
 
       if (res.success) {
         toast.success(res.message);
@@ -164,7 +161,7 @@ export default function AddProductsForm() {
                 <FormItem>
                   <FormLabel>Condition</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
+                    <FormControl className="w-full" >
                       <SelectTrigger>
                         <SelectValue placeholder="Select Condition" />
                       </SelectTrigger>
@@ -181,14 +178,15 @@ export default function AddProductsForm() {
             />
 
             {/* Category */}
-            <FormField
+            <FormField  
+           
               control={form.control}
               name="category"
               render={({ field }) => (
-                <FormItem>
+                <FormItem >
                   <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
+                  <Select  onValueChange={field.onChange} value={field.value}>
+                    <FormControl className="w-full" >
                       <SelectTrigger>
                         <SelectValue placeholder="Select Category" />
                       </SelectTrigger>
@@ -228,7 +226,7 @@ export default function AddProductsForm() {
                 <FormItem>
                   <FormLabel>Status</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
+                    <FormControl className="w-full" >
                       <SelectTrigger>
                         <SelectValue placeholder="Select Status" />
                       </SelectTrigger>
@@ -299,13 +297,17 @@ export default function AddProductsForm() {
                 </FormItem>
               )}
             />
-           <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex flex-wrap gap-2 mt-4">
               {imageLinks.map((link, index) => (
                 <img
                   key={index}
                   src={link}
                   alt={`Preview ${index}`}
                   className="w-24 h-24 object-cover rounded"
+                  onError={(e) => {
+                    // Handle broken image links
+                    e.currentTarget.src = "https://via.placeholder.com/100";
+                  }}
                 />
               ))}
             </div>

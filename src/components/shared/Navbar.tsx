@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "../ui/button";
-import { Heart, LogOut, Menu, ShoppingBag } from "lucide-react";
+import { Heart, LogOut, Menu } from "lucide-react";
 import Link from "next/link";
 import { FaCartArrowDown } from "react-icons/fa";
 import {

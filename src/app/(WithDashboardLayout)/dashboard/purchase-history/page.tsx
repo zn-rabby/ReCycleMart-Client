@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/UserContext";
-import { getPurchases } from "@/services/Transactions";
 import { Check } from "lucide-react";
 import Link from "next/link";
 

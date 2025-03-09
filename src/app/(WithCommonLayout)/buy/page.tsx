@@ -1,6 +1,5 @@
 
 import ProductBuyDetails from "@/components/modules/products/productBuyDetails/productBuyDetails";
-import ProductDetails from "@/components/modules/products/productDetails";
 import NMContainer from "@/components/ui/core/NMContainer";
 import { getSingleProduct } from "@/services/Product";
 

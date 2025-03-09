@@ -1,6 +1,4 @@
 import ManageProducts from "@/components/modules/listing";
-import { Button } from "@/components/ui/button";
-import { NMTable } from "@/components/ui/core/NMTable";
 import { getAllProducts } from "@/services/Product";
 
 

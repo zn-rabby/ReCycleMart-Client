@@ -7,8 +7,7 @@ import { Edit, Eye, Plus, Trash } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
+// import { useState } from "react";
 // import DiscountModal from "./DiscountModal";
 import TablePagination from "@/components/ui/core/NMTable/TablePagination";
 import Link from "next/link";
@@ -21,7 +20,7 @@ const ManageProducts = ({
   meta: IMeta;
 }) => {
   const router = useRouter();
-  const [selectedIds, setSelectedIds] = useState<string[] | []>([]);
+//   const [selectedIds, setSelectedIds] = useState<string[] | []>([]);
 
   const handleView = (product: IProduct) => {
     console.log("Viewing product:", product);

@@ -12,7 +12,7 @@ import { addProduct } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 
 import { IProduct } from "@/types";
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 

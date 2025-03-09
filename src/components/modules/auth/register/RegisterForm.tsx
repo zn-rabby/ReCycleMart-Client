@@ -28,8 +28,8 @@ export default function RegisterForm() {
     formState: { isSubmitting },
   } = form;
 
-  const password = form.watch("password");
-  const passwordConfirm = form.watch("passwordConfirm");
+  // const password = form.watch("password");
+  // const passwordConfirm = form.watch("passwordConfirm");
   //   console.log(password, passwordConfirm);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -111,7 +111,7 @@ export default function RegisterForm() {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={form.control}
             name="passwordConfirm"
             render={({ field }) => (
@@ -128,10 +128,10 @@ export default function RegisterForm() {
                 )}
               </FormItem>
             )}
-          />
+          /> */}
 
           <Button
-            disabled={passwordConfirm && password !== passwordConfirm}
+            // disabled={passwordConfirm && password !== passwordConfirm}
             type="submit"
             className="mt-5 w-full"
           >

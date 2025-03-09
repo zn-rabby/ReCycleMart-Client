@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
-// স্ট্যাটিক ক্যাটাগরি ডেটা
+
 const staticCategories = [
   {
     id: 1,

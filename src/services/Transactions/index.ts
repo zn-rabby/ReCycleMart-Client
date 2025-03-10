@@ -23,13 +23,14 @@ export const createTransactions = async (order: ITransactions) => {
 
 
 // get all Track Purchases
-export const getPurchases = async (productId: string) => {
+export const getPurchases = async () => {
   try {
+    
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_API}/transactions/purchases/${productId}`,
+      `${process.env.NEXT_PUBLIC_BASE_API}/transactions`,
       {
         next: {
-          tags: ["PRODUCT"],
+          tags: ["PURCHASES"],
         },
       }
     );
@@ -40,6 +41,47 @@ export const getPurchases = async (productId: string) => {
   }
 };
 
+// export const getPurchases = async () => {
+//   try {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/transactions/purchases`, {
+//       cache: "no-store", // Prevents caching issues
+//       headers: { "Content-Type": "application/json" },
+//     });
+
+//     if (!res.ok) {
+//       throw new Error(`API request failed: ${res.status}`);
+//     }
+
+//     return await res.json();
+//   } catch (error: any) {
+//     console.error("Error fetching purchases:", error.message);
+//     return { error: error.message };
+//   }
+// };
+
+// export const getPurchases = async (page?: string, limit?: string) => {
+//   try {
+//     const res = await fetch(
+//       `${process.env.NEXT_PUBLIC_BASE_API}/transactions/purchases?limit=${limit}&page=${page}`,
+//       {
+//         next: {
+//           tags: ["PURCHASES"],
+//         },
+//       }
+//     );
+
+//     console.log("API Response Status:", res.status); // Log the status code
+//     console.log("API Response Headers:", res.headers); // Log the headers
+
+//     const data = await res.json();
+//     console.log("API Response Data:", data); // Log the data
+
+//     return data;
+//   } catch (error: any) {
+//     console.error("API Error:", error.message); // Log the error
+//     return Error(error.message);
+//   }
+// };
 
 
 

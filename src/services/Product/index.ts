@@ -60,22 +60,26 @@ export const addProduct = async (productData: any) => {
 
 // update product
 export const updateProduct = async (
-  productData: FormData,
-  productId: string
-): Promise<any> => {
+  productId: string,
+  productData:any
+) => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/listings/${productId}`,
       {
         method: "PATCH",
-        body: productData,
         headers: {
+          "Content-Type": "application/json",
           Authorization: (await cookies()).get("accessToken")!.value,
         },
+        body: JSON.stringify(productData),
+
       }
     );
-    revalidateTag("PRODUCT");
-    return res.json();
+    // revalidateTag("PRODUCT");
+    const data= await res.json();
+    console.log(data,"action")
+    return data
   } catch (error: any) {
     return Error(error);
   }

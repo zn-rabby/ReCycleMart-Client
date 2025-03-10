@@ -38,95 +38,73 @@ const ManagePurses = ({
     }
   };
 
-//   const columns: ColumnDef<ITransactions>[] = [
-//     // {
-//     //   accessorKey: "transactionId",
-//     //   header: "Transaction ID",
-//     //   cell: ({ row }) => <span>{row.original.transactionId}</span>,
-//     // },
-//     // {
-//     //   accessorKey: "buyer",
-//     //   header: "Buyer",
-//     //   cell: ({ row }) => (
-//     //     <div className="flex items-center space-x-3">
-//     //       <span>{row.original.buyerID.name}</span>
-//     //     </div>
-//     //   ),
-//     // },
-//     // {
-//     //   accessorKey: "seller",
-//     //   header: "Seller",
-//     //   cell: ({ row }) => (
-//     //     <div className="flex items-center space-x-3">
-//     //       <span>{row.original.sellerID.name}</span>
-//     //     </div>
-//     //   ),
-//     // },
-//     // {
-//     //   accessorKey: "item",
-//     //   header: "Item",
-//     //   cell: ({ row }) => (
-//     //     <div className="flex items-center space-x-3">
-//     //       <Image
-//     //         src={row.original.itemID.images[0]}
-//     //         alt={row.original.itemID.title}
-//     //         width={40}
-//     //         height={40}
-//     //         className="w-8 h-8 rounded-full"
-//     //       />
-//     //       <span>{row.original.itemID.title}</span>
-//     //     </div>
-//     //   ),
-//     // },
-//     // {
-//     //   accessorKey: "price",
-//     //   header: "Price",
-//     //   cell: ({ row }) => <span>$ {row.original.itemID.price.toFixed(2)}</span>,
-//     // },
-//     // {
-//     //   accessorKey: "status",
-//     //   header: "Status",
-//     //   cell: ({ row }) => <span>{row.original.status}</span>,
-//     // },
-//     // {
-//     //   accessorKey: "createdAt",
-//     //   header: "Date",
-//     //   cell: ({ row }) => (
-//     //     <span>{new Date(row.original.createdAt).toLocaleDateString()}</span>
-//     //   ),
-//     // },
-//     // {
-//     //   accessorKey: "action",
-//     //   header: "Action",
-//     //   cell: ({ row }) => (
-//     //     <div className="flex items-center space-x-3">
-//     //       <button
-//     //         className="text-gray-500 hover:text-blue-500"
-//     //         title="View"
-//     //         onClick={() => handleView(row.original)}
-//     //       >
-//     //         <Eye className="w-5 h-5" />
-//     //       </button>
-//     //       <button
-//     //         className="text-gray-500 hover:text-green-500"
-//     //         title="Edit"
-//     //         onClick={() =>
-//     //           router.push(`/dashboard/transactions/edit/${row.original._id}`)
-//     //         }
-//     //       >
-//     //         <Edit className="w-5 h-5" />
-//     //       </button>
-//     //       <button
-//     //         className="text-gray-500 hover:text-red-500"
-//     //         title="Delete"
-//     //         onClick={() => handleDelete(row.original._id)}
-//     //       >
-//     //         <Trash className="w-5 h-5" />
-//     //       </button>
-//     //     </div>
-//     //   ),
-//     // },
-//   ];
+  const columns: ColumnDef<ITransactions>[] = [
+    {
+      accessorKey: "transactionId",
+      header: "Transaction ID",
+      cell: ({ row }) => (
+        <div className="font-medium ">{row.getValue("transactionId")}</div>
+      ),
+    },
+    {
+      accessorKey: "itemID",
+      header: "Product",
+      cell: ({ row }) => {
+        return (
+          <div className="font-medium capitalize">
+            {row.original.itemID?.title || "N/A"}
+          </div>
+        );
+      },
+    },
+    {
+      accessorKey: "itemID",
+      header: "Price",
+      cell: ({ row }) => {
+        return (
+          <div className="font-medium capitalize">
+            {row.original.itemID?.price || "N/A"}
+          </div>
+        );
+      },
+    },
+   
+    {
+      accessorKey: "itemID",
+      header: "Buyer Name",
+      cell: ({ row }) => {
+        return (
+          <div className="font-medium capitalize">
+            {row.original.buyerID?.name || "N/A"}
+          </div>
+        );
+      },
+    },
+    {
+      accessorKey: "itemID",
+      header: "Seller Name",
+      cell: ({ row }) => {
+        return (
+          <div className="font-medium capitalize">
+            {row.original.sellerID?.name || "N/A"}
+          </div>
+        );
+      },
+    },
+    {
+      accessorKey: "itemID",
+      header: "Status",
+      cell: ({ row }) => {
+        return (
+          <div className="font-medium capitalize px-3 py-1 text-sm
+           font-medium rounded-md border w-24 bg-green-100 text-center">
+            {row.original.itemID?.status || "N/A"}
+          </div>
+        );
+      },
+    },
+
+  ];
 
   return (
     <div>
@@ -141,7 +119,7 @@ const ManagePurses = ({
           </Button>
         </div>
       </div>
-      {/* <NMTable columns={columns} data={products || []} /> */}
+      <NMTable columns={columns} data={products || []} />
       <TablePagination totalPage={meta?.totalPage} />
     </div>
   );

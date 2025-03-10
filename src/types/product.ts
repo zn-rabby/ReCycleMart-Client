@@ -9,6 +9,7 @@ export interface IProduct{
   category: string; 
   location: string; 
   userID?: string; 
+  itemID?:string;
   status: 'available' | 'sold' | 'pending' | 'hidden'; 
   views?: number; 
   createdAt?: Date;

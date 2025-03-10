@@ -23,6 +23,7 @@ const ManageProducts = ({
 }) => {
   const router = useRouter();
 //   const [selectedIds, setSelectedIds] = useState<string[] | []>([]);
+console.log("products page",products)
 
   const handleView = (product: IProduct) => {
     console.log("Viewing product:", product);

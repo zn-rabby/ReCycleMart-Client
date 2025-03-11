@@ -98,17 +98,20 @@ export default function Navbar() {
                 <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  <Link href="/dashboard/profile">
                   <DropdownMenuItem>Profile</DropdownMenuItem>
+                  </Link>
+                  <Link href="/dashboard">
                   <DropdownMenuItem>Dashboard</DropdownMenuItem>
-                  <DropdownMenuItem>My Shop</DropdownMenuItem>
+                  </Link>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-                    className="bg-red-500 cursor-pointer"
-                    onClick={handleLogOut}
-                  >
-                    <LogOut />
-                    <span>Log Out</span>
-                  </DropdownMenuItem>
+  className="bg-red-500 hover:bg-red-600 text-white cursor-pointer flex items-center gap-2 px-4 py-2 rounded-md transition-colors duration-200"
+  onClick={handleLogOut}
+>
+  <LogOut className="w-4 h-4" /> {/* Adjust icon size if needed */}
+  <span>Log Out</span>
+</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>

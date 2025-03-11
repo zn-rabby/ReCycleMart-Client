@@ -10,6 +10,13 @@ import {
   Send,
   Settings,
   SquareTerminal,
+  Home,
+  User,
+  ShoppingCart,
+  BarChart,
+  List,
+  HelpCircle,
+  MessageCircle,
 } from "lucide-react";
 
 import {
@@ -21,8 +28,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-// import { NavMain } from "./nav-main";
-// import { NavUser } from "./nav-user";
 import Link from "next/link";
 import Logo from "@/assets/svgs/Logo";
 import { NavMain } from "./nav-main";
@@ -33,39 +38,38 @@ const data = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: SquareTerminal,
+      icon: Home, // Changed to Home icon
       isActive: true,
     },
     {
       title: "Profile",
       url: "/dashboard/profile",
-      icon: SquareTerminal,
+      icon: User, // Changed to User icon
       isActive: true,
     },
     {
       title: "Track Purchases",
       url: "/dashboard/purchase-history",
-      icon: SquareTerminal,
+      icon: ShoppingCart, // Changed to ShoppingCart icon
       isActive: true,
     },
     {
       title: "Track Sales",
       url: "/dashboard/sales-history",
-      icon: SquareTerminal,
+      icon: BarChart, // Changed to BarChart icon
       isActive: true,
     },
     {
       title: "Listing",
       url: "/dashboard/listing",
-      icon: Bot,
+      icon: List, // Changed to List icon
       items: [
         {
           title: "Manage Listing",
           url: "/dashboard/listing",
-        }
+        },
       ],
     },
-
     {
       title: "Settings",
       url: "#",
@@ -73,7 +77,7 @@ const data = {
       items: [
         {
           title: "Profile",
-          url: "/profile",
+          url: "/dashboard/profile",
         },
       ],
     },
@@ -82,12 +86,12 @@ const data = {
     {
       title: "Support",
       url: "#",
-      icon: LifeBuoy,
+      icon: HelpCircle, // Changed to HelpCircle icon
     },
     {
       title: "Feedback",
       url: "#",
-      icon: Send,
+      icon: MessageCircle, // Changed to MessageCircle icon
     },
   ],
   projects: [

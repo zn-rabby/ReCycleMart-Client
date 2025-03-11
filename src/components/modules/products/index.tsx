@@ -108,7 +108,7 @@ const AllProducts = ({ products }: { products: IProduct[] }) => {
               key={page}
               onClick={() => setCurrentPage(page)}
               className={`px-4 py-2 border rounded ${
-                currentPage === page ? "bg-blue-500 text-white" : "bg-white"
+                currentPage === page ? "bg-[#FF5E01] text-white" : "bg-white"
               }`}
             >
               {page}

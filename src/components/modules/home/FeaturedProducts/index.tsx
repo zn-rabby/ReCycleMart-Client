@@ -33,14 +33,14 @@ const FeaturedProducts = () => {
     <div className="bg-white bg-opacity-50 pt-6 pb-8">
       <NMContainer className="my-16">
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl font-bold">Featured Products</h2>
+          <h2 className="lg:text-4xl text-2xl font-bold text-gray-800">Featured Products</h2>
           <Link href="/products">
             <Button variant="outline" className="rounded-full">
               All Collection
             </Button>
           </Link>
         </div>
-        <div className="grid grid-cols-4 gap-4 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
           {paginatedProducts.map((product, idx) => (
             <ProductCard key={idx} product={product} />
           ))}

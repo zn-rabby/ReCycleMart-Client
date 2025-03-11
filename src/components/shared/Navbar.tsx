@@ -16,7 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/assets/svgs/Logo";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { logout } from "@/services/AuthService";
 import { protectedRoutes } from "@/contants";
@@ -35,17 +35,16 @@ export default function Navbar() {
     }
   };
 
-
   return (
     <header className="border-b w-full bg-white shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo and Site Name */}
         <Link href="/" className="flex items-center gap-2">
-          <Logo  />
-          <h1 className="text-xl font-bold whitespace-nowrap">Used Sell</h1>
+          <Logo />
+          <h1 className="text-xl font-bold whitespace-nowrap text-[#FF5E01]">ReCycleMart</h1>
         </Link>
 
-        {/* Desktop Search Bar (hidden on mobile) */}
+        {/* Desktop Search Bar */}
         <div className="hidden md:flex flex-grow max-w-md mx-4">
           <input
             type="text"
@@ -56,42 +55,31 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-4">
-          {/* Navigation Links */}
-          <Link href="/products" className="text-gray-700 hover:text-primary font-medium">
-            <p>Products</p>
+          <Link
+            href="/products"
+            className={`font-medium ${pathname === "/products" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+          >
+            Products
           </Link>
-          <Link href="/about" className="text-gray-700 hover:text-primary font-medium">
-            <p>About</p>
+          <Link
+            href="/about"
+            className={`font-medium ${pathname === "/about" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+          >
+            About
           </Link>
-
-          {/* Wishlist */}
-          {/* <Button variant="outline" className="rounded-full p-0 size-10">
-            <Heart />
-          </Button> */}
-
-          {/* Cart */}
-          
-
-          {/* Create Shop */}
-          {/* <Link href="/create-shop">
-            <Button className="rounded-full">Create Shop</Button>
-          </Link> */}
 
           {/* User Menu */}
           {user ? (
             <>
-              {/* <Link href="/create-shop">
-                <Button className="rounded-full">Create Shop</Button>
-              </Link> */}
-                  <Link href="/cart">
-              <Button variant="outline" className="rounded-full p-0 size-10">
-          <Heart />
-          </Button>
-          </Link>
+              <Link href="/cart">
+                <Button variant="outline" className="rounded-full border-[#FF5E01] p-0 size-10 text-[#FF5E01]">
+                  <Heart />
+                </Button>
+              </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                  <Avatar>
-                    <AvatarImage className="h-8 w-8" src="https://res.cloudinary.com/daxjf1buu/image/upload/v1741228886/users_jauzzl.jpg" />
+                  <Avatar className="">
+                    <AvatarImage className="h-8 w-8 " src="https://res.cloudinary.com/daxjf1buu/image/upload/v1741228886/users_jauzzl.jpg" />
                     <AvatarFallback>User</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
@@ -99,25 +87,29 @@ export default function Navbar() {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <Link href="/dashboard/profile">
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem className={pathname === "/dashboard/profile" ? "bg-[#FF5E01] text-white" : ""}>
+                      Profile
+                    </DropdownMenuItem>
                   </Link>
                   <Link href="/dashboard">
-                  <DropdownMenuItem>Dashboard</DropdownMenuItem>
+                    <DropdownMenuItem className={pathname === "/dashboard" ? "bg-[#FF5E01] text-white" : ""}>
+                      Dashboard
+                    </DropdownMenuItem>
                   </Link>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-  className="bg-red-500 hover:bg-red-600 text-white cursor-pointer flex items-center gap-2 px-4 py-2 rounded-md transition-colors duration-200"
-  onClick={handleLogOut}
->
-  <LogOut className="w-4 h-4" /> {/* Adjust icon size if needed */}
-  <span>Log Out</span>
-</DropdownMenuItem>
+                    className="bg-red-500 hover:bg-red-600 text-white cursor-pointer flex items-center gap-2 px-4 py-2 rounded-md transition-colors duration-200"
+                    onClick={handleLogOut}
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Log Out</span>
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
           ) : (
             <Link href="/login">
-              <Button className="rounded-xl bg-[#FF5E01] hover:bg-[#D94F01] text-white" variant="outline">
+              <Button className="rounded-lg bg-[#FF5E01] hover:bg-[#D94F01] text-white" variant="outline">
                 Login
               </Button>
             </Link>
@@ -133,7 +125,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu (Drawer Style) */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="p-4 flex flex-col gap-3">
@@ -143,31 +135,32 @@ export default function Navbar() {
               className="w-full border border-gray-300 rounded-full py-2 px-4"
             />
 
-            {/* <Link href="/create-shop" className="w-full">
-              <Button className="w-full">Create Shop</Button>
-            </Link> */}
-             {/* Navigation Links */}
-          <Link href="/product" className="text-gray-700 hover:text-primary font-medium">
-            <p>Product</p>
-          </Link>
-          <Link href="/about" className="text-gray-700 hover:text-primary font-medium">
-            <p>About</p>
-          </Link>
-
-            <Link href="/login" className="w-full">
-              <Button className="w-full" variant="outline">
-                Login
-              </Button>
+            <Link
+              href="/products"
+              className={`font-medium ${pathname === "/products" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+            >
+              Products
+            </Link>
+            <Link
+              href="/about"
+              className={`font-medium ${pathname === "/about" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+            >
+              About
             </Link>
 
-            {/* Mobile Menu Icons */}
+            {!user && (
+              <Link href="/login" className="w-full">
+                <Button className="w-full" variant="outline">
+                  Login
+                </Button>
+              </Link>
+            )}
+
             <div className="flex justify-around mt-3">
-              <Button variant="outline" className="rounded-full p-0 size-10">
+              <Button variant="outline" className="rounded-full p-0 size-10 border-[#FF5E01] text-[#FF5E01]">
                 <Heart />
               </Button>
-              <Button variant="outline" className="rounded-full p-0 size-10">
-              <FaCartArrowDown />
-              </Button>
+             
             </div>
           </div>
         </div>

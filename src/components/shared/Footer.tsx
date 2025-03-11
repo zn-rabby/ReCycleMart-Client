@@ -1,3 +1,5 @@
+"use client";
+
 import Logo from "@/assets/svgs/Logo";
 import { Facebook, Instagram, X, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
@@ -36,7 +38,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-white border-t border-gray-200 py-12 md:py-16">
+    <footer className="bg-gray-900 text-white py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Grid Layout for Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -44,9 +46,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Logo />
-              <h1 className="text-2xl font-black">SecondHand</h1>
+              <h1 className="text-2xl font-bold text-[#FF5E01]">SecondHand</h1>
             </div>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-400 text-sm">
               Your trusted marketplace for buying and selling high-quality
               second-hand products. Save money, reduce waste, and find amazing
               deals today!
@@ -57,9 +59,9 @@ const Footer = () => {
                 <Link
                   href={href}
                   key={index}
-                  className="text-gray-600 hover:text-purple-600"
+                  className="text-gray-400 hover:text-[#FF5E01] transition"
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-6 h-6" />
                 </Link>
               ))}
             </div>
@@ -67,13 +69,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-800">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-purple-600 text-sm"
+                    className="text-gray-400 hover:text-[#FF5E01] transition text-sm"
                   >
                     {link.label}
                   </Link>
@@ -84,12 +86,12 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-800">Contact Us</h3>
+            <h3 className="text-lg font-semibold text-white">Contact Us</h3>
             <ul className="space-y-3">
               {contactInfo.map(({ icon: Icon, text }, index) => (
                 <li key={index} className="flex items-center space-x-2">
-                  <Icon className="w-5 h-5 text-gray-600" />
-                  <span className="text-gray-600 text-sm">{text}</span>
+                  <Icon className="w-5 h-5 text-[#FF5E01]" />
+                  <span className="text-gray-400 text-sm">{text}</span>
                 </li>
               ))}
             </ul>
@@ -97,21 +99,21 @@ const Footer = () => {
 
           {/* Newsletter Subscription */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-800">
+            <h3 className="text-lg font-semibold text-white">
               Subscribe to Our Newsletter
             </h3>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-400 text-sm">
               Get the latest updates on new products, exclusive deals, and more!
             </p>
             <form className="flex space-x-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full px-3 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-[#FF5E01]"
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                className="px-4 py-2 text-white rounded-lg bg-[#FF5E01] hover:bg-[#D94F01] transition"
               >
                 Subscribe
               </button>
@@ -120,10 +122,10 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <hr className="my-8 border-gray-300" />
+        <hr className="my-8 border-gray-600" />
 
         {/* Copyright Notice */}
-        <div className="text-center text-sm text-gray-500">
+        <div className="text-center text-sm text-gray-400">
           &copy; {new Date().getFullYear()} SecondHand. All rights reserved.
         </div>
       </div>

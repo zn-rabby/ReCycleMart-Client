@@ -103,16 +103,16 @@ const CategoryCard = ({ category }: { category: any }) => {
 
 const CategorySection = () => {
   return (
-    <div className="container mx-auto my-20">
+    <div className="container mx-auto mt-16 mb-6 p-3 md:p-0">
       <div className="flex items-center justify-between">
-        <h2 className="font-bold text-2xl">Category</h2>
+        <h2 className="lg:text-4xl text-2xl font-bold text-gray-800">Category</h2>
         <Link href="/products">
           <Button variant="outline" className="rounded-full">
             View All
           </Button>
         </Link>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 my-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 my-5 ">
         {staticCategories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}

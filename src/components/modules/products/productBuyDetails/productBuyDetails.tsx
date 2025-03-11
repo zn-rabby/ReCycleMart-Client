@@ -10,11 +10,13 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const ProductBuyDetails = ({ product }: { product: IProduct }) => {
-  const itemID = product._id;
+  // const itemID = product._id;
   const { user } = useUser();
   const router = useRouter();
+  console.log("buy page",product)
 
   const handleOrder = async () => {
+    const itemID = product._id;
     const orderLoading = toast.loading("Order is being placed...");
 
     try {
@@ -23,7 +25,7 @@ const ProductBuyDetails = ({ product }: { product: IProduct }) => {
         throw new Error("Please login first.");
       }
 
-      const res = await createTransactions({ itemID });  // Pass an object with itemID
+      const res = await createTransactions({ itemID});  // Pass an object with itemID
 
       if (res.success) {
         toast.success(res.message, { id: orderLoading });

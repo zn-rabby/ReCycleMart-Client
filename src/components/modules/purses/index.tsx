@@ -3,12 +3,10 @@
 import { NMTable } from "@/components/ui/core/NMTable/index";
 import { IMeta } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
-import { Edit, Eye, Plus, Trash } from "lucide-react";
-import Image from "next/image";
+import {  Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import TablePagination from "@/components/ui/core/NMTable/TablePagination";
-import Link from "next/link";
 import { ITransactions } from "@/types/transactions";
 
 const ManagePurses = ({
@@ -24,15 +22,11 @@ const ManagePurses = ({
 
   const handleView = (transaction: ITransactions) => {
     console.log("Viewing transaction:", transaction);
-    // router.push(`/dashboard/transactions/${transaction._id}`);
   };
 
   const handleDelete = async (transactionId: string) => {
     console.log("Deleting transaction with ID:", transactionId);
     try {
-      // Add your delete logic here
-      // Example: const res = await deleteTransaction(transactionId);
-      // if (res.success) { toast.success(res.message); }
     } catch (err: any) {
       console.error(err?.message);
     }
@@ -108,19 +102,13 @@ const ManagePurses = ({
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between p-3">
         <h1 className="text-xl font-bold">Manage Transactions</h1>
-        <div className="flex items-center gap-2">
-          <Button
-            onClick={() => router.push("/dashboard/transactions/add")}
-            size="sm"
-          >
-            Add Transaction <Plus />
-          </Button>
-        </div>
       </div>
       <NMTable columns={columns} data={products || []} />
+      <div className="flex justify-end p-3">
       <TablePagination totalPage={meta?.totalPage} />
+      </div>
     </div>
   );
 };

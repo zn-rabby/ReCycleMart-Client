@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getMe, updateProfile } from "@/services/Transactions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { User, Mail, ShieldCheck, CheckCircle, Phone, Edit } from "lucide-react";
+import { User,  ShieldCheck, CheckCircle, Phone, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,7 +19,7 @@ const ProfilePage = () => {
     name: "",
     phoneNumber: "",
     email: "",
-    password: "",
+    // password: "",
     role: "",
     status: "",
   });
@@ -33,7 +33,7 @@ const ProfilePage = () => {
           name: data?.user?.name || "",
           phoneNumber: data?.user?.phoneNumber || "",
           email: data?.user?.email || "",
-          password: "",
+          // password: "",
           role: data?.user?.role || "",
           status: data?.user?.status || "",
         });
@@ -68,7 +68,7 @@ const ProfilePage = () => {
           name: data?.user?.name || "",
           phoneNumber: data?.user?.phoneNumber || "",
           email: data?.user?.email || "",
-          password: "",
+          // password: "",
           role: data?.user?.role || "",
           status: data?.user?.status || "",
         });
@@ -163,10 +163,10 @@ const ProfilePage = () => {
                   <Label htmlFor="email">Email</Label>
                   <Input id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Enter your email" />
                 </div>
-                <div>
+                {/* <div>
                   <Label htmlFor="password">Password</Label>
                   <Input id="password" name="password" type="password" value={formData.password} onChange={handleInputChange} placeholder="Enter a new password" />
-                </div>
+                </div> */}
                 <div>
                   <Label htmlFor="role">Role</Label>
                   <Input id="role" name="role" value={formData.role} onChange={handleInputChange} placeholder="Enter your role" />

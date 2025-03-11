@@ -7,14 +7,9 @@ const PurchaseHistory = async ({
     searchParams: Promise<{ page: string }>;
   }) => {
  const { page } = await searchParams;
- 
      const { data, meta } = await getPurchases(page, "3");
-     
-
   return (
-    <div className="bg-gray-100">
-      <h2>Purchase History</h2>
-      {/* Ensure ManagePurses is compatible with the received data */}
+    <div className="bg-gray-50">
       <ManagePurses  products={data} meta={meta} />
     </div>
   );

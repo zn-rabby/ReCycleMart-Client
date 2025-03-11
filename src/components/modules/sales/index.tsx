@@ -10,14 +10,16 @@ import TablePagination from "@/components/ui/core/NMTable/TablePagination";
 import { ITransactions } from "@/types/transactions";
 import { updateStatus } from "@/services/Transactions";
 import { toast } from "sonner";
-import { useState } from "react";
 import clsx from "clsx";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 const ManageSales = ({
   products,
@@ -29,27 +31,44 @@ const ManageSales = ({
   const router = useRouter();
   const [transactions, setTransactions] = useState(products || []);
 
-  const handleStatusUpdate = async (transactionId: string, newStatus: 'pending' | 'completed') => {
-    try {
-      const res = await updateStatus(transactionId, { status: newStatus });
+  // const handleStatusUpdate = async (transactionId: string, newStatus: string) => {
+  //   try {
+  //     const res = await updateStatus(transactionId, { status: newStatus });
 
-      if (res.success) {
-        toast.success(res.message);
-        setTransactions((prev) =>
-          prev.map((tx) =>
-            tx._id === transactionId
-              ? { ...tx, itemID: { ...tx.itemID, status: newStatus } }
-              : tx
-          )
-        );
+  //     if (res.success) {
+  //       toast.success(res.message);
+  //       setTransactions((prev) =>
+  //         prev.map((tx) =>
+  //           tx._id === transactionId
+  //             ? { ...tx, itemID: { ...tx.itemID, status: newStatus } }
+  //             : tx
+  //         )
+  //       );
+  //     } else {
+  //       toast.error(res.message);
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //     toast.error("An error occurred while updating the status.");
+  //   }
+  // };
+
+
+  const handleUpdateOrderStatus = async (id: string, status: string) => {
+    console.log(id, status);
+    try {
+      const response = await updateStatus(id, { status });
+      if (response?.success) {
+        toast.success("Order status updated successfully");
+        // router.push("/products");
       } else {
-        toast.error(res.message);
+        toast.error(response.error[0]?.message);
       }
-    } catch (err) {
-      console.error(err);
-      toast.error("An error occurred while updating the status.");
+    } catch {
+      toast.error("Something went wrong!");
     }
   };
+
 
   const columns: ColumnDef<ITransactions>[] = [
     {
@@ -85,43 +104,79 @@ const ManageSales = ({
         <div className="font-medium capitalize">{row.original.sellerID?.name || "N/A"}</div>
       ),
     },
-    {
-      accessorKey: "itemID",
-      header: "Status Update",
-      cell: ({ row }) => {
-        const transactionId = row.original._id;
-        const status = row.original.itemID?.status || "pending";
+    // {
+    //   accessorKey: "itemID",
+    //   header: "Status Update",
+    //   cell: ({ row }) => {
+    //     const transactionId = row.original._id;
+    //     const status = row.original.itemID?.status || "pending";
 
+    //     return (
+    //       <div className="flex items-center space-x-2">
+    //         <div
+    //           className={clsx(
+    //             "px-3 py-1 text-sm font-medium rounded-md w-24 text-center",
+    //             status === "pending" ? "bg-yellow-100 text-yellow-800" : "bg-green-100 text-green-800"
+    //           )}
+    //         >
+    //           {status}
+    //         </div>
+    //         <DropdownMenu>
+    //           <DropdownMenuTrigger asChild>
+    //             <Button variant="outline" size="sm">
+    //               Update Status
+    //             </Button>
+    //           </DropdownMenuTrigger>
+    //           <DropdownMenuContent>
+    //             <DropdownMenuItem
+    //               onClick={() => handleStatusUpdate(transactionId, "pending")}
+    //             >
+    //               Set to Pending
+    //             </DropdownMenuItem>
+    //             <DropdownMenuItem
+    //               onClick={() => handleStatusUpdate(transactionId, "completed")}
+    //             >
+    //               Set to Completed
+    //             </DropdownMenuItem>
+    //           </DropdownMenuContent>
+    //         </DropdownMenu>
+    //       </div>
+    //     );
+    //   },
+    // },
+    {
+      accessorKey: "status",
+      header: "Status",
+      cell: ({ row }) => {
+        const order = row.original;
+
+        const handleStatusChange = (newStatus: string) => {
+          handleUpdateOrderStatus(order._id, newStatus);
+        };
         return (
-          <div className="flex items-center space-x-2">
-            <div
-              className={clsx(
-                "px-3 py-1 text-sm font-medium rounded-md w-24 text-center",
-                status === "pending" ? "bg-yellow-100 text-yellow-800" : "bg-green-100 text-green-800"
-              )}
-            >
-              {status}
-            </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
-                  Update Status
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem
-                  onClick={() => handleStatusUpdate(transactionId, "pending")}
-                >
-                  Set to Pending
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => handleStatusUpdate(transactionId, "completed")}
-                >
-                  Set to Completed
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild className="cursor-pointer">
+              <Button variant="outline" className=" p-4 capitalize">
+                {order.status}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Status</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() => handleStatusChange("pending")}
+                className="cursor-pointer"
+              >
+                Pending
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => handleStatusChange("completed")}
+                className="cursor-pointer"
+              >
+                Completed
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         );
       },
     },
@@ -129,16 +184,13 @@ const ManageSales = ({
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between p-3">
         <h1 className="text-xl font-bold">Manage Transactions</h1>
-        <div className="flex items-center gap-2">
-          <Button onClick={() => router.push("/dashboard/transactions/add")} size="sm">
-            Add Transaction <Plus />
-          </Button>
-        </div>
       </div>
       <NMTable columns={columns} data={transactions} />
+      <div className="flex justify-end p-3">
       <TablePagination totalPage={meta?.totalPage} />
+      </div>
     </div>
   );
 };

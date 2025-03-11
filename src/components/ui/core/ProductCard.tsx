@@ -10,26 +10,26 @@ import {
 } from "@/components/ui/card";
 import { addProduct } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
-
 import { IProduct } from "@/types";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png";
-  };
-
   const dispatch = useAppDispatch();
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src =
+      "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png";
+  };
 
   const handleAddProduct = (product: IProduct) => {
     dispatch(addProduct(product));
   };
 
   return (
-    <Card className="p-3 hover:shadow-lg transition-shadow duration-300">
-      <CardHeader className="relative p-0 h-48">
+    <Card className="p-3 border border-gray-200 rounded-lg hover:shadow-xl transition-all duration-300">
+      <CardHeader className="relative p-0 h-52 overflow-hidden rounded-lg">
         <Image
           src={
             product?.images[0] ||
@@ -38,40 +38,37 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           width={500}
           height={500}
           alt="product image"
-          className="rounded-sm h-52 w-full object-cover"
+          className="rounded-md h-52 w-full object-cover transition-transform duration-300 hover:scale-105"
           onError={handleImageError}
         />
+
         {product?.condition === "used" && (
           <div className="absolute left-2 top-1 bg-red-500 text-white px-2 py-1 text-xs rounded-full">
             Used
           </div>
         )}
-        <div 
-        onClick={()=>handleAddProduct(product)}
-        className="absolute right-2 top-1 bg-white p-1 rounded-full shadow-sm">
-          <Heart className="h-5 w-5 text-gray-600 hover:text-red-500 cursor-pointer" />
-        </div>
-        
+
+        <button
+          onClick={() => handleAddProduct(product)}
+          className="absolute right-2 top-2 bg-[#FF5E01] hover:bg-[#D94F01] p-2 rounded-full shadow-sm transition-transform duration-200 hover:scale-110"
+        >
+          <Heart className="h-5 w-5 text-white cursor-pointer" />
+        </button>
       </CardHeader>
 
-      <CardContent className="p-0 mt-3">
-          <CardTitle
-            title={product?.title}
-            className="font-semibold cursor-pointer text-sm hover:text-blue-600 transition-colors duration-300"
-          >
-            {product?.title.length > 20
-              ? product?.title?.slice(0, 20) + "..."
-              : product?.title}
-          </CardTitle>
-       
+      <CardContent className="p-2">
+        <CardTitle
+          title={product?.title}
+          className="font-semibold cursor-pointer text-sm hover:text-blue-600 transition-colors duration-300"
+        >
+          {product?.title.length > 22 ? product?.title.slice(0, 22) + "..." : product?.title}
+        </CardTitle>
 
-        <div className="flex items-center justify-between my-2">
+        <div className="flex items-center justify-between mt-2">
           <p className="text-sm text-gray-600">
-            <span className="font-semibold">Category: {product?.category}</span>
+            <span className="font-semibold">Category:</span> {product?.category}
           </p>
-          <p className="text-sm text-gray-600">
-            <span className="font-semibold">$ {product?.price.toFixed(2)}</span>
-          </p>
+          <p className="text-sm font-semibold text-gray-800"><span className="text-bold">$ </span>{product?.price.toFixed(2)}</p>
         </div>
 
         <div className="flex items-center mt-2">
@@ -79,13 +76,9 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             <Star
               key={index}
               className={`h-4 w-4 ${
-                index < (product?.ratingCount || 0)
-                  ? "text-yellow-400"
-                  : "text-gray-300"
+                index < (product?.ratingCount || 0) ? "text-yellow-400" : "text-gray-300"
               }`}
-              fill={
-                index < (product?.ratingCount || 0) ? "currentColor" : "transparent"
-              }
+              fill={index < (product?.ratingCount || 0) ? "currentColor" : "transparent"}
             />
           ))}
           <span className="text-sm text-gray-500 ml-2">
@@ -94,35 +87,26 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         </div>
       </CardContent>
 
-      <CardFooter className="block p-0 mt-3">
-        <div className="flex gap-2 items-center justify-between">
-        <Link href={`/products/${product?._id}`} passHref>
-          <Button
-            disabled={product?.status !== "available"}
-            size="sm"
-            variant="default"
-            className="w-24 bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Details
-          </Button>   </Link>
-        <Link href={`/buy/${product?._id}`} passHref>
-          <Button
-            disabled={product?.status !== "available"}
-            size="sm"
-            variant="default"
-            className="w-24 bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Buy
-          </Button>   </Link>
-          {/* <Button
-            // onClick={() => handleAddProduct(product)}
-            disabled={product?.status !== "available"}
-            variant="outline"
-            size="sm"
-            className="w-8 h-8 p-0 flex items-center justify-center rounded-full border-gray-300 hover:border-blue-600"
-          >
-            <ShoppingCart className="h-4 w-4 text-gray-600 hover:text-blue-600" />
-          </Button> */}
+      <CardFooter className="p-0 mt-3">
+        <div className="flex gap-2 items-center justify-between w-full">
+          <Link href={`/products/${product?._id}`} passHref>
+            <Button
+              disabled={product?.status !== "available"}
+              size="sm"
+              className="w-24 bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 transition-all duration-200"
+            >
+              Details
+            </Button>
+          </Link>
+          <Link href={`/buy/${product?._id}`} passHref>
+            <Button
+              disabled={product?.status !== "available"}
+              size="sm"
+              className="w-24 bg-[#FF5E01] hover:bg-[#D94F01] text-white transition-all duration-200"
+            >
+              Buy
+            </Button>
+          </Link>
         </div>
       </CardFooter>
     </Card>

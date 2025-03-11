@@ -1,10 +1,8 @@
 "use server";
 
-
-import { ITransactions } from "@/types/transactions";
 import { cookies } from "next/headers";
 
-export const createTransactions = async (order: ITransactions) => {
+export const createTransactions = async (order: {itemID:string}) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/transactions`, {
       method: "POST",

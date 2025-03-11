@@ -7,8 +7,6 @@ import { Edit, Eye, Plus, Trash } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-// import { useState } from "react";
-// import DiscountModal from "./DiscountModal";
 import TablePagination from "@/components/ui/core/NMTable/TablePagination";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -22,7 +20,6 @@ const ManageProducts = ({
   meta: IMeta;
 }) => {
   const router = useRouter();
-//   const [selectedIds, setSelectedIds] = useState<string[] | []>([]);
 console.log("products page",products)
 
   const handleView = (product: IProduct) => {
@@ -37,7 +34,6 @@ console.log("products page",products)
         console.log(res);
         if (res.success) {
           toast.success(res.message);
-          // setModalOpen(false);
         } else {
           toast.error(res.message);
         }
@@ -48,38 +44,6 @@ console.log("products page",products)
   };
 
   const columns: ColumnDef<IProduct>[] = [
-    // {
-    //   id: "select",
-    //   header: ({ table }) => (
-    //     <Checkbox
-    //       checked={
-    //         table.getIsAllPageRowsSelected() ||
-    //         (table.getIsSomePageRowsSelected() && "indeterminate")
-    //       }
-    //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-    //       aria-label="Select all"
-    //     />
-    //   ),
-    //   cell: ({ row }) => (
-    //     <Checkbox
-    //       checked={row.getIsSelected()}
-    //       onCheckedChange={(value) => {
-    //         if (value) {
-    //           setSelectedIds((prev) => [...prev, row.original._id]);
-    //         } else {
-    //           setSelectedIds(
-    //             selectedIds.filter((id) => id !== row.original._id)
-    //           );
-    //         }
-    //         row.toggleSelected(!!value);
-    //       }}
-    //       aria-label="Select row"
-    //     />
-    //   ),
-    //   enableSorting: false,
-    //   enableHiding: false,
-    // },
-
     {
       accessorKey: "name",
       header: "Product Name",
@@ -101,11 +65,7 @@ console.log("products page",products)
       header: "Category",
       cell: ({ row }) => <span>{row.original.title}</span>,
     },
-    // {
-    //   accessorKey: "brand",
-    //   header: "Brand",
-    //   cell: ({ row }) => <span>{row}</span>,
-    // },
+  
     {
       accessorKey: "stock",
       header: "Stock",
@@ -121,15 +81,7 @@ console.log("products page",products)
       header: "Price",
       cell: ({ row }) => <span>$ {row.original.price.toFixed(2)}</span>,
     },
-    // {
-    //   accessorKey: "offerPrice",
-    //   header: "Ofter Price",
-    //   cell: ({ row }) => (
-    //     <span>
-    //       $ {row.original.price ? row.original.price.toFixed(2) : "0"}
-    //     </span>
-    //   ),
-    // },
+ 
     {
       accessorKey: "action",
       header: "Action",
@@ -144,8 +96,6 @@ console.log("products page",products)
     <Eye className="w-5 h-5" />
   </button>
 </Link>
-
-
           <button
             className="text-gray-500 hover:text-green-500"
             title="Edit"
@@ -181,14 +131,12 @@ console.log("products page",products)
           >
             Add Listing <Plus />
           </Button>
-          {/* <DiscountModal
-            selectedIds={selectedIds}
-            setSelectedIds={setSelectedIds}
-          /> */}
         </div>
       </div>
       <NMTable columns={columns} data={products || []} />
+      <div className="flex justify-end p-3">
       <TablePagination totalPage={meta?.totalPage} />
+      </div>
     </div>
   );
 };

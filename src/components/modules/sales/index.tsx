@@ -3,14 +3,11 @@
 import { NMTable } from "@/components/ui/core/NMTable/index";
 import { IMeta } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
-import { Plus } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import TablePagination from "@/components/ui/core/NMTable/TablePagination";
 import { ITransactions } from "@/types/transactions";
 import { updateStatus } from "@/services/Transactions";
 import { toast } from "sonner";
-import clsx from "clsx";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,8 +25,7 @@ const ManageSales = ({
   products: ITransactions[];
   meta: IMeta;
 }) => {
-  const router = useRouter();
-  const [transactions, setTransactions] = useState(products || []);
+  const [transactions] = useState(products || []);
 
   // const handleStatusUpdate = async (transactionId: string, newStatus: string) => {
   //   try {

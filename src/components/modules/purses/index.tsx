@@ -3,9 +3,9 @@
 import { NMTable } from "@/components/ui/core/NMTable/index";
 import { IMeta } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
-import {  Plus } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+// import {  Plus } from "lucide-react";
+// import { useRouter } from "next/navigation";
+// import { Button } from "@/components/ui/button";
 import TablePagination from "@/components/ui/core/NMTable/TablePagination";
 import { ITransactions } from "@/types/transactions";
 
@@ -18,19 +18,19 @@ const ManagePurses = ({
 }) => {
 
     console.log("pp",products)
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleView = (transaction: ITransactions) => {
-    console.log("Viewing transaction:", transaction);
-  };
+  // const handleView = (transaction: ITransactions) => {
+  //   console.log("Viewing transaction:", transaction);
+  // };
 
-  const handleDelete = async (transactionId: string) => {
-    console.log("Deleting transaction with ID:", transactionId);
-    try {
-    } catch (err: any) {
-      console.error(err?.message);
-    }
-  };
+  // const handleDelete = async (transactionId: string) => {
+  //   console.log("Deleting transaction with ID:", transactionId);
+  //   try {
+  //   } catch (err: any) {
+  //     console.error(err?.message);
+  //   }
+  // };
 
   const columns: ColumnDef<ITransactions>[] = [
     {

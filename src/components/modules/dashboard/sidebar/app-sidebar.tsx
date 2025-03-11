@@ -2,14 +2,10 @@
 
 import * as React from "react";
 import {
-  Bot,
   Frame,
-  LifeBuoy,
   Map,
   PieChart,
-  Send,
   Settings,
-  SquareTerminal,
   Home,
   User,
   ShoppingCart,

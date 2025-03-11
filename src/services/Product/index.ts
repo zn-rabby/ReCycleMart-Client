@@ -1,8 +1,6 @@
 "use server";
-import { IProduct } from "@/types";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { json } from "stream/consumers";
 
 // get all products
 export const getAllProducts = async (page?: string, limit?: string) => {

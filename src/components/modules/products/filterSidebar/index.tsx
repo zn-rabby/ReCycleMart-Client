@@ -4,23 +4,22 @@ import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
+import { IProduct } from "@/types";
 
 interface FilterSidebarProps {
-  products: any[]; // Replace `any` with your product type (e.g., IProduct)
-  onFilterChange: (filters: any) => void; // Callback to pass filters to the parent
+  products: IProduct[];
+  onFilterChange: (filters: any) => void;
 }
 
 const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(1000);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
   const [selectedAvailability, setSelectedAvailability] = useState<string[]>([]);
 
   // Extract unique categories, brands, and availability from products
   const categories = Array.from(new Set(products.map((product) => product.category)));
-  const brands = Array.from(new Set(products.map((product) => product.brand)));
   const availabilityOptions = Array.from(new Set(products.map((product) => product.status)));
 
   // Handle filter changes
@@ -29,7 +28,6 @@ const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
       minPrice,
       maxPrice,
       categories: selectedCategories,
-      brands: selectedBrands,
       ratings: selectedRatings,
       availability: selectedAvailability,
     };
@@ -100,20 +98,7 @@ const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
           ))}
         </ul>
 
-        <h2 className="text-lg font-semibold mt-6">Brands</h2>
-        <ul className="space-y-2 mt-2">
-          {brands.map((brand, index) => (
-            <li key={index} className="flex items-center gap-2">
-              <Checkbox
-                checked={selectedBrands.includes(brand)}
-                onCheckedChange={() =>
-                  handleCheckboxChange(brand, selectedBrands, setSelectedBrands)
-                }
-              />
-              <span>{brand}</span>
-            </li>
-          ))}
-        </ul>
+        
 
         <h2 className="text-lg font-semibold mt-6">Rating</h2>
         <ul className="space-y-2 mt-2">

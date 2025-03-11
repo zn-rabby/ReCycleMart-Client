@@ -117,7 +117,7 @@ export default function Navbar() {
             </>
           ) : (
             <Link href="/login">
-              <Button className="rounded-full" variant="outline">
+              <Button className="rounded-xl bg-[#FF5E01] hover:bg-[#D94F01] text-white" variant="outline">
                 Login
               </Button>
             </Link>

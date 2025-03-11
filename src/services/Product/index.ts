@@ -78,7 +78,7 @@ export const updateProduct = async (
     );
     // revalidateTag("PRODUCT");
     const data= await res.json();
-    console.log(data,"action")
+    // console.log(data,"action")
     return data
   } catch (error: any) {
     return Error(error);

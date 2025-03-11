@@ -10,7 +10,7 @@ export interface IProduct{
   location: string; 
   userID?: string; 
   itemID?:string;
-  status: 'available' | 'sold' | 'pending' | 'hidden'; 
+  status: 'available' | 'sold' ; 
   views?: number; 
   createdAt?: Date;
   updatedAt?: Date;

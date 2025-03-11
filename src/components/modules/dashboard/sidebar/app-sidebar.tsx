@@ -37,6 +37,12 @@ const data = {
       isActive: true,
     },
     {
+      title: "Profile",
+      url: "/dashboard/profile",
+      icon: SquareTerminal,
+      isActive: true,
+    },
+    {
       title: "Track Purchases",
       url: "/dashboard/purchase-history",
       icon: SquareTerminal,

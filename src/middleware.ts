@@ -40,7 +40,7 @@ export const middleware = async (request: NextRequest) => {
 
 export const config = {
     matcher: [
-        "/:page",
+        // "/:page",
         "/cart",
         "/dashboard/profile",
         "/dashboard/listing",

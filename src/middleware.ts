@@ -22,7 +22,9 @@ export const middleware = async (request: NextRequest) => {
         } else {
             return NextResponse.redirect(
                 // new URL(https://re-sell-bd-client.vercel.app/login?redirectPath=${pathname}, request.url)
+                // new URL(`http://localhost:3000/login?redirectPath=${pathname}, request.url`)
                 new URL(`http://localhost:3000/login?redirectPath=${pathname}, request.url`)
+                
             )
         }
     }

@@ -17,12 +17,12 @@ import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
 import Logo from "@/assets/svgs/Logo";
 import { loginSchema } from "./loginValidation";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
 
-  const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirectPath");
+  // const searchParams = useSearchParams();
+  // const redirect = searchParams.get("redirectPath");
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(loginSchema),
@@ -37,11 +37,9 @@ export default function LoginForm() {
       const res = await loginUser(data);
       if (res?.success) {
         toast.success(res?.message);
-        if (redirect) {
-          router.push(redirect);
-        } else {
+        
           router.push("/");
-        }
+      
       } else {
         toast.error(res?.message);
       }

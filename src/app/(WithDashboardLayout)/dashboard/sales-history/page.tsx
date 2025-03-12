@@ -7,11 +7,12 @@ const SelesHistory = async ({
     searchParams: Promise<{ page: string }>;
   }) => {
  const { page } = await searchParams;
-
-  const { data, meta } = await getSales(page, "2");
+ 
+ const { data, meta } = await getSales(page, "2");
+ const products = data?.result
   return (
     <div className="bg-gray-100">
-      <ManageSales  products={data} meta={meta} />
+      <ManageSales  products={products} meta={meta} />
     </div>
   );
 };

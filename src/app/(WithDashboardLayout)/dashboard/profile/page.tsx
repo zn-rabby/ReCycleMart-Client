@@ -107,22 +107,22 @@ const ProfilePage = () => {
         <CardHeader className="text-center">
           <div className="flex justify-center">
             <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center">
-              <User className="w-12 h-12 text-primary" />
+              <User className="w-12 h-12 text-[#FF5E01]" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold mt-4">{user.name}</CardTitle>
+          <CardTitle className="text-2xl font-bold mt-4 text-[#FF5E01]">{user.name}</CardTitle>
           <p className="text-sm text-muted-foreground">{user.email}</p>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-            <ShieldCheck className="w-6 h-6 text-primary" />
+            <ShieldCheck className="w-6 h-6  text-[#FF5E01] " />
             <div>
               <p className="text-sm text-muted-foreground">Role</p>
               <p className="text-lg font-medium capitalize">{user.role}</p>
             </div>
           </div>
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-            <CheckCircle className="w-6 h-6 text-primary" />
+            <CheckCircle className="w-6 h-6 text-[#FF5E01]" />
             <div>
               <p className="text-sm text-muted-foreground">Status</p>
               <p className="text-lg font-medium">{user.status}</p>
@@ -141,7 +141,7 @@ const ProfilePage = () => {
           {/* Dialog (Modal) for Updating Profile */}
           <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
             <DialogTrigger asChild>
-              <Button className="w-full mt-4">
+              <Button className="w-full mt-4 bg-[#FF5E01] hover:bg-[#D94F01] text-white">
                 <Edit className="w-4 h-4 mr-2" />
                 Update Profile
               </Button>
@@ -176,8 +176,8 @@ const ProfilePage = () => {
                   <Input id="status" name="status" value={formData.status} onChange={handleInputChange} placeholder="Enter your status" />
                 </div>
                 <div className="flex justify-end gap-2">
-                  <Button type="button" variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
-                  <Button type="submit">Save Changes</Button>
+                  <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white" type="button" variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
+                  <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white" type="submit">Save Changes</Button>
                 </div>
               </form>
             </DialogContent>

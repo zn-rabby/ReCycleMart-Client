@@ -7,8 +7,8 @@ const DashboardPage = () => {
       {/* Welcome Section */}
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full mb-8">
         <div className="flex flex-col items-center">
-          <div className="bg-green-100 p-3 rounded-full mb-5">
-            <Check className="size-12 text-green-500" />
+          <div style={{ backgroundColor: "rgba(255, 94, 1, 0.1)" }} className="p-3 rounded-full mb-5">
+            <Check style={{ color: "#FF5E01" }} className="size-12" />
           </div>
           <h1 className="text-2xl font-bold text-gray-800 mb-2">
             Welcome to Secondhand Marketplace
@@ -26,7 +26,7 @@ const DashboardPage = () => {
         <Link href="/products" legacyBehavior>
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
-              <ShoppingCart className="size-8 text-blue-500 mb-3" />
+              <ShoppingCart style={{ color: "#FF5E01" }} className="size-8 mb-3" />
               <h2 className="text-lg font-semibold text-gray-800 mb-2">
                 Buy Products
               </h2>
@@ -41,7 +41,7 @@ const DashboardPage = () => {
         <Link href="/sell" legacyBehavior>
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
-              <PlusCircle className="size-8 text-green-500 mb-3" />
+              <PlusCircle style={{ color: "#FF5E01" }} className="size-8 mb-3" />
               <h2 className="text-lg font-semibold text-gray-800 mb-2">
                 Sell Products
               </h2>
@@ -56,7 +56,7 @@ const DashboardPage = () => {
         <Link href="/orders" legacyBehavior>
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
-              <Package className="size-8 text-purple-500 mb-3" />
+              <Package style={{ color: "#FF5E01" }} className="size-8 mb-3" />
               <h2 className="text-lg font-semibold text-gray-800 mb-2">
                 My Orders
               </h2>
@@ -71,7 +71,7 @@ const DashboardPage = () => {
         <Link href="/history" legacyBehavior>
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
-              <History className="size-8 text-orange-500 mb-3" />
+              <History style={{ color: "#FF5E01" }} className="size-8 mb-3" />
               <h2 className="text-lg font-semibold text-gray-800 mb-2">
                 Transaction History
               </h2>

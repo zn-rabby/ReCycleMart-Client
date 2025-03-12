@@ -8,9 +8,11 @@ const PurchaseHistory = async ({
   }) => {
  const { page } = await searchParams;
      const { data, meta } = await getPurchases(page, "3");
+     const products = data?.result
+     console.log(data,"purses")
   return (
     <div className="bg-gray-50">
-      <ManagePurses  products={data} meta={meta} />
+      <ManagePurses  products={products} meta={meta} />
     </div>
   );
 };

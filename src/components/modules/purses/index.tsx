@@ -17,7 +17,7 @@ const ManagePurses = ({
   meta: IMeta;
 }) => {
 
-    console.log("pp",products)
+    // console.log("pp",products)
   // const router = useRouter();
 
   // const handleView = (transaction: ITransactions) => {

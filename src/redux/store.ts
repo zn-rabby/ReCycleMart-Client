@@ -32,10 +32,6 @@ import {
 } from "redux-persist";
 import storage from "./storage";
 
-//! We will not do this
-//! This is a global variable so we will avoid this
-// const store = configureStore({});
-
 const persistOptions = {
   key: "cart",
   storage,

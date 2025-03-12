@@ -56,6 +56,12 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-4">
           <Link
+            href="/"
+            className={`font-medium ${pathname === "/" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+          >
+            Home
+          </Link>
+          <Link
             href="/products"
             className={`font-medium ${pathname === "/products" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
           >
@@ -66,6 +72,12 @@ export default function Navbar() {
             className={`font-medium ${pathname === "/about" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
           >
             About
+          </Link>
+          <Link
+            href="/contact"
+            className={`font-medium ${pathname === "/contact" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+          >
+            Contact
           </Link>
 
           {/* User Menu */}
@@ -136,6 +148,12 @@ export default function Navbar() {
             />
 
             <Link
+              href="/"
+              className={`font-medium ${pathname === "/" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+            >
+              Home
+            </Link>
+            <Link
               href="/products"
               className={`font-medium ${pathname === "/products" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
             >
@@ -147,7 +165,17 @@ export default function Navbar() {
             >
               About
             </Link>
-
+            <Link
+              href="/contact"
+              className={`font-medium ${pathname === "/contact" ? "text-[#FF5E01] font-semibold" : "text-gray-700 hover:text-[#FF5E01]"}`}
+            >
+              Contact
+            </Link>
+            <div className="flex justify-around mt-3">
+              <Button variant="outline" className="rounded-full p-0 size-10 border-[#FF5E01] text-[#FF5E01]">
+                <Heart />
+              </Button> 
+            </div>
             {!user && (
               <Link href="/login" className="w-full">
                 <Button className="w-full" variant="outline">
@@ -156,12 +184,7 @@ export default function Navbar() {
               </Link>
             )}
 
-            <div className="flex justify-around mt-3">
-              <Button variant="outline" className="rounded-full p-0 size-10 border-[#FF5E01] text-[#FF5E01]">
-                <Heart />
-              </Button>
-             
-            </div>
+            
           </div>
         </div>
       )}

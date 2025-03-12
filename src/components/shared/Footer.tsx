@@ -46,7 +46,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Logo />
-              <h1 className="text-2xl font-bold text-[#FF5E01]">SecondHand</h1>
+              <h1 className="text-2xl font-bold text-[#FF5E01]">ReCycleMart</h1>
             </div>
             <p className="text-gray-400 text-sm">
               Your trusted marketplace for buying and selling high-quality

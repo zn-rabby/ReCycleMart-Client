@@ -3,7 +3,6 @@
 import { Button } from "../ui/button";
 import { Heart, LogOut, Menu } from "lucide-react";
 import Link from "next/link";
-import { FaCartArrowDown } from "react-icons/fa";
 import {
   DropdownMenu,
   DropdownMenuContent,

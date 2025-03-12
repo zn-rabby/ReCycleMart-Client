@@ -1,4 +1,4 @@
-import { Shield, Heart, Truck, RefreshCw, ThumbsUp, Globe, HelpCircle } from "lucide-react";
+import {  HelpCircle } from "lucide-react";
 
 const AboutPage = () => {
   return (
@@ -23,7 +23,7 @@ const AboutPage = () => {
             ReCycleMart is a leading online marketplace dedicated to making second-hand shopping easy, affordable, and sustainable. Our mission is to reduce waste by promoting the reuse of products while helping you save money.
           </p>
           <p>
-            Founded in 2023, we have grown to become a trusted platform for thousands of buyers and sellers across the country. Whether you're looking to buy or sell, ReCycleMart is here to make the process seamless and enjoyable.
+            Founded in 2023, we have grown to become a trusted platform for thousands of buyers and sellers across the country. Whether you{"'"}re looking to buy or sell, ReCycleMart is here to make the process seamless and enjoyable.
           </p>
         </div>
       </div>

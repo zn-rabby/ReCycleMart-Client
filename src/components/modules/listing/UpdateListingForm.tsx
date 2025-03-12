@@ -292,7 +292,7 @@ console.log(modifiData)
             <FormField
               control={form.control}
               name="images"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>Image Links (comma-separated)</FormLabel>
                   <FormControl>

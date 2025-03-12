@@ -1,5 +1,5 @@
 import NMContainer from "@/components/ui/core/NMContainer";
-import { ShoppingCart, ShieldCheck, Truck, CreditCard, Smile, Users } from "lucide-react";
+import { ShoppingCart, ShieldCheck, Truck,  Smile } from "lucide-react";
 
 const CombinedSection = () => {
   return (

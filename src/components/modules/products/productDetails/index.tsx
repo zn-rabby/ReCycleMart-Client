@@ -62,12 +62,12 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
         <hr className="border-gray-200" />
 
         {/* Buttons */}
-        <Button
+        {/* <Button
           variant="outline"
           className="w-full my-5 bg-white text-gray-800 hover:bg-gray-100 border-gray-300"
         >
           Add To Cart
-        </Button>
+        </Button> */}
         <Link href={`/buy/${product?._id}`} passHref>
             <Button
               className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white transition-all duration-200"

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import secondHandBanner from "@/assets/banner.jpg"; // Update the image import
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -21,10 +22,14 @@ const HeroSection = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center sm:justify-start">
+          <Link href={"/products"} passHref>
             <Button className="rounded-full bg-[#FF5E01] hover:bg-[#D94F01] text-white">Shop Now</Button>
+            </Link>
+            <Link href={"/dashboard/listing"} passHref>
             <Button className="rounded-full " variant="outline">
               Sell Your Items
             </Button>
+            </Link>
           </div>
         </div>
         {/* Image section - appears first on small screens */}

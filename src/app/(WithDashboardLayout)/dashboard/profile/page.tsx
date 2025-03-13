@@ -21,7 +21,7 @@ const ProfilePage = () => {
     email: "",
     // password: "",
     // role: "",
-    status: "",
+    // status: "",
   });
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const ProfilePage = () => {
           email: data?.user?.email || "",
           // password: "",
           // role: data?.user?.role || "",
-          status: data?.user?.status || "",
+          // status: data?.user?.status || "",
         });
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -70,7 +70,7 @@ const ProfilePage = () => {
           email: data?.user?.email || "",
           // password: "",
           // role: data?.user?.role || "",
-          status: data?.user?.status || "",
+          // status: data?.user?.status || "",
         });
       } else {
         toast.error(res.message);
@@ -171,10 +171,10 @@ const ProfilePage = () => {
                   <Label htmlFor="role">Role</Label>
                   <Input id="role" name="role" value={formData.role} onChange={handleInputChange} placeholder="Enter your role" />
                 </div> */}
-                <div>
+                {/* <div>
                   <Label htmlFor="status">Status</Label>
                   <Input id="status" name="status" value={formData.status} onChange={handleInputChange} placeholder="Enter your status" />
-                </div>
+                </div> */}
                 <div className="flex justify-end gap-2">
                   <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white" type="button" variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
                   <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white" type="submit">Save Changes</Button>

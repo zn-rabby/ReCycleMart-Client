@@ -10,10 +10,9 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const ProductBuyDetails = ({ product }: { product: IProduct }) => {
-  // const itemID = product._id;
   const { user } = useUser();
   const router = useRouter();
-  console.log("buy page",product)
+  console.log("buy page", product);
 
   const handleOrder = async () => {
     const itemID = product._id;
@@ -25,11 +24,11 @@ const ProductBuyDetails = ({ product }: { product: IProduct }) => {
         throw new Error("Please login first.");
       }
 
-      const res = await createTransactions({ itemID});  // Pass an object with itemID
+      const res = await createTransactions({ itemID }); // Pass an object with itemID
 
       if (res.success) {
         toast.success(res.message, { id: orderLoading });
-        router.push(res.data.paymentUrl);  // Redirect to payment URL
+        router.push(res.data.paymentUrl); // Redirect to payment URL
       } else {
         toast.error(res.message, { id: orderLoading });
       }
@@ -39,16 +38,20 @@ const ProductBuyDetails = ({ product }: { product: IProduct }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 border border-white p-4 rounded-md my-5 shadow-sm">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-white p-4 rounded-md my-5 shadow-sm">
+      {/* Product Images Section */}
       <div>
         <Image
-          src={product?.images[0] || "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png"}
+          src={
+            product?.images[0] ||
+            "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png"
+          }
           alt="product image"
           width={500}
           height={500}
-          className="rounded-md w-full object-cover h-80"
+          className="rounded-md w-full object-cover h-60 md:h-80"
         />
-        <div className="grid grid-cols-3 gap-4 mt-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5">
           {product?.images.slice(0, 3).map((image: string, idx: number) => (
             <Image
               key={idx}
@@ -62,12 +65,13 @@ const ProductBuyDetails = ({ product }: { product: IProduct }) => {
         </div>
       </div>
 
+      {/* Product Details Section */}
       <div className="bg-white rounded-md p-4">
-        <h2 className="font-bold text-xl mb-4">{product?.title}</h2>
+        <h2 className="font-bold text-lg md:text-xl mb-4">{product?.title}</h2>
         <p className="text-justify text-gray-500 font-light text-sm">
           {product?.description}
         </p>
-        <div className="flex items-center justify-between my-5 text-gray-500 text-xs">
+        <div className="flex flex-wrap items-center justify-between my-5 text-gray-500 text-xs gap-2">
           <p className="rounded-full px-4 py-1 bg-gray-100 flex items-center justify-center gap-1">
             <Star className="w-4 h-4" fill="orange" stroke="orange" />
             {product?.ratingCount} Ratings
@@ -80,7 +84,12 @@ const ProductBuyDetails = ({ product }: { product: IProduct }) => {
           Price: <span className="font-semibold">$ {product?.price}</span>
         </p>
         <hr />
-        <Button onClick={handleOrder} className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white">Payment and Order Confirm</Button>
+        <Button
+          onClick={handleOrder}
+          className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white mt-4"
+        >
+          Payment and Order Confirm
+        </Button>
       </div>
     </div>
   );

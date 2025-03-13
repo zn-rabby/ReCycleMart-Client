@@ -4,9 +4,11 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 
 const ProductDetails = ({ product }: { product: IProduct }) => {
-    console.log(product,"detils page")
+  console.log(product, "details page");
+
   return (
-    <div className="grid grid-cols-2 gap-4 border border-white p-4 rounded-md my-5 shadow-sm">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200 p-4 rounded-md my-5 shadow-sm bg-white">
+      {/* Product Images Section */}
       <div>
         <Image
           src={
@@ -16,9 +18,9 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
           alt="product image"
           width={500}
           height={500}
-          className="rounded-md w-full object-cover h-80"
+          className="rounded-md w-full object-cover h-60 md:h-80"
         />
-        <div className="grid grid-cols-3 gap-4 mt-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5">
           {product?.images.slice(0, 3).map((image: string, idx: number) => (
             <Image
               key={idx}
@@ -31,12 +33,16 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
           ))}
         </div>
       </div>
-      <div className="bg-white rounded-md p-4">
-        <h2 className="font-bold text-xl mb-4">{product?.title}</h2>
-        <p className="text-justify text-gray-500 font-light text-sm">
+
+      {/* Product Details Section */}
+      <div className="bg-gray-50 rounded-md p-4">
+        <h2 className="font-bold text-lg md:text-xl mb-4 text-gray-800">
+          {product?.title}
+        </h2>
+        <p className="text-justify text-gray-600 font-light text-sm">
           {product?.description}
         </p>
-        <div className="flex items-center justify-between my-5 text-gray-500 text-xs">
+        <div className="flex flex-wrap items-center justify-between my-5 text-gray-600 text-xs gap-2">
           <p className="rounded-full px-4 py-1 bg-gray-100 flex items-center justify-center gap-1">
             <Star className="w-4 h-4" fill="orange" stroke="orange" />
             {product?.ratingCount} Ratings
@@ -44,24 +50,26 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
           <p className="rounded-full px-4 py-1 bg-gray-100">
             Stock: {product?.stock}
           </p>
-          
           <p className="rounded-full px-4 py-1 bg-gray-100">
             Category: {product?.category}
           </p>
         </div>
-        <hr />
-        <p className="my-2 font-bold">
-          Price:{" "}
-         
-            <span className="font-semibold">$ {product?.price}</span>
-        
+        <hr className="border-gray-200" />
+        <p className="my-2 font-bold text-gray-800">
+          Price: <span className="font-semibold">$ {product?.price}</span>
         </p>
-        <hr />
+        <hr className="border-gray-200" />
 
-        <Button variant="outline" className="w-full my-5">
+        {/* Buttons */}
+        <Button
+          variant="outline"
+          className="w-full my-5 bg-white text-gray-800 hover:bg-gray-100 border-gray-300"
+        >
           Add To Cart
         </Button>
-        <Button className="w-full">Buy Now</Button>
+        <Button className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white">
+          Buy Now
+        </Button>
       </div>
     </div>
   );

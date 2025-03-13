@@ -1,10 +1,12 @@
 
 "use client"
+import NMContainer from "@/components/ui/core/NMContainer";
 import { brands } from "@/constants/brandName";
 
 const Brand = () => {
   return (
-    <div className=" mb-10 container mx-auto w-full">
+    <NMContainer>
+      <div className=" mb-10 container mx-auto w-full">
       <div>
         <h1 className=" lg:text-4xl text-2xl font-bold text-gray-800">
           Shop by Brand
@@ -49,6 +51,7 @@ const Brand = () => {
         }
       `}</style>
     </div>
+    </NMContainer>
   );
 };
 

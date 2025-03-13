@@ -19,6 +19,26 @@ export const getAllProducts = async (page?: string, limit?: string) => {
     return Error(error.message);
   }
 };
+export const getAllProductsByUser = async (page?: string, limit?: string) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/listings/user?limit=${limit}&page=${page}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: (await cookies()).get("accessToken")!.value,
+        },
+        next: {
+          tags: ["PRODUCT"],
+        },
+      }
+    );
+    const data = await res.json();
+    return data;
+  } catch (error: any) {
+    return Error(error.message);
+  }
+};
 
 // get single product
 export const getSingleProduct = async (productId: string) => {

@@ -1,5 +1,5 @@
 import ManageProducts from "@/components/modules/listing";
-import { getAllProducts } from "@/services/Product";
+import {  getAllProductsByUser } from "@/services/Product";
 
 const ListingPage =  async ({
     searchParams,
@@ -8,7 +8,8 @@ const ListingPage =  async ({
   }) => {
     const { page } = await searchParams;
 
-    const { data, meta } = await getAllProducts(page, "8");
+    const { data, meta } = await getAllProductsByUser(page, "8");
+    console.log("dd",data)
   return (
     <div className="bg-gray-50">
      

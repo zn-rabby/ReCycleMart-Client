@@ -14,9 +14,11 @@ import { IProduct } from "@/types";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react"; // Import useState
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const dispatch = useAppDispatch();
+  const [isHeartClicked, setIsHeartClicked] = useState(false); // State to track if heart button is clicked
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src =
@@ -24,7 +26,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   };
 
   const handleAddProduct = (product: IProduct) => {
-    dispatch(addProduct(product));
+    dispatch(addProduct(product)); // Add product to Redux store
+    setIsHeartClicked(true); // Update state to indicate heart button is clicked
   };
 
   return (
@@ -50,9 +53,18 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 
         <button
           onClick={() => handleAddProduct(product)}
-          className="absolute right-2 top-2 bg-[#FF5E01] hover:bg-[#D94F01] p-2 rounded-full shadow-sm transition-transform duration-200 hover:scale-110"
+          disabled={isHeartClicked} // Disable button after click
+          className={`absolute right-2 top-2 p-2 rounded-full shadow-sm transition-transform duration-200 hover:scale-110 ${
+            isHeartClicked
+              ? "bg-green-500 hover:bg-green-600 cursor-not-allowed" // Change color and cursor if heart is clicked
+              : "bg-[#FF5E01] hover:bg-[#D94F01]" // Default color
+          }`}
         >
-          <Heart className="h-5 w-5 text-white cursor-pointer" />
+          <Heart
+            className={`h-5 w-5 text-white cursor-pointer ${
+              isHeartClicked ? "fill-white" : "fill-transparent" // Fill heart icon if clicked
+            }`}
+          />
         </button>
       </CardHeader>
 

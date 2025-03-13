@@ -1,8 +1,6 @@
 import ManageProducts from "@/components/modules/listing";
 import { getAllProducts } from "@/services/Product";
 
-
-
 const ListingPage =  async ({
     searchParams,
   }: {
@@ -10,9 +8,9 @@ const ListingPage =  async ({
   }) => {
     const { page } = await searchParams;
 
-    const { data, meta } = await getAllProducts(page, "3");
+    const { data, meta } = await getAllProducts(page, "8");
   return (
-    <div className=" bg-gray-100">
+    <div className="bg-gray-50">
      
       <ManageProducts products={data} meta={meta}></ManageProducts>
      

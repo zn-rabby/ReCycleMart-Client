@@ -13,7 +13,7 @@ interface FilterSidebarProps {
 
 const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
   const [minPrice, setMinPrice] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(1000);
+  const [maxPrice, setMaxPrice] = useState<number>(10000);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
   const [selectedAvailability, setSelectedAvailability] = useState<string[]>([]);
@@ -53,7 +53,7 @@ const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
   };
 
   return (
-    <Card className="p-4 rounded-2xl shadow-md w-72">
+    <Card className="p-4 rounded-2xl shadow-md full">
       <CardContent>
         <h2 className="text-lg font-semibold mb-4">Filter By Price</h2>
         <div className="flex gap-2 mb-2">

@@ -122,7 +122,7 @@ console.log("products page",products)
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between p-3">
         <h1 className="text-xl font-bold">Manage Listing</h1>
         <div className="flex items-center gap-2">
           <Button

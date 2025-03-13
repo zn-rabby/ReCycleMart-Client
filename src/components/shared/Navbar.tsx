@@ -93,7 +93,7 @@ export default function Navbar() {
                   <Avatar className="cursor-pointer">
                     <AvatarImage
                       className="h-8 w-8"
-                      src="https://res.cloudinary.com/daxjf1buu/image/upload/v1741228886/users_jauzzl.jpg"
+                      src="https://github.com/shadcn.png"
                     />
                     <AvatarFallback>U</AvatarFallback>
                   </Avatar>

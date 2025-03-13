@@ -7,7 +7,7 @@ const PurchaseHistory = async ({
     searchParams: Promise<{ page: string }>;
   }) => {
  const { page } = await searchParams;
-     const { data, meta } = await getPurchases(page, "3");
+     const { data, meta } = await getPurchases(page, "8");
     //  const products = data?.result
      console.log(data,"purses")
   return (

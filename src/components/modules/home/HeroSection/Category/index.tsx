@@ -2,117 +2,81 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
-
+// Updated static categories with real images
 const staticCategories = [
   {
     id: 1,
     name: "Electronics",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     slug: "electronics",
   },
   {
     id: 2,
     name: "Fashion",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
+    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     slug: "fashion",
   },
   {
     id: 3,
     name: "Home & Garden",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
+    image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     slug: "home-garden",
   },
   {
     id: 4,
     name: "Sports & Outdoors",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1726809989/rki9blsk60g-1726809982302-itemImages-22.jpg",
+    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     slug: "sports-outdoors",
   },
   {
     id: 5,
     name: "Books & Media",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
+    image: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     slug: "books-media",
   },
   {
     id: 6,
     name: "Toys & Games",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
+    image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     slug: "toys-games",
   },
-  // {
-  //   id: 7,
-  //   name: "Health & Beauty",
-  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1726809989/rki9blsk60g-1726809982302-itemImages-22.jpg",
-  //   slug: "health-beauty",
-  // },
-  // {
-  //   id: 8,
-  //   name: "Automotive",
-  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
-  //   slug: "automotive",
-  // },
-  // {
-  //   id: 9,
-  //   name: "Art & Crafts",
-  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
-  //   slug: "art-crafts",
-  // },
-  // {
-  //   id: 10,
-  //   name: "Jewelry & Accessories",
-  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1726809989/rki9blsk60g-1726809982302-itemImages-22.jpg",
-  //   slug: "jewelry-accessories",
-  // },
-  // {
-  //   id: 11,
-  //   name: "Pet Supplies",
-  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
-  //   slug: "pet-supplies",
-  // },
-  // {
-  //   id: 12,
-  //   name: "Baby & Kids",
-  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
-  //   slug: "baby-kids",
-  // },
 ];
-
 
 const CategoryCard = ({ category }: { category: any }) => {
   return (
     <Link href={`/category/${category.slug}`}>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-        <div className="relative h-40">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
+        <div className="relative h-48">
           <Image
             src={category.image}
             alt={category.name}
             layout="fill"
             objectFit="cover"
-            className="rounded-t-lg"
+            className="rounded-t-lg transform group-hover:scale-105 transition-transform duration-300"
           />
         </div>
         <div className="p-4">
-          <h3 className="text-lg font-semibold text-center">{category.name}</h3>
+          <h3 className="text-lg font-semibold text-center text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+            {category.name}
+          </h3>
         </div>
       </div>
     </Link>
   );
 };
 
-
 const CategorySection = () => {
   return (
     <div className="container mx-auto mt-16 mb-6 p-3 md:p-0">
       <div className="flex items-center justify-between">
-        <h2 className="lg:text-4xl text-2xl font-bold text-gray-800">Category</h2>
+        <h2 className="lg:text-4xl text-2xl font-bold text-gray-800">Shop by Category</h2>
         <Link href="/products">
           <Button variant="outline" className="rounded-full">
             View All
           </Button>
         </Link>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 my-5 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 my-8">
         {staticCategories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}

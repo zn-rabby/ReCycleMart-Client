@@ -80,7 +80,7 @@ const ProductBuyDetails = ({ product }: { product: IProduct }) => {
           Price: <span className="font-semibold">$ {product?.price}</span>
         </p>
         <hr />
-        <Button onClick={handleOrder} className="w-full">Payment and Order Confirm</Button>
+        <Button onClick={handleOrder} className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white">Payment and Order Confirm</Button>
       </div>
     </div>
   );

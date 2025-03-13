@@ -55,14 +55,14 @@ export default function WishlistProductCard({ product }: { product: IProduct }) 
           onClick={() => handleRemoveProduct(product._id)}
           aria-label="Remove from Wishlist"
         >
-          <Trash className="w-8 h-8"/>
+          <Trash className="w-10 h-10"/>
         </Button>
 
         {/* Buy Now Button */}
         <Link href={`/products/${product?._id}`}>
           <Button
             variant="default"
-            className="w-28 flex items-center gap-2"
+            className="w-28 flex items-center gap-2 bg-[#FF5E01] hover:bg-[#D94F01] text-white"
             disabled={product?.stock <= 0}
           >
             <ShoppingCart className="w-4 h-4" />

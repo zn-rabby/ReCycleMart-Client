@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Button } from "@/components/ui/button";
 import NMContainer from "@/components/ui/core/NMContainer";
 import ProductCard from "@/components/ui/core/ProductCard";
@@ -9,11 +8,8 @@ import { IProduct } from "@/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const PRODUCTS_PER_PAGE = 6;
-
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,11 +19,8 @@ const FeaturedProducts = () => {
     fetchProducts();
   }, []);
 
-  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
-  const paginatedProducts = products.slice(
-    (currentPage - 1) * PRODUCTS_PER_PAGE,
-    currentPage * PRODUCTS_PER_PAGE
-  );
+  // Slice the first 8 products
+  const displayedProducts = products?.slice(0, 8);
 
   return (
     <div className="bg-white bg-opacity-50 pt-6 pb-8">
@@ -41,30 +34,9 @@ const FeaturedProducts = () => {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-          {paginatedProducts.map((product, idx) => (
+          {displayedProducts.map((product, idx) => (
             <ProductCard key={idx} product={product} />
           ))}
-        </div>
-
-        {/* Pagination Controls */}
-        <div className="flex justify-center mt-6 space-x-4">
-          <Button
-            variant="outline"
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >
-            Previous
-          </Button>
-          <span className="font-semibold text-lg">
-            Page {currentPage} of {totalPages}
-          </span>
-          <Button
-            variant="outline"
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >
-            Next
-          </Button>
         </div>
       </NMContainer>
     </div>

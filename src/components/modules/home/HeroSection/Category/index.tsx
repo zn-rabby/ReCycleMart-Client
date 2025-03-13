@@ -40,42 +40,42 @@ const staticCategories = [
     image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
     slug: "toys-games",
   },
-  {
-    id: 7,
-    name: "Health & Beauty",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1726809989/rki9blsk60g-1726809982302-itemImages-22.jpg",
-    slug: "health-beauty",
-  },
-  {
-    id: 8,
-    name: "Automotive",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
-    slug: "automotive",
-  },
-  {
-    id: 9,
-    name: "Art & Crafts",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
-    slug: "art-crafts",
-  },
-  {
-    id: 10,
-    name: "Jewelry & Accessories",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1726809989/rki9blsk60g-1726809982302-itemImages-22.jpg",
-    slug: "jewelry-accessories",
-  },
-  {
-    id: 11,
-    name: "Pet Supplies",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
-    slug: "pet-supplies",
-  },
-  {
-    id: 12,
-    name: "Baby & Kids",
-    image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
-    slug: "baby-kids",
-  },
+  // {
+  //   id: 7,
+  //   name: "Health & Beauty",
+  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1726809989/rki9blsk60g-1726809982302-itemImages-22.jpg",
+  //   slug: "health-beauty",
+  // },
+  // {
+  //   id: 8,
+  //   name: "Automotive",
+  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
+  //   slug: "automotive",
+  // },
+  // {
+  //   id: 9,
+  //   name: "Art & Crafts",
+  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
+  //   slug: "art-crafts",
+  // },
+  // {
+  //   id: 10,
+  //   name: "Jewelry & Accessories",
+  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1726809989/rki9blsk60g-1726809982302-itemImages-22.jpg",
+  //   slug: "jewelry-accessories",
+  // },
+  // {
+  //   id: 11,
+  //   name: "Pet Supplies",
+  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740103537/bv1teqdnsrn-1740103516267-images-istockphoto-1218656325-612x612-removebg-preview.png",
+  //   slug: "pet-supplies",
+  // },
+  // {
+  //   id: 12,
+  //   name: "Baby & Kids",
+  //   image: "https://res.cloudinary.com/daxjf1buu/image/upload/v1740100901/nd3klk5thmq-1740100883326-logo-ss.jpg",
+  //   slug: "baby-kids",
+  // },
 ];
 
 

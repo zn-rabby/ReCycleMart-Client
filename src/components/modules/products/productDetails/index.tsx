@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { IProduct } from "@/types";
-import { Star } from "lucide-react";
+import { Star } from "lucide-react"; // Removed Link from Lucide
 import Image from "next/image";
+import Link from "next/link"; // Added Link from Next.js
 
 const ProductDetails = ({ product }: { product: IProduct }) => {
   console.log(product, "details page");
@@ -67,9 +68,13 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
         >
           Add To Cart
         </Button>
-        <Button className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white">
-          Buy Now
-        </Button>
+        <Link href={`/buy/${product?._id}`} passHref>
+            <Button
+              className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white transition-all duration-200"
+            >
+              Buy
+            </Button>
+        </Link>
       </div>
     </div>
   );

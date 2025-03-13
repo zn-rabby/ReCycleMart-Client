@@ -15,23 +15,27 @@ const AllProducts = ({ products }: { products: IProduct[] }) => {
   const handleFilterChange = (filters: any) => {
     let filtered = products;
 
+    // Filter by price
     filtered = filtered.filter(
       (product) =>
         product.price >= filters.minPrice && product.price <= filters.maxPrice
     );
 
+    // Filter by categories
     if (filters.categories.length > 0) {
       filtered = filtered.filter((product) =>
         filters.categories.includes(product.category)
       );
     }
 
+    // Filter by ratings
     if (filters.ratings.length > 0) {
       filtered = filtered.filter((product) =>
         filters.ratings.includes(Math.floor(product.ratingCount))
       );
     }
 
+    // Filter by availability
     if (filters.availability.length > 0) {
       filtered = filtered.filter((product) =>
         filters.availability.includes(product.status)
@@ -75,55 +79,55 @@ const AllProducts = ({ products }: { products: IProduct[] }) => {
 
   return (
     <div className="flex flex-col md:flex-row gap-8 my-10">
-    {/* Filter Sidebar */}
-    <FilterSidebar products={products} onFilterChange={handleFilterChange} />
-  
-    {/* Main Content */}
-    <div className="w-full">
-      {/* Search and Sort Section */}
-      <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-        <input
-          type="search"
-          placeholder="Search products..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="border px-4 py-2 rounded w-full md:w-1/3"
-        />
-        <select
-          value={sortOption}
-          onChange={handleSortChange}
-          className="border px-4 py-2 rounded w-full md:w-auto"
-        >
-          <option value="default">Sort by</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="rating">Highest Rating</option>
-        </select>
-      </div>
-  
-      {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentProducts.map((product, idx) => (
-          <ProductCard key={idx} product={product} />
-        ))}
-      </div>
-  
-      {/* Pagination */}
-      <div className="flex justify-center mt-6 space-x-2">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={`px-4 py-2 border rounded ${
-              currentPage === page ? "bg-[#FF5E01] text-white" : "bg-white"
-            }`}
+      {/* Filter Sidebar */}
+      <FilterSidebar products={products} onFilterChange={handleFilterChange} />
+
+      {/* Main Content */}
+      <div className="w-full">
+        {/* Search and Sort Section */}
+        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+          <input
+            type="search"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="border px-4 py-2 rounded w-full md:w-1/3"
+          />
+          <select
+            value={sortOption}
+            onChange={handleSortChange}
+            className="border px-4 py-2 rounded w-full md:w-auto"
           >
-            {page}
-          </button>
-        ))}
+            <option value="default">Sort by</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rating</option>
+          </select>
+        </div>
+
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {currentProducts.map((product, idx) => (
+            <ProductCard key={idx} product={product} />
+          ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-6 space-x-2">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`px-4 py-2 border rounded ${
+                currentPage === page ? "bg-[#FF5E01] text-white" : "bg-white"
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 

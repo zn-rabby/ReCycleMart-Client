@@ -3,7 +3,7 @@
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IProduct } from "@/types";
 
 interface FilterSidebarProps {
@@ -34,6 +34,11 @@ const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
     onFilterChange(filters); // Pass filters to the parent component
   };
 
+  // Call handleFilterChange whenever any filter state changes
+  useEffect(() => {
+    handleFilterChange();
+  }, [minPrice, maxPrice, selectedCategories, selectedRatings, selectedAvailability]);
+
   // Handle checkbox changes
   const handleCheckboxChange = (
     value: string | number,
@@ -45,7 +50,6 @@ const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
     } else {
       setState([...state, value]);
     }
-    handleFilterChange();
   };
 
   return (
@@ -76,7 +80,6 @@ const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
           onValueChange={(val) => {
             setMinPrice(val[0]);
             setMaxPrice(val[1]);
-            handleFilterChange();
           }}
         />
         <p className="mt-2">
@@ -97,8 +100,6 @@ const FilterSidebar = ({ products, onFilterChange }: FilterSidebarProps) => {
             </li>
           ))}
         </ul>
-
-        
 
         <h2 className="text-lg font-semibold mt-6">Rating</h2>
         <ul className="space-y-2 mt-2">

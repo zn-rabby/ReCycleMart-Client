@@ -20,7 +20,7 @@ const ProfilePage = () => {
     phoneNumber: "",
     email: "",
     // password: "",
-    role: "",
+    // role: "",
     status: "",
   });
 
@@ -34,7 +34,7 @@ const ProfilePage = () => {
           phoneNumber: data?.user?.phoneNumber || "",
           email: data?.user?.email || "",
           // password: "",
-          role: data?.user?.role || "",
+          // role: data?.user?.role || "",
           status: data?.user?.status || "",
         });
       } catch (error) {
@@ -69,7 +69,7 @@ const ProfilePage = () => {
           phoneNumber: data?.user?.phoneNumber || "",
           email: data?.user?.email || "",
           // password: "",
-          role: data?.user?.role || "",
+          // role: data?.user?.role || "",
           status: data?.user?.status || "",
         });
       } else {
@@ -167,10 +167,10 @@ const ProfilePage = () => {
                   <Label htmlFor="password">Password</Label>
                   <Input id="password" name="password" type="password" value={formData.password} onChange={handleInputChange} placeholder="Enter a new password" />
                 </div> */}
-                <div>
+                {/* <div>
                   <Label htmlFor="role">Role</Label>
                   <Input id="role" name="role" value={formData.role} onChange={handleInputChange} placeholder="Enter your role" />
-                </div>
+                </div> */}
                 <div>
                   <Label htmlFor="status">Status</Label>
                   <Input id="status" name="status" value={formData.status} onChange={handleInputChange} placeholder="Enter your status" />

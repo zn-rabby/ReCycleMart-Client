@@ -7,9 +7,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-import secondHandBanner1 from "@/assets/banner-2.jpg";
-import secondHandBanner2 from "@/assets/banner.jpg";
-import secondHandBanner3 from "@/assets/banner.jpg";
+import secondHandBanner1 from "@/assets/banner-4.jpg";
+import secondHandBanner2 from "@/assets/banner-3.jpg";
+import secondHandBanner3 from "@/assets/banner-2.jpg";
 
 const banners = [
   {

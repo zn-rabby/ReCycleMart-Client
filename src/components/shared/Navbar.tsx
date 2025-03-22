@@ -57,12 +57,14 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
+          {/* <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
             Speacil Offet
-          </Button>
-          <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
-            Shop Now
-          </Button>
+          </Button> */}
+          <Link href="/dashboard/listing">
+            <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
+              Sell Now
+            </Button>
+          </Link>
 
           {/* User Menu */}
           {user ? (

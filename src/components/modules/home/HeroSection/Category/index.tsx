@@ -51,7 +51,7 @@ const staticCategories = [
 
 const CategoryCard = ({ category }: { category: any }) => {
   return (
-    <Link href={`/category/${category.slug}`}>
+    <Link href="/products">
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group relative">
         <div className="relative h-48">
           <Image

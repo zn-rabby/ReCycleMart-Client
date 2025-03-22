@@ -63,46 +63,6 @@ export default function Navbar() {
           <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
             Shop Now
           </Button>
-          {/* <Link
-            href="/"
-            className={`font-medium ${
-              pathname === "/"
-                ? "text-[#FF5E01] font-semibold"
-                : "text-white hover:text-[#FF5E01]"
-            }`}
-          >
-            Home
-          </Link>
-          <Link
-            href="/products"
-            className={`font-medium ${
-              pathname === "/products"
-                ? "text-[#FF5E01] font-semibold"
-                : "text-white hover:text-[#FF5E01]"
-            }`}
-          >
-            Products
-          </Link>
-          <Link
-            href="/about"
-            className={`font-medium ${
-              pathname === "/about"
-                ? "text-[#FF5E01] font-semibold"
-                : "text-white hover:text-[#FF5E01]"
-            }`}
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className={`font-medium ${
-              pathname === "/contact"
-                ? "text-[#FF5E01] font-semibold"
-                : "text-white hover:text-[#FF5E01]"
-            }`}
-          >
-            Contact
-          </Link> */}
 
           {/* User Menu */}
           {user ? (
@@ -283,8 +243,8 @@ export default function Navbar() {
         </div>
       )}
 
-      <div>
-        <div className="bg-[#101828] hidden md:flex text-white py-4 relative">
+      <div className="container mx-auto px-4">
+        <div className="bg-[#101828] hidden md:flex text-white py-4  relative">
           <div className="container mx-auto flex justify-between items-center">
             {/* Left Section: Discount Banner */}
             <div className="flex items-center">

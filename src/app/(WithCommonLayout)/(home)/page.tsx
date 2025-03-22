@@ -11,6 +11,7 @@ const HomePage = async () => {
     <div>
       <HeroSection></HeroSection>
       <FeaturesSection></FeaturesSection>
+      
       <CategorySection></CategorySection>
       <FeaturedProducts></FeaturedProducts>
       <Brand></Brand>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -52,7 +52,7 @@ const staticCategories = [
 const CategoryCard = ({ category }: { category: any }) => {
   return (
     <Link href={`/category/${category.slug}`}>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group relative">
         <div className="relative h-48">
           <Image
             src={category.image}
@@ -61,11 +61,19 @@ const CategoryCard = ({ category }: { category: any }) => {
             objectFit="cover"
             className="rounded-t-lg transform group-hover:scale-105 transition-transform duration-300"
           />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold text-center text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-4">
+          <h3 className="text-lg font-semibold text-white text-center mb-2">
             {category.name}
           </h3>
+          {/* <Button
+            variant="outline"
+            className="bg-white text-gray-800 hover:bg-gray-100 transition-colors duration-300"
+          >
+            Shop Now
+          </Button> */}
         </div>
       </div>
     </Link>
@@ -74,18 +82,18 @@ const CategoryCard = ({ category }: { category: any }) => {
 
 const CategorySection = () => {
   return (
-    <div className="container mx-auto mt-16 mb-6 p-3 md:p-0">
-      <div className="flex items-center justify-between">
-        <h2 className="lg:text-4xl text-2xl font-bold text-gray-800">
+    <div className="container mx-auto px-4 py-12">
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="lg:text-3xl text-2xl font-bold text-gray-800">
           Shop by Category
         </h2>
-        <Link href="/products">
-          <Button variant="outline" className="rounded-full">
-            View All
+        {/* <Link href="/categories">
+          <Button variant="ghost" className="text-blue-600 hover:text-blue-700">
+            View All Categories →
           </Button>
-        </Link>
+        </Link> */}
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 my-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {staticCategories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}

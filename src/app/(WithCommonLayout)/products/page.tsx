@@ -7,7 +7,7 @@ const AllProductsPage = async () => {
   const { data: products } = await getAllProducts();
 
   return (
-    <NMContainer className="md:mt-32">
+    <NMContainer className="md:mt-36">
       {/* Hero Section */}
       <div
         className="relative w-full h-96 rounded-lg text-white text-3xl font-bold flex items-center justify-center"

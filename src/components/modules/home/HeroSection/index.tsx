@@ -4,7 +4,7 @@ import RightSection from "./RightSection/RightSection";
 
 const HeroSection = () => {
   return (
-    <NMContainer className="md:mt-32">
+    <NMContainer className="md:mt-36">
       <div className="flex flex-col sm:flex-row justify-between gap-2">
         {/* HeroCarousel - 75% width on larger screens, full width on small screens */}
         <div className="w-full sm:w-3/4">

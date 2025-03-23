@@ -17,7 +17,7 @@ import NMContainer from "@/components/ui/core/NMContainer";
 
 const ContactPage = () => {
   return (
-    <NMContainer className="md:mt-32">
+    <NMContainer className="md:mt-36">
       <div className="bg-white">
         {/* Hero Section */}
         <div

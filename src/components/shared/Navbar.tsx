@@ -275,9 +275,7 @@ export default function Navbar() {
             {/* Right Section: Additional Discount Message */}
             {/* Highlighted Discount Section */}
             <div className="hidden md:flex items-center bg-gradient-to-r from-[#FF5E01] to-[#D94F01] px-4 py-2 rounded-lg shadow-md animate-pulse">
-              <p className="text-white font-semibold">
-                Buy and Sell Your Product
-              </p>
+              <p className="text-white font-sans">Buy and Sell Your Product</p>
             </div>
 
             {/* Middle Section: Navigation Menu */}

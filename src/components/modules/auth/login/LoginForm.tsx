@@ -20,16 +20,20 @@ import { loginSchema } from "./loginValidation";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-
   // const searchParams = useSearchParams();
   // const redirect = searchParams.get("redirectPath");
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
   const {
     formState: { isSubmitting },
+    setValue,
   } = form;
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -37,15 +41,26 @@ export default function LoginForm() {
       const res = await loginUser(data);
       if (res?.success) {
         toast.success(res?.message);
-        
-          router.push("/");
-      
+
+        router.push("/");
       } else {
         toast.error(res?.message);
       }
     } catch (err: unknown) {
       console.error(err);
     }
+  };
+
+  // function to prefill the form for "User"
+  const handleUserButtonClick = () => {
+    setValue("email", "abc@gmail.com");
+    setValue("password", "securePassword123");
+  };
+
+  // function to prefill the form for "Admin"
+  const handleAdminButtonClick = () => {
+    setValue("email", "admin@gmail.com");
+    setValue("password", "securePassword123");
   };
 
   return (
@@ -61,6 +76,22 @@ export default function LoginForm() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {/* Email Field */}
+          <div className="flex flex-col gap-4 md:flex-row ">
+            <Button
+              type="submit"
+              onClick={handleUserButtonClick}
+              className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white flex-1  "
+            >
+              User
+            </Button>
+            <Button
+              type="submit"
+              onClick={handleAdminButtonClick}
+              className="cursor-pointer bg-orange-600 hover:bg-orange-700 text-white flex-1 "
+            >
+              Admin
+            </Button>
+          </div>
           <FormField
             control={form.control}
             name="email"
@@ -71,7 +102,7 @@ export default function LoginForm() {
                   <Input
                     type="email"
                     {...field}
-                    value={field.value || ""}
+                    // value={field.value || ""}
                     className="focus:ring-[#FF5E01] focus:border-[#FF5E01]"
                   />
                 </FormControl>
@@ -91,7 +122,7 @@ export default function LoginForm() {
                   <Input
                     type="password"
                     {...field}
-                    value={field.value || ""}
+                    // value={field.value || ""}
                     className="focus:ring-[#FF5E01] focus:border-[#FF5E01]"
                   />
                 </FormControl>

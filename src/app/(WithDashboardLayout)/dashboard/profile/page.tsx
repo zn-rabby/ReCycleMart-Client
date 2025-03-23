@@ -1,14 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
 import { getMe, updateProfile } from "@/services/Transactions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { User,  ShieldCheck, CheckCircle, Phone, Edit } from "lucide-react";
+import { User, ShieldCheck, CheckCircle, Phone, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 const ProfilePage = () => {
@@ -110,30 +117,32 @@ const ProfilePage = () => {
               <User className="w-12 h-12 text-[#FF5E01]" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold mt-4 text-[#FF5E01]">{user.name}</CardTitle>
-          <p className="text-sm text-muted-foreground">{user.email}</p>
+          <CardTitle className="text-2xl font-bold mt-4 text-[#FF5E01]">
+            {user?.name}
+          </CardTitle>
+          <p className="text-sm text-muted-foreground">{user?.email}</p>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
             <ShieldCheck className="w-6 h-6  text-[#FF5E01] " />
             <div>
               <p className="text-sm text-muted-foreground">Role</p>
-              <p className="text-lg font-medium capitalize">{user.role}</p>
+              <p className="text-lg font-medium capitalize">{user?.role}</p>
             </div>
           </div>
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
             <CheckCircle className="w-6 h-6 text-[#FF5E01]" />
             <div>
               <p className="text-sm text-muted-foreground">Status</p>
-              <p className="text-lg font-medium">{user.status}</p>
+              <p className="text-lg font-medium">{user?.status}</p>
             </div>
           </div>
-          {user.phoneNumber && (
+          {user?.phoneNumber && (
             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
               <Phone className="w-6 h-6 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Phone Number</p>
-                <p className="text-lg font-medium">{user.phoneNumber}</p>
+                <p className="text-lg font-medium">{user?.phoneNumber}</p>
               </div>
             </div>
           )}
@@ -153,15 +162,33 @@ const ProfilePage = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your name" />
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Enter your name"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="phoneNumber">Phone Number</Label>
-                  <Input id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} placeholder="Enter your phone number" />
+                  <Input
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    placeholder="Enter your phone number"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Enter your email" />
+                  <Input
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Enter your email"
+                  />
                 </div>
                 {/* <div>
                   <Label htmlFor="password">Password</Label>
@@ -176,8 +203,20 @@ const ProfilePage = () => {
                   <Input id="status" name="status" value={formData.status} onChange={handleInputChange} placeholder="Enter your status" />
                 </div> */}
                 <div className="flex justify-end gap-2">
-                  <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white" type="button" variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
-                  <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white" type="submit">Save Changes</Button>
+                  <Button
+                    className="bg-[#FF5E01] hover:bg-[#D94F01] text-white"
+                    type="button"
+                    variant="outline"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    className="bg-[#FF5E01] hover:bg-[#D94F01] text-white"
+                    type="submit"
+                  >
+                    Save Changes
+                  </Button>
                 </div>
               </form>
             </DialogContent>

@@ -10,8 +10,8 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import pattern from "@/assets/Logo.png";
-import visionImage from "@/assets/banner-4.jpg";
+import pattern from "@/assets/about-1.jpg";
+import visionImage from "@/assets/about-5.jpg";
 import NMContainer from "@/components/ui/core/NMContainer";
 
 const AboutPage = () => {
@@ -71,7 +71,7 @@ const AboutPage = () => {
             great deal, or reduce your carbon footprint, ReCycleMart is here to
             support you every step of the way.
           </p>
-          <div className="mt-8">
+          <div className="mt-16">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Our Core Values
             </h3>
@@ -120,7 +120,7 @@ const AboutPage = () => {
               ))}
             </div>
           </div>
-          <div className="mt-8">
+          <div className="mt-16">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Our Achievements
             </h3>
@@ -152,7 +152,7 @@ const AboutPage = () => {
               ))}
             </div>
           </div>
-          <div className="mt-8">
+          <div className="mt-16">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Join the ReCycleMart Movement
             </h3>

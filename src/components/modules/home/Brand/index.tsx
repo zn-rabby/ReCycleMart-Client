@@ -14,17 +14,22 @@ const Brand = () => {
         </div>
 
         {/* Brand Cards Scrolling Section */}
-        <div className="relative w-full py-8 overflow-hidden bg-white rounded-xl shadow-lg border border-gray-200">
+        <div className="relative w-full py-12 bg-gradient-to-r from-gray-50 to-gray-100 rounded border border-gray-50 overflow-hidden">
+          {/* Scrolling Animation */}
           <div className="flex space-x-6 animate-scroll">
             {[...brands, ...brands].map((brand, index) => (
               <div
                 key={index}
-                className="border border-gray-300 w-[180px] md:w-[220px] text-center p-4 text-lg md:text-xl text-gray-800 font-semibold bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg shadow-md hover:shadow-lg transition hover:border-orange-500 hover:text-orange-500"
+                className="flex-shrink-0 w-[180px] md:w-[220px] text-center p-6 text-lg md:text-xl text-gray-800 font-semibold bg-white rounded hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-orange-500 hover:text-orange-500 border border-gray-200"
               >
                 {brand}
               </div>
             ))}
           </div>
+
+          {/* Gradient Overlay for Smooth Scrolling Effect */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent"></div>
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent"></div>
         </div>
 
         {/* Custom Animation */}

@@ -19,6 +19,9 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { logout } from "@/services/AuthService";
 import { protectedRoutes } from "@/contants";
+import usaFlag from "@/assets/united-states.png";
+import { Mail, Phone } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -60,11 +63,28 @@ export default function Navbar() {
           {/* <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
             Speacil Offet
           </Button> */}
-          <Link href="/dashboard/listing">
+          {/* right side */}
+          {/* contact info */}
+          <div className="flex flex-col md:flex-row lg:items-center gap-2 md:gap-4">
+            <p className="text-sm">
+              <Phone size={18} className="inline text-[#D94F01]" /> Contact:
+              +880 154 064 3211
+            </p>
+            <p className="text-sm">
+              <Mail size={18} className="inline text-[#D94F01]" />{" "}
+              support@recyclemart.com
+            </p>
+            <div className="text-sm flex items-center gap-1">
+              <Image src={usaFlag} width={25} height={25} alt="usa flag" />
+              English
+            </div>
+          </div>
+
+          {/* <Link href="/dashboard/listing">
             <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
               Sell Now
             </Button>
-          </Link>
+          </Link> */}
 
           {/* User Menu */}
           {user ? (
@@ -253,8 +273,11 @@ export default function Navbar() {
               <p>Your order is at your door in 2 hours with fast shipping.</p>
             </div>
             {/* Right Section: Additional Discount Message */}
-            <div className="hidden md:flex items-center">
-              <p>Save 25% Off Discount</p>
+            {/* Highlighted Discount Section */}
+            <div className="hidden md:flex items-center bg-gradient-to-r from-[#FF5E01] to-[#D94F01] px-4 py-2 rounded-lg shadow-md animate-pulse">
+              <p className="text-white font-semibold">
+                Buy and Sell Your Product
+              </p>
             </div>
 
             {/* Middle Section: Navigation Menu */}
@@ -278,6 +301,16 @@ export default function Navbar() {
                 }`}
               >
                 Products
+              </Link>
+              <Link
+                href="/dashboard/listing"
+                className={`font-medium ${
+                  pathname === "/products"
+                    ? "text-[#FF5E01] font-semibold"
+                    : "text-white hover:text-[#FF5E01]"
+                }`}
+              >
+                Sell Now
               </Link>
               <Link
                 href="/about"

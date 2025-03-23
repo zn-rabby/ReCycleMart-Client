@@ -1,5 +1,3 @@
-// import HomeBanner from "@/components/modules/home/Banner";
-import AllBlogs from "@/components/modules/Blog";
 import Brand from "@/components/modules/home/Brand";
 import CombinedSection from "@/components/modules/home/CombinedSection/CombinedSection";
 import FeaturedProducts from "@/components/modules/home/FeaturedProducts";
@@ -16,7 +14,7 @@ const HomePage = async () => {
 
       <CategorySection></CategorySection>
       <FeaturedProducts></FeaturedProducts>
-      <AllBlogs></AllBlogs>
+      {/* <AllBlogs></AllBlogs> */}
       <Brand></Brand>
       <HomeAbout></HomeAbout>
       <CombinedSection></CombinedSection>

@@ -54,7 +54,7 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="Search for products"
-            className="w-full border border-gray-100 rounded-full py-2 pl-5 pr-10 focus:outline-none focus:ring-2 "
+            className="w-full border border-gray-100 rounded py-2 pl-5 pr-10 focus:outline-none focus:ring-2 "
           />
           <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-200" />
         </div>
@@ -93,9 +93,15 @@ export default function Navbar() {
               <Link href="/cart">
                 <Button
                   variant="ghost"
-                  className="rounded-full p-2 text-[#FF5E01] border border-[#FF5E01] hover:bg-[#FF5E01]/10"
+                  className="rounded-full p-2 text-[#FF5E01] border border-[#FF5E01] hover:bg-[#FF5E01]/10 transition-colors duration-300 relative"
                 >
-                  <Heart className="w-5 h-5" />
+                  {/* Heart Icon */}
+                  <Heart className="w-6 h-6" />
+
+                  {/* Wishlist Count Badge */}
+                  {/* <span className="absolute -top-2 -right-2 bg-[#FF5E01] text-white text-xs rounded-full px-2 py-1">
+                    {0}
+                  </span> */}
                 </Button>
               </Link>
               <DropdownMenu>
@@ -332,6 +338,17 @@ export default function Navbar() {
             >
               About
             </Link>
+            <Link
+              href="/faq"
+              className={`font-medium ${
+                pathname === "/faq"
+                  ? "text-[#FF5E01] font-semibold"
+                  : "text-white hover:text-[#FF5E01]"
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              FAQ
+            </Link>
 
             {/*  */}
             <Link
@@ -535,7 +552,7 @@ export default function Navbar() {
               >
                 Sell Now
               </Link>
-              <Link
+              {/* <Link
                 href="/blog"
                 className={`font-medium ${
                   pathname === "/blog"
@@ -544,7 +561,7 @@ export default function Navbar() {
                 }`}
               >
                 Blog
-              </Link>
+              </Link> */}
               <Link
                 href="/about"
                 className={`font-medium ${
@@ -555,7 +572,16 @@ export default function Navbar() {
               >
                 About
               </Link>
-
+              <Link
+                href="/faq"
+                className={`font-medium ${
+                  pathname === "/faq"
+                    ? "text-[#FF5E01] font-semibold"
+                    : "text-white hover:text-[#FF5E01]"
+                }`}
+              >
+                FAQ
+              </Link>
               <Link
                 href="/contact"
                 className={`font-medium ${

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import ProductCard from "@/components/ui/core/ProductCard";
@@ -6,7 +7,8 @@ import FilterSidebar from "./filterSidebar";
 import { useState } from "react";
 
 const AllProducts = ({ products }: { products: IProduct[] }) => {
-  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>(products);
+  const [filteredProducts, setFilteredProducts] =
+    useState<IProduct[]>(products);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortOption, setSortOption] = useState<string>("default");
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -75,7 +77,9 @@ const AllProducts = ({ products }: { products: IProduct[] }) => {
     indexOfLastProduct
   );
 
-  const totalPages = Math.ceil(sortedAndFilteredProducts.length / productsPerPage);
+  const totalPages = Math.ceil(
+    sortedAndFilteredProducts.length / productsPerPage
+  );
 
   return (
     <div className="flex flex-col md:flex-row gap-8 my-10">

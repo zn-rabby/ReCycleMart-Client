@@ -24,6 +24,7 @@ import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
+  const [isMagaDropdownOpen, setIsMagaDropdownOpen] = useState(false); // State for dropdown
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, setIsLoading } = useUser();
   const pathname = usePathname();
@@ -199,6 +200,28 @@ export default function Navbar() {
               Products
             </Link>
             <Link
+              href="/dashboard/listing"
+              className={`font-medium ${
+                pathname === "/sell"
+                  ? "text-[#FF5E01] font-semibold"
+                  : "text-white hover:text-[#FF5E01]"
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Sell Now
+            </Link>
+            <Link
+              href="/blog"
+              className={`font-medium ${
+                pathname === "/blog"
+                  ? "text-[#FF5E01] font-semibold"
+                  : "text-white hover:text-[#FF5E01]"
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
               href="/about"
               className={`font-medium ${
                 pathname === "/about"
@@ -209,6 +232,76 @@ export default function Navbar() {
             >
               About
             </Link>
+            {/* Maga Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsMagaDropdownOpen(true)} // Open dropdown on hover
+              onMouseLeave={() => setIsMagaDropdownOpen(false)} // Close dropdown on hover out
+            >
+              <Link
+                href="/maga"
+                className={`font-medium flex items-center space-x-1 ${
+                  pathname === "/maga"
+                    ? "text-[#FF5E01] font-semibold"
+                    : "text-white hover:text-[#FF5E01]"
+                }`}
+              >
+                <span>Maga</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    isMagaDropdownOpen ? "transform rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </Link>
+
+              {/* Dropdown Menu */}
+              {isMagaDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in">
+                  <Link
+                    href="/maga/sub1"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/maga/sub1"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Submenu 1
+                  </Link>
+                  <Link
+                    href="/maga/sub2"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/maga/sub2"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Submenu 2
+                  </Link>
+                  <Link
+                    href="/maga/sub3"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/maga/sub3"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Submenu 3
+                  </Link>
+                </div>
+              )}
+            </div>
+            {/*  */}
             <Link
               href="/contact"
               className={`font-medium ${
@@ -303,12 +396,22 @@ export default function Navbar() {
               <Link
                 href="/dashboard/listing"
                 className={`font-medium ${
-                  pathname === "/products"
+                  pathname === "/sell"
                     ? "text-[#FF5E01] font-semibold"
                     : "text-white hover:text-[#FF5E01]"
                 }`}
               >
                 Sell Now
+              </Link>
+              <Link
+                href="/blog"
+                className={`font-medium ${
+                  pathname === "/blog"
+                    ? "text-[#FF5E01] font-semibold"
+                    : "text-white hover:text-[#FF5E01]"
+                }`}
+              >
+                Blog
               </Link>
               <Link
                 href="/about"
@@ -320,6 +423,76 @@ export default function Navbar() {
               >
                 About
               </Link>
+              {/* Maga Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsMagaDropdownOpen(true)} // Open dropdown on hover
+                onMouseLeave={() => setIsMagaDropdownOpen(false)} // Close dropdown on hover out
+              >
+                <Link
+                  href="/maga"
+                  className={`font-medium flex items-center space-x-1 ${
+                    pathname === "/maga"
+                      ? "text-[#FF5E01] font-semibold"
+                      : "text-white hover:text-[#FF5E01]"
+                  }`}
+                >
+                  <span>Maga</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isMagaDropdownOpen ? "transform rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </Link>
+
+                {/* Dropdown Menu */}
+                {isMagaDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in">
+                    <Link
+                      href="/maga/sub1"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/maga/sub1"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Submenu 1
+                    </Link>
+                    <Link
+                      href="/maga/sub2"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/maga/sub2"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Submenu 2
+                    </Link>
+                    <Link
+                      href="/maga/sub3"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/maga/sub3"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Submenu 3
+                    </Link>
+                  </div>
+                )}
+              </div>
+              {/*  */}
               <Link
                 href="/contact"
                 className={`font-medium ${

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsUpDown, LogOut } from "lucide-react";
+import { ChevronsUpDown, LogOut, Settings } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -8,6 +8,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -44,44 +45,62 @@ export function NavUser() {
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className="px-3 py-2 rounded-lg hover:bg-gray-100 data-[state=open]:bg-gray-100"
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage alt={user?.name} />
-                <AvatarFallback className="rounded-lg">
-                  {user?.role}
+                <AvatarFallback className="rounded-lg bg-primary text-white font-medium">
+                  {user?.name?.charAt(0)}
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user?.name}</span>
-                <span className="truncate text-xs">{user?.email}</span>
+                <span className="truncate font-medium text-gray-800">
+                  {user?.name}
+                </span>
+                <span className="truncate text-xs text-gray-500">
+                  {user?.email}
+                </span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4" />
+              <ChevronsUpDown className="ml-auto size-4 text-gray-400" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg shadow-lg border border-gray-200"
             side={isMobile ? "bottom" : "right"}
             align="end"
-            sideOffset={4}
+            sideOffset={8}
           >
             <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
+              <div className="flex items-center gap-3 p-3 text-left">
+                <Avatar className="h-10 w-10 rounded-lg">
                   <AvatarImage alt={user?.name} />
-                  <AvatarFallback className="rounded-lg">
-                    {user?.role}
+                  <AvatarFallback className="rounded-lg bg-primary text-white font-medium">
+                    {user?.name?.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user?.name}</span>
-                  <span className="truncate text-xs">{user?.email}</span>
+                <div className="grid flex-1 text-left leading-tight">
+                  <span className="truncate font-medium text-gray-900">
+                    {user?.name}
+                  </span>
+                  <span className="truncate text-sm text-gray-500">
+                    {user?.email}
+                  </span>
                 </div>
               </div>
             </DropdownMenuLabel>
 
-            <DropdownMenuItem onClick={() => handleLogout()}>
-              <LogOut />
+            <DropdownMenuSeparator className="my-1" />
+
+            <DropdownMenuItem className="px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+              <Settings className="mr-2 size-4" />
+              Account Settings
+            </DropdownMenuItem>
+
+            <DropdownMenuItem
+              onClick={handleLogout}
+              className="px-3 py-2 text-sm text-red-600 hover:bg-red-50"
+            >
+              <LogOut className="mr-2 size-4" />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

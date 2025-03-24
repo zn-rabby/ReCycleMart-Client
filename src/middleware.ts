@@ -38,7 +38,7 @@ export const middleware = async (request: NextRequest) => {
       return NextResponse.redirect(
         // new URL(`http://localhost:3000/login?redirectPath=${pathname}, request.url`)
         new URL(
-          `https://secondhand-client.vercel.app/login?redirectPath=${pathname}, request.url`
+          `https://re-cycle-mart-client.vercel.app/login?redirectPath=${pathname}, request.url`
         )
       );
     }

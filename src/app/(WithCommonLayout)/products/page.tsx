@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import AllProducts from "@/components/modules/products";
 import NMContainer from "@/components/ui/core/NMContainer";
 import { getAllProducts } from "@/services/Product";

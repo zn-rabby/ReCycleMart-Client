@@ -1,22 +1,21 @@
-import NMContainer from "@/components/ui/core/NMContainer";
 import HeroCarousel from "./Carousel/Carousel";
 import RightSection from "./RightSection/RightSection";
 
 const HeroSection = () => {
   return (
-    <NMContainer className="md:mt-36">
-      <div className="flex flex-col sm:flex-row justify-between gap-2">
+    <div className="md:mt-34">
+      <div className="flex flex-col sm:flex-row justify-between ">
         {/* HeroCarousel - 75% width on larger screens, full width on small screens */}
-        <div className="w-full sm:w-3/4">
+        <div className="w-full sm:w-3/4 h-[600px]">
           <HeroCarousel />
         </div>
 
         {/* RightSection - 25% width on larger screens, full width on small screens */}
-        <div className="w-full sm:w-1/4 sm:pl-4 mt-4 sm:mt-0">
+        <div className="w-full sm:w-1/4 sm:pl-4  sm:mt-0 h-[600px]">
           <RightSection />
         </div>
       </div>
-    </NMContainer>
+    </div>
   );
 };
 

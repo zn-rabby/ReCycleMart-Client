@@ -20,6 +20,8 @@ const FeaturedProducts = () => {
   // Slice the first 8 products
   const displayedProducts = products?.slice(0, 8);
 
+  
+
   return (
     <div className="bg-white bg-opacity-50 ">
       <NMContainer className="my-12">
@@ -29,8 +31,8 @@ const FeaturedProducts = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-          {displayedProducts.map((product, idx) => (
-            <ProductCard key={idx} product={product} />
+          {displayedProducts?.map((product) => (
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
       </NMContainer>

@@ -50,7 +50,7 @@ const HeroCarousel = () => {
           <CarouselContent>
             {banners.map((banner, index) => (
               <CarouselItem key={index} className="w-full">
-                <div className="relative w-full h-[500px] overflow-hidden rounded-lg">
+                <div className="relative w-full h-[600px] overflow-hidden rounded-lg">
                   {/* Background Image */}
                   <div className="relative w-full h-full">
                     <Image
@@ -96,3 +96,9 @@ const HeroCarousel = () => {
 };
 
 export default HeroCarousel;
+// ui color same rakha 4 ta couresal image daw
+// h-600px
+// best akta responsive coursel daw
+// profational mordern smart industry level r daw
+// smart look daw
+// relavent image daw online thaka

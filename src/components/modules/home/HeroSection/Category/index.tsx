@@ -1,105 +1,82 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import CategoryCard from "./CategoryCard";
+import NMContainer from "@/components/ui/core/NMContainer";
 
-import Link from "next/link";
-import Image from "next/image";
-
-// Updated static categories with real images
-const staticCategories = [
+const categories = [
   {
-    id: 1,
-    name: "Electronics",
+    title: "mobiles",
+    label: "Smartphones",
     image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    slug: "electronics",
+      "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
   },
   {
-    id: 2,
-    name: "Fashion",
+    title: "electronics",
+    label: "Electronics",
     image:
-      "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    slug: "fashion",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
   },
   {
-    id: 3,
-    name: "Home & Garden",
+    title: "vehicles",
+    label: "Cars & Bikes",
     image:
-      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    slug: "home-garden",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
   },
   {
-    id: 4,
-    name: "Sports & Outdoors",
+    title: "property",
+    label: "Real Estate",
     image:
-      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    slug: "sports-outdoors",
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
   },
   {
-    id: 5,
-    name: "Books & Media",
+    title: "home",
+    label: "Home & Living",
     image:
-      "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    slug: "books-media",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
   },
   {
-    id: 6,
-    name: "Toys & Games",
+    title: "pets",
+    label: "Pets & Supplies",
     image:
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    slug: "toys-games",
+      "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
+  },
+  {
+    title: "fashion",
+    label: "Fashion",
+    image:
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
+  },
+  {
+    title: "sports",
+    label: "Sports & Outdoors",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80",
   },
 ];
 
-const CategoryCard = ({ category }: { category: any }) => {
+export default async function AllCategories() {
   return (
-    <Link href="/products">
-      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group relative">
-        <div className="relative h-48">
-          <Image
-            src={category.image}
-            alt={category.name}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-t-lg transform group-hover:scale-105 transition-transform duration-300"
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+    <section className="py-16 bg-white">
+      <NMContainer>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            Shop by Category
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Browse through our carefully selected product categories
+          </p>
         </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-4">
-          <h3 className="text-lg font-semibold text-white text-center mb-2">
-            {category.name}
-          </h3>
-          {/* <Button
-            variant="outline"
-            className="bg-white text-gray-800 hover:bg-gray-100 transition-colors duration-300"
-          >
-            Shop Now
-          </Button> */}
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+          {categories?.map((category) => (
+            <CategoryCard key={category.title} category={category} />
+          ))}
         </div>
-      </div>
-    </Link>
-  );
-};
 
-const CategorySection = () => {
-  return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="lg:text-3xl text-2xl font-bold text-gray-800">
-          Shop by Category
-        </h2>
-        {/* <Link href="/categories">
-          <Button variant="ghost" className="text-blue-600 hover:text-blue-700">
-            View All Categories →
-          </Button>
-        </Link> */}
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-        {staticCategories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
-      </div>
-    </div>
+        <div className="text-center mt-12">
+          <button className="px-6 py-3 bg-gray-900 text-white rounded-md font-medium hover:bg-gray-800 transition-colors duration-200">
+            Explore All Categories
+          </button>
+        </div>
+      </NMContainer>
+    </section>
   );
-};
-
-export default CategorySection;
+}

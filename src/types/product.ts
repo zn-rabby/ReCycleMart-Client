@@ -1,20 +1,27 @@
-export interface IProduct{
+export interface IProduct {
   _id: string;
   name: string;
   title: string;
   description: string;
   price: number;
-  condition: 'new' | 'used' | 'refurbished';
-  images: string[]; 
-  category: string; 
-  location: string; 
-  userID?: string; 
-  itemID?:string;
-  status: 'available' | 'sold' ; 
-  views?: number; 
+  condition: "new" | "used" | "refurbished";
+  images: string[];
+  category:
+    | "mobiles"
+    | "electronics"
+    | "vehicles"
+    | "property"
+    | "home"
+    | "pets"
+    | "cloths"
+    | "sports";
+  location: string;
+  status: "available" | "sold";
   createdAt?: Date;
   updatedAt?: Date;
-  negotiable?: boolean; 
-  ratingCount:number;
-  stock:number
+  contactNumber?: string;
+  negotiable?: boolean;
+  brand?: string;
+  ratingCount?: number;
+  stock: number;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
@@ -40,6 +41,23 @@ export const getAllProductsByUser = async (page?: string, limit?: string) => {
   }
 };
 
+export const getProductsByCategory = async (category: string) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/listings/category/${category}`,
+      {
+        next: {
+          tags: ["PRODUCT"],
+        },
+      }
+    );
+    const data = await res.json();
+    return data;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
 // get single product
 export const getSingleProduct = async (productId: string) => {
   try {
@@ -77,10 +95,7 @@ export const addProduct = async (productData: any) => {
 };
 
 // update product
-export const updateProduct = async (
-  productId: string,
-  productData:any
-) => {
+export const updateProduct = async (productId: string, productData: any) => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/listings/${productId}`,
@@ -91,13 +106,12 @@ export const updateProduct = async (
           Authorization: (await cookies()).get("accessToken")!.value,
         },
         body: JSON.stringify(productData),
-
       }
     );
     // revalidateTag("PRODUCT");
-    const data= await res.json();
+    const data = await res.json();
     // console.log(data,"action")
-    return data
+    return data;
   } catch (error: any) {
     return Error(error);
   }

@@ -3,102 +3,106 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import Link from "next/link";
 
-import secondHandBanner1 from "@/assets/banner-4.jpg";
-import secondHandBanner2 from "@/assets/banner-3.jpg";
-import secondHandBanner3 from "@/assets/banner-2.jpg";
-
 const banners = [
   {
-    image: secondHandBanner1,
-    title: "Discover Amazing Deals on Second-Hand Products!",
-    description:
-      "Find great deals on pre-loved items, from electronics to fashion and more. Save money and reduce waste by buying second-hand.",
+    image:
+      "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    title: "Discover Amazing Second-Hand Deals",
+    description: "Quality pre-owned items at 50-80% off retail prices",
+    cta: "Shop Now",
+    cta2: "Sell Items",
   },
   {
-    image: secondHandBanner2,
-    title: "Shop Smart, Save More!",
-    description: "Get high-quality second-hand products at unbeatable prices.",
+    image:
+      "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    title: "Sustainable Fashion Marketplace",
+    description: "Gently used designer clothes at unbelievable prices",
+    cta: "Browse Fashion",
+    cta2: "Consign",
   },
   {
-    image: secondHandBanner3,
-    title: "Sustainability Starts Here!",
-    description:
-      "Reduce waste and support a circular economy with second-hand shopping.",
+    image:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    title: "Certified Pre-Owned Tech",
+    description: "Fully tested electronics with warranty protection",
+    cta: "View Tech",
+    cta2: "Trade In",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    title: "Affordable Home Essentials",
+    description: "Quality furniture and decor at fraction of retail prices",
+    cta: "Shop Home",
+    cta2: "Sell Yours",
   },
 ];
 
 const HeroCarousel = () => {
   return (
-    <div
-      className="container mx-auto sm:p-2 md:p-0 relative"
-      style={{
-        backgroundImage: "url('/hero-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div className="w-full relative bg-gray-100 rounded overflow-hidden shadow ">
+      <Carousel className="w-full">
+        <CarouselContent>
+          {banners.map((banner, index) => (
+            <CarouselItem key={index} className="relative">
+              {/* Optimized image container */}
+              <div className="relative w-full h-[500px] md:h-[600px]">
+                <Image
+                  src={banner.image}
+                  alt={`ReCycleMart - ${banner.title}`}
+                  fill
+                  className="object-cover object-center"
+                  priority={index === 0}
+                  quality={100}
+                />
+                {/* Enhanced gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+              </div>
 
-      {/* Full-Width Carousel Section */}
-      <div className="relative w-full">
-        <Carousel>
-          <CarouselContent>
-            {banners.map((banner, index) => (
-              <CarouselItem key={index} className="w-full">
-                <div className="relative w-full h-[600px] overflow-hidden rounded-lg">
-                  {/* Background Image */}
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={banner.image}
-                      alt={`Second-hand products banner ${index + 1}`}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                  {/* Overlay Content */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
-                    <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
+              {/* Modern content layout */}
+              <div className="absolute inset-0 flex items-end pb-12 md:pb-16">
+                <div className="container mx-auto px-6">
+                  <div className="max-w-2xl mx-auto text-center text-white space-y-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight drop-shadow-lg">
                       {banner.title}
                     </h1>
-                    <p className="my-3 text-sm sm:text-lg">
+                    <p className="text-lg md:text-xl max-w-lg mx-auto leading-snug drop-shadow-md">
                       {banner.description}
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link href="/products" passHref>
-                        <Button className="rounded-full bg-[#FF5E01] hover:bg-[#D94F01] text-white">
-                          Shop Now
+                    <div className="flex flex-wrap justify-center gap-3 mt-6">
+                      <Link href="/products">
+                        <Button className="bg-[#FF5E01] hover:bg-[#E05500] text-white font-semibold shadow-lg px-8 py-5 text-base transition-all duration-200 hover:scale-105">
+                          {banner.cta}
                         </Button>
                       </Link>
-                      <Link href="/dashboard/listing" passHref>
+                      <Link href={index % 2 === 0 ? "/sell" : "/about"}>
                         <Button
-                          className="rounded-full text-orange-500"
                           variant="outline"
+                          className="border-2 border-white bg-transparent hover:bg-white hover:text-[#FF5E01] font-semibold px-8 py-5 text-base transition-all duration-200 hover:scale-105"
                         >
-                          Sell Your Items
+                          {banner.cta2}
                         </Button>
                       </Link>
                     </div>
                   </div>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+
+        {/* Sleek navigation arrows */}
+        <CarouselPrevious className="absolute left-6 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-white/20 hover:bg-white/40 border-2 border-white text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hidden sm:flex items-center justify-center" />
+        <CarouselNext className="absolute right-6 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-white/20 hover:bg-white/40 border-2 border-white text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hidden sm:flex items-center justify-center" />
+      </Carousel>
     </div>
   );
 };
 
 export default HeroCarousel;
-// ui color same rakha 4 ta couresal image daw
-// h-600px
-// best akta responsive coursel daw
-// profational mordern smart industry level r daw
-// smart look daw
-// relavent image daw online thaka

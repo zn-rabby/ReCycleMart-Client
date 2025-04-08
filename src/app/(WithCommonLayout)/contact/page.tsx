@@ -1,7 +1,5 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   MapPin,
   Phone,
@@ -14,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import pattern from "@/assets/about-4.jpg";
 import NMContainer from "@/components/ui/core/NMContainer";
+import ContactForm from "@/components/modules/contact/ContactForm";
 
 const ContactPage = () => {
   return (
@@ -47,88 +46,10 @@ const ContactPage = () => {
         <div className=" py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
             {/* Left Side: Contact Form */}
-            <div className="">
-              <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
-                Send Us a Message
-              </h2>
-              <form className="space-y-6">
-                {/* Name */}
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Name
-                  </label>
-                  <Input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    className="mt-1 w-full"
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Email
-                  </label>
-                  <Input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    className="mt-1 w-full"
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Phone
-                  </label>
-                  <Input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter your phone number"
-                    className="mt-1 w-full"
-                  />
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Enter your message"
-                    className="mt-1 w-full h-32"
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <div className="text-center">
-                  <Button
-                    type="submit"
-                    className="w-full bg-[#FF5E01] hover:bg-[#D94F01] transition-colors"
-                  >
-                    Send Message
-                  </Button>
-                </div>
-              </form>
-            </div>
+            <ContactForm></ContactForm>
 
             {/* Right Side: Contact Information */}
-            <div className="space-y-8  ">
+            <div className="space-y-8  p-2">
               <h2 className="text-3xl font-bold text-gray-800">Get in Touch</h2>
               <div className="space-y-6">
                 {/* Address */}

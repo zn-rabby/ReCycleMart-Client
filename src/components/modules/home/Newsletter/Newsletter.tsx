@@ -37,27 +37,29 @@ export default function Newsletter() {
         toast.success("🎉 Welcome to ReCycleMart!", {
           description: "You'll receive eco-friendly tips and exclusive offers",
           style: {
-            background: "#101828",
-            color: "#fff",
-            borderColor: "#E45301",
+            background: "#FFFFFF", // White background
+            color: "#3C3C3C", // Dark gray text for readability
+            borderColor: "#3C78D8", // Blue border
+            borderWidth: "1px",
           },
         });
         form.reset();
       } else {
         toast.error(response.error[0]?.message || "Please use a valid email", {
           style: {
-            background: "#101828",
-            color: "#fff",
-            borderColor: "#E97534",
+            background: "#FFFFFF", // White background
+            color: "#3C3C3C", // Dark gray text for readability
+            borderColor: "#3C78D8", // Blue border
+            borderWidth: "1px",
           },
         });
       }
     } catch {
       toast.error("Oops! Something went wrong. Please try again.", {
         style: {
-          background: "#101828",
-          color: "#fff",
-          borderColor: "#E97534",
+          background: "#101828", // Same dark background
+          color: "#fff", // White text
+          borderColor: "#E97534", // Lighter orange border
         },
       });
     }

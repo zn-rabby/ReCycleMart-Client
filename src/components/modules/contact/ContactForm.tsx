@@ -36,11 +36,25 @@ const ContactForm = () => {
       const res = await addContact(data);
 
       if (res.success) {
-        toast.success("Your message has been sent successfully!");
+        toast.success("Message Sent Successfully!", {
+          description: "Your message has been delivered",
+          style: {
+            background: "#FFFFFF", // White background
+            color: "#3C3C3C", // Dark gray text for readability
+            borderColor: "#3C78D8", // Blue border
+            borderWidth: "1px",
+          },
+        });
         form.reset();
         router.push("/");
       } else {
-        toast.error(res.message || "Failed to send message");
+        toast.error(res.message || "Failed to send message", {
+          style: {
+            background: "#FFFFFF",
+            color: "#CC0000", // Red for error text
+            borderColor: "#CC0000", // Red border for errors
+          },
+        });
       }
     } catch (err: any) {
       console.error(err);

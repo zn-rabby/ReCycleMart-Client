@@ -4,3 +4,7 @@ export interface IContact {
   name: string;
   message: string;
 }
+export interface INewsletters {
+  _id: string;
+  email: string;
+}

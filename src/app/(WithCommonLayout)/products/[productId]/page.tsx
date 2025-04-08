@@ -13,7 +13,7 @@ const ProductDetailsPage = async ({
   // console.log(product, "poduct",params,productId)
 
   return (
-    <NMContainer className="mt-40">
+    <NMContainer className="md:mt-40">
       <ProductDetails product={product} />
     </NMContainer>
   );

@@ -101,7 +101,7 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
 
   return (
     <NMContainer>
-      <div className="px-4 sm:px-6 lg:px-8 py-8">
+      <div className="px-4 ">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Product Images Section */}
           <div className="w-full lg:w-1/2">

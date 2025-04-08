@@ -1,4 +1,3 @@
-
 import ProductDetails from "@/components/modules/products/productDetails";
 import NMContainer from "@/components/ui/core/NMContainer";
 import { getSingleProduct } from "@/services/Product";
@@ -14,8 +13,7 @@ const ProductDetailsPage = async ({
   // console.log(product, "poduct",params,productId)
 
   return (
-    <NMContainer>
-      
+    <NMContainer className="mt-40">
       <ProductDetails product={product} />
     </NMContainer>
   );

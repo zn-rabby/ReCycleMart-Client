@@ -72,7 +72,7 @@ export default function AllCategories() {
   };
 
   return (
-    <section className="py-16 bg-white ">
+    <section className=" bg-white ">
       <NMContainer>
         <div className="flex items-center justify-between my-10">
           <h2 className="lg:text-3xl text-2xl font-bold text-gray-800">

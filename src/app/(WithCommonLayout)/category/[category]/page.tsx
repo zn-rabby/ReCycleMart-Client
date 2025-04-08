@@ -16,7 +16,7 @@ export default async function CategoryPage({
 
   if (!(products ?? false)) {
     return (
-      <div className="mt-36">
+      <div className="mt-40">
         <p className="text-center mt-[5%] text-gray-500 text-lg">
           No data found with this category
         </p>

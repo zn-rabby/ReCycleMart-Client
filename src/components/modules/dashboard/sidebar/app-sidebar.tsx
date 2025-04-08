@@ -2,22 +2,19 @@
 
 import * as React from "react";
 import {
-  Frame,
-  Map,
-  PieChart,
   Home,
   User,
   ShoppingCart,
   BarChart,
-  List,
-  HelpCircle,
-  MessageCircle,
+  PlusSquare,
+  Mail,
+  Package,
+  Newspaper,
 } from "lucide-react";
-
+import { usePathname } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -26,83 +23,83 @@ import {
 import Link from "next/link";
 import Logo from "@/assets/svgs/Logo";
 import { NavMain } from "./nav-main";
-import { NavUser } from "./nav-user";
 
-const data = {
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: Home,
-      isActive: true,
-    },
-    {
-      title: "Profile",
-      url: "/dashboard/profile",
-      icon: User,
-      isActive: false,
-    },
-    {
-      title: "Track Purchases",
-      url: "/dashboard/purchase-history",
-      icon: ShoppingCart,
-      isActive: false,
-    },
-    {
-      title: "Track Sales",
-      url: "/dashboard/sales-history",
-      icon: BarChart,
-      isActive: false,
-    },
-    {
-      title: "Listing",
-      url: "/dashboard/listing",
-      icon: List,
-      items: [
-        {
-          title: "Manage Listing",
-          url: "/dashboard/listing",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: HelpCircle,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: MessageCircle,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-};
+const navItems = [
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: Home,
+    matchExact: true,
+  },
+  {
+    title: "Profile",
+    url: "/dashboard/profile",
+    icon: User,
+  },
+  {
+    title: "Track Purchases",
+    url: "/dashboard/purchase-history",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Track Sales",
+    url: "/dashboard/sales-history",
+    icon: BarChart,
+  },
+  {
+    title: "Add Listing",
+    url: "/dashboard/listing/add-listing",
+    icon: PlusSquare,
+  },
+  {
+    title: "Manage Listings",
+    url: "/dashboard/listing",
+    icon: Package,
+    matchPartial: true, // Will match any subroute of /dashboard/listing
+  },
+  {
+    title: "Manage Messages",
+    url: "/dashboard/messages",
+    icon: Mail,
+  },
+  {
+    title: "Manage Newsletters",
+    url: "/dashboard/newsletters",
+    icon: Newspaper,
+  },
+];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname();
+
+  const enhancedNavItems = navItems.map((item) => ({
+    ...item,
+    isActive: checkIfActive(item, pathname),
+  }));
+
+  function checkIfActive(
+    item: (typeof navItems)[0],
+    currentPath: string
+  ): boolean {
+    if (item.matchExact) {
+      return currentPath === item.url;
+    }
+    if (item.matchPartial) {
+      return currentPath.startsWith(item.url);
+    }
+    return (
+      currentPath.startsWith(item.url) &&
+      (currentPath === item.url ||
+        currentPath === `${item.url}/` ||
+        !currentPath.slice(item.url.length + 1).includes("/"))
+    );
+  }
+
   return (
     <Sidebar
       collapsible="icon"
       {...props}
-      className="bg-gray-50 border-r border-gray-200"
+      className="bg-white border-r border-gray-200 flex flex-col h-full"
     >
       <SidebarHeader className="px-4 py-6 border-b border-gray-200">
         <SidebarMenu>
@@ -129,12 +126,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="px-2 py-4">
-        <NavMain items={data.navMain} />
+
+      <SidebarContent className="px-2 py-4 flex-1 overflow-y-auto">
+        <div className="space-y-1">
+          <NavMain items={enhancedNavItems} />
+        </div>
       </SidebarContent>
-      <SidebarFooter className="px-2 py-4 border-t border-gray-200">
-        <NavUser />
-      </SidebarFooter>
     </Sidebar>
   );
 }

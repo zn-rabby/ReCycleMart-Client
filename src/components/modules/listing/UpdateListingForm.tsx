@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -10,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useEffect } from "react";
 import Logo from "@/assets/svgs/Logo";
@@ -33,7 +35,6 @@ export default function UpdateListingForm({ product }: { product: IProduct }) {
   const form = useForm({
     defaultValues: {
       _id: product?._id || "",
-      name: product?.name || "",
       title: product?.title || "",
       description: product?.description || "",
       ratingCount: product?.ratingCount || 4,
@@ -57,20 +58,18 @@ export default function UpdateListingForm({ product }: { product: IProduct }) {
     }
   }, [product?.images]);
 
-  const onSubmit = async (data:any) => {
-   
-
+  const onSubmit = async (data: any) => {
     const modifiData = {
-        ...data,
-        ratingCount : Number(data.ratingCount),
-        price : Number(data.price),
-        stock : Number(data.stock),
-    
-        images : imageLinks,
-    }
-console.log(modifiData)
+      ...data,
+      ratingCount: Number(data.ratingCount),
+      price: Number(data.price),
+      stock: Number(data.stock),
+
+      images: imageLinks,
+    };
+    console.log(modifiData);
     try {
-      const res = await updateProduct(product?._id,modifiData);
+      const res = await updateProduct(product?._id, modifiData);
       console.log("res", res);
 
       if (res.success) {
@@ -94,7 +93,8 @@ console.log(modifiData)
     <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-2xl p-5">
       <div className="flex items-center space-x-4 mb-5">
         <Logo />
-        <h1 className="text-xl font-bold">Update Product</h1> {/* Updated title */}
+        <h1 className="text-xl font-bold">Update Product</h1>{" "}
+        {/* Updated title */}
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -102,21 +102,6 @@ console.log(modifiData)
             <p className="text-primary font-bold text-xl">Basic Information</p>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {/* Name */}
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Product Name</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
             {/* Title */}
             <FormField
               control={form.control}
@@ -200,10 +185,14 @@ console.log(modifiData)
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
+                      <SelectItem value="mobiles">Smartphones</SelectItem>
                       <SelectItem value="electronics">Electronics</SelectItem>
-                      <SelectItem value="clothing">Clothing</SelectItem>
-                      <SelectItem value="gadgets">Gadgets</SelectItem>
-                      <SelectItem value="sports">Sports</SelectItem>
+                      <SelectItem value="vehicles">Cars & Bikes</SelectItem>
+                      <SelectItem value="property"> Real Estate</SelectItem>
+                      <SelectItem value="home">Home & Living</SelectItem>
+                      <SelectItem value="pets">Pets & Supplies</SelectItem>
+                      <SelectItem value="cloths">Cloths</SelectItem>
+                      <SelectItem value="sports">Sports & Outdoors</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -324,7 +313,8 @@ console.log(modifiData)
 
           {/* Submit Button */}
           <Button type="submit" className="mt-5 w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Updating Listing....." : "Update Listing"} {/* Updated button text */}
+            {isSubmitting ? "Updating Listing....." : "Update Listing"}{" "}
+            {/* Updated button text */}
           </Button>
         </form>
       </Form>

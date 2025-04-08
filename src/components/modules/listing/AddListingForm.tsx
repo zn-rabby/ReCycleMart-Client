@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -33,7 +34,7 @@ export default function AddProductsForm() {
 
   const form = useForm<IProduct>({
     defaultValues: {
-      name: "",
+      //   name: "",
       title: "",
       description: "",
       ratingCount: 4,
@@ -95,7 +96,7 @@ export default function AddProductsForm() {
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {/* Name */}
-            <FormField
+            {/* <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
@@ -107,7 +108,7 @@ export default function AddProductsForm() {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
 
             {/* Title */}
             <FormField
@@ -162,7 +163,7 @@ export default function AddProductsForm() {
                 <FormItem>
                   <FormLabel>Condition</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl className="w-full" >
+                    <FormControl className="w-full">
                       <SelectTrigger>
                         <SelectValue placeholder="Select Condition" />
                       </SelectTrigger>
@@ -179,24 +180,27 @@ export default function AddProductsForm() {
             />
 
             {/* Category */}
-            <FormField  
-           
+            <FormField
               control={form.control}
               name="category"
               render={({ field }) => (
-                <FormItem >
+                <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select  onValueChange={field.onChange} value={field.value}>
-                    <FormControl className="w-full" >
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormControl className="w-full">
                       <SelectTrigger>
                         <SelectValue placeholder="Select Category" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
+                      <SelectItem value="mobiles">Smartphones</SelectItem>
                       <SelectItem value="electronics">Electronics</SelectItem>
-                      <SelectItem value="clothing">Clothing</SelectItem>
-                      <SelectItem value="gadgets">Gadgets</SelectItem>
-                      <SelectItem value="sports">Sports</SelectItem>
+                      <SelectItem value="vehicles">Cars & Bikes</SelectItem>
+                      <SelectItem value="property"> Real Estate</SelectItem>
+                      <SelectItem value="home">Home & Living</SelectItem>
+                      <SelectItem value="pets">Pets & Supplies</SelectItem>
+                      <SelectItem value="cloths">Cloths</SelectItem>
+                      <SelectItem value="sports">Sports & Outdoors</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -227,7 +231,7 @@ export default function AddProductsForm() {
                 <FormItem>
                   <FormLabel>Status</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl className="w-full" >
+                    <FormControl className="w-full">
                       <SelectTrigger>
                         <SelectValue placeholder="Select Status" />
                       </SelectTrigger>

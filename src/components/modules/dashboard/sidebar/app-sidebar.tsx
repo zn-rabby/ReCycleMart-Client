@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import * as React from "react";
@@ -22,9 +23,18 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import Logo from "@/assets/svgs/Logo";
-import { NavMain } from "./nav-main";
+import { getCurrentUser } from "@/services/AuthService";
+import { cn } from "@/lib/utils";
 
-const navItems = [
+interface NavItem {
+  title: string;
+  url: string;
+  icon: React.ComponentType<{ className?: string }>;
+  matchExact?: boolean;
+  matchPartial?: boolean;
+}
+
+const commonNavItems: NavItem[] = [
   {
     title: "Dashboard",
     url: "/dashboard",
@@ -55,8 +65,11 @@ const navItems = [
     title: "Manage Listings",
     url: "/dashboard/listing",
     icon: Package,
-    matchPartial: true, // Will match any subroute of /dashboard/listing
+    matchPartial: true,
   },
+];
+
+const adminNavItems: NavItem[] = [
   {
     title: "Manage Messages",
     url: "/dashboard/messages",
@@ -71,16 +84,33 @@ const navItems = [
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
+  const [user, setUser] = React.useState<any>(null);
+  const [loading, setLoading] = React.useState(true);
 
-  const enhancedNavItems = navItems.map((item) => ({
+  React.useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const currentUser = await getCurrentUser();
+        setUser(currentUser);
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  const isAdmin = user?.role === "admin";
+  const allNavItems = [...commonNavItems, ...(isAdmin ? adminNavItems : [])];
+
+  const enhancedNavItems = allNavItems.map((item) => ({
     ...item,
     isActive: checkIfActive(item, pathname),
   }));
 
-  function checkIfActive(
-    item: (typeof navItems)[0],
-    currentPath: string
-  ): boolean {
+  function checkIfActive(item: NavItem, currentPath: string): boolean {
     if (item.matchExact) {
       return currentPath === item.url;
     }
@@ -92,6 +122,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       (currentPath === item.url ||
         currentPath === `${item.url}/` ||
         !currentPath.slice(item.url.length + 1).includes("/"))
+    );
+  }
+
+  if (loading) {
+    return (
+      <Sidebar
+        {...props}
+        className="bg-white border-r border-gray-200 flex flex-col h-full"
+      >
+        <SidebarHeader className="px-4 py-6 border-b border-gray-200">
+          <div className="animate-pulse h-10 w-full rounded bg-gray-200" />
+        </SidebarHeader>
+        <SidebarContent className="px-2 py-4 flex-1 overflow-y-auto">
+          <div className="space-y-2">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="animate-pulse h-8 w-full rounded bg-gray-100"
+              />
+            ))}
+          </div>
+        </SidebarContent>
+      </Sidebar>
     );
   }
 
@@ -129,7 +182,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       <SidebarContent className="px-2 py-4 flex-1 overflow-y-auto">
         <div className="space-y-1">
-          <NavMain items={enhancedNavItems} />
+          {enhancedNavItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton
+                  asChild
+                  className={cn(
+                    "w-full justify-start",
+                    item.isActive && "bg-gray-100 font-medium text-primary"
+                  )}
+                >
+                  <Link href={item.url} className="flex items-center gap-3">
+                    <Icon
+                      className={cn(
+                        "h-5 w-5",
+                        item.isActive ? "text-primary" : "text-gray-500"
+                      )}
+                    />
+                    <span>{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            );
+          })}
         </div>
       </SidebarContent>
     </Sidebar>

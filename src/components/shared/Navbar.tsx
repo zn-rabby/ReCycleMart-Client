@@ -242,7 +242,17 @@ export default function Navbar() {
               {isMagaDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in">
                   <Link
-                    href="/products"
+                    href="/category/mobiles"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/products"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Smartphones
+                  </Link>
+                  <Link
+                    href="/category/electronics"
                     className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
                       pathname === "/products"
                         ? "text-[#FF5E01] font-semibold"
@@ -252,27 +262,67 @@ export default function Navbar() {
                     Electronics
                   </Link>
                   <Link
-                    href="/products"
-                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                      pathname === "products"
-                        ? "text-[#FF5E01] font-semibold"
-                        : ""
-                    }`}
-                  >
-                    Fashion
-                  </Link>
-                  <Link
-                    href="/products"
+                    href="/category/vehicles"
                     className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
                       pathname === "/products"
                         ? "text-[#FF5E01] font-semibold"
                         : ""
                     }`}
                   >
-                    Home & Garden
+                    Cars & Bikes
                   </Link>
                   <Link
-                    href="/products"
+                    href="/category/vehicles"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/products"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Cars & Bikes
+                  </Link>
+                  <Link
+                    href="/category/property"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/products"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Real Estate
+                  </Link>
+                  <Link
+                    href="/category/home"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/products"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Home & Living
+                  </Link>
+                  <Link
+                    href="/category/pets"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/products"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Pets & Supplies
+                  </Link>
+                  <Link
+                    href="/category/cloths"
+                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                      pathname === "/products"
+                        ? "text-[#FF5E01] font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Cloths
+                  </Link>
+                  <Link
+                    href="/category/sports"
                     className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
                       pathname === "/products"
                         ? "text-[#FF5E01] font-semibold"
@@ -280,26 +330,6 @@ export default function Navbar() {
                     }`}
                   >
                     Sports & Outdoors
-                  </Link>
-                  <Link
-                    href="/products"
-                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                      pathname === "/products"
-                        ? "text-[#FF5E01] font-semibold"
-                        : ""
-                    }`}
-                  >
-                    Books & Media
-                  </Link>
-                  <Link
-                    href="/products"
-                    className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                      pathname === "/products"
-                        ? "text-[#FF5E01] font-semibold"
-                        : ""
-                    }`}
-                  >
-                    Toys & Games
                   </Link>
                 </div>
               )}
@@ -479,7 +509,17 @@ export default function Navbar() {
                 {isMagaDropdownOpen && (
                   <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in">
                     <Link
-                      href="/products"
+                      href="/category/mobiles"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/products"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Smartphones
+                    </Link>
+                    <Link
+                      href="/category/electronics"
                       className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
                         pathname === "/products"
                           ? "text-[#FF5E01] font-semibold"
@@ -489,27 +529,57 @@ export default function Navbar() {
                       Electronics
                     </Link>
                     <Link
-                      href="/products"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Fashion
-                    </Link>
-                    <Link
-                      href="/products"
+                      href="/category/vehicles"
                       className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
                         pathname === "/products"
                           ? "text-[#FF5E01] font-semibold"
                           : ""
                       }`}
                     >
-                      Home & Garden
+                      Cars & Bikes
                     </Link>
                     <Link
-                      href="/products"
+                      href="/category/property"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/products"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Real Estate
+                    </Link>
+                    <Link
+                      href="/category/home"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/products"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Home & Living
+                    </Link>
+                    <Link
+                      href="/category/pets"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/products"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Pets & Supplies
+                    </Link>
+                    <Link
+                      href="/category/cloths"
+                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
+                        pathname === "/products"
+                          ? "text-[#FF5E01] font-semibold"
+                          : ""
+                      }`}
+                    >
+                      Cloths
+                    </Link>
+                    <Link
+                      href="/category/sports"
                       className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
                         pathname === "/products"
                           ? "text-[#FF5E01] font-semibold"
@@ -517,26 +587,6 @@ export default function Navbar() {
                       }`}
                     >
                       Sports & Outdoors
-                    </Link>
-                    <Link
-                      href="/products"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Books & Media
-                    </Link>
-                    <Link
-                      href="/products"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Toys & Games
                     </Link>
                   </div>
                 )}

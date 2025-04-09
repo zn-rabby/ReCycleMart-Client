@@ -1,9 +1,10 @@
 "use client";
 
-import Logo from "@/assets/svgs/Logo";
+import RLogo from "../../assets/svgs/RLogo.svg";
 import { Facebook, Instagram, X, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import NMContainer from "../ui/core/NMContainer";
+import Image from "next/image";
 
 // Payment method SVG components
 const VisaIcon = () => (
@@ -104,7 +105,7 @@ const Footer = () => {
             {/* Column 1: Brand Info */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <Logo />
+                <Image src={RLogo} height={30} width={30} alt="r-logo"></Image>
                 <h1 className="text-2xl font-bold text-[#FF5E01]">
                   ReCycleMart
                 </h1>

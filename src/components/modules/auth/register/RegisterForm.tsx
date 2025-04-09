@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,9 @@ import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationSchema } from "./registerValidation";
 import { toast } from "sonner";
-import Logo from "@/assets/svgs/Logo";
+import RLogo from "../../../../assets/svgs/RLogo.svg";
+import Image from "next/image";
+
 import { registerUser } from "@/services/AuthService";
 
 export default function RegisterForm() {
@@ -48,9 +51,16 @@ export default function RegisterForm() {
     <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-8">
       {/* Logo and Heading */}
       <div className="flex flex-col items-center mb-8">
-        <Logo />
-        <h1 className="text-3xl font-bold text-gray-800 mt-4">Join ReCycleMart</h1>
-        <p className="text-gray-600">Create your account and start your journey!</p>
+        <div className="flex justify-center items-center">
+          <Image src={RLogo} height={30} width={30} alt="r-logo"></Image>
+          <p className="text-xl font-bold text-[#FF5E01]">ReCycleMart</p>
+        </div>
+        <h1 className="text-3xl font-bold text-gray-800 mt-4">
+          Join ReCycleMart
+        </h1>
+        <p className="text-gray-600">
+          Create your account and start your journey!
+        </p>
       </div>
 
       {/* Registration Form */}
@@ -140,7 +150,9 @@ export default function RegisterForm() {
             name="passwordConfirm"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700">Confirm Password</FormLabel>
+                <FormLabel className="text-gray-700">
+                  Confirm Password
+                </FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -162,7 +174,9 @@ export default function RegisterForm() {
           <Button
             type="submit"
             className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white py-3 rounded-lg transition-colors duration-300"
-            disabled={!password || !passwordConfirm || password !== passwordConfirm}
+            disabled={
+              !password || !passwordConfirm || password !== passwordConfirm
+            }
           >
             {isSubmitting ? "Registering..." : "Register"}
           </Button>

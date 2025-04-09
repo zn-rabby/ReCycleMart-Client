@@ -36,9 +36,10 @@ import { protectedRoutes } from "@/contants";
 import { logout, getCurrentUser } from "@/services/AuthService";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import Logo from "@/assets/svgs/Logo";
+import RLogo from "../../../../assets/svgs/RLogo.svg";
 import React, { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 
 interface NavItem {
   title: string;
@@ -291,7 +292,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 aria-label="ReCycleMart Home"
               >
                 <div className="flex items-center justify-center bg-primary rounded-lg p-2">
-                  <Logo />
+                  <Image
+                    src={RLogo}
+                    height={30}
+                    width={30}
+                    alt="r-logo"
+                  ></Image>
                 </div>
                 <div className="grid flex-1 text-left leading-tight">
                   <h2 className="font-bold text-lg text-gray-800">

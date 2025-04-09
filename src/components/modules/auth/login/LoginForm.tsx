@@ -15,9 +15,10 @@ import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
-import Logo from "@/assets/svgs/Logo";
 import { loginSchema } from "./loginValidation";
 import { useRouter } from "next/navigation";
+import RLogo from "../../../../assets/svgs/RLogo.svg";
+import Image from "next/image";
 
 export default function LoginForm() {
   // const searchParams = useSearchParams();
@@ -67,7 +68,10 @@ export default function LoginForm() {
     <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-8">
       {/* Logo and Heading */}
       <div className="flex flex-col items-center mb-8">
-        <Logo />
+        <div className="flex justify-center items-center">
+          <Image src={RLogo} height={30} width={30} alt="r-logo"></Image>
+          <p className="text-xl font-bold text-[#FF5E01]">ReCycleMart</p>
+        </div>
         <h1 className="text-3xl font-bold text-gray-800 mt-4">Welcome Back!</h1>
         <p className="text-gray-600">Login to your ReCycleMart account</p>
       </div>

@@ -12,7 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Logo from "@/assets/svgs/Logo";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -22,6 +21,8 @@ import { protectedRoutes } from "@/contants";
 import usaFlag from "@/assets/united-states.png";
 import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
+
+import RLogo from "../../assets/svgs/RLogo.svg";
 
 export default function Navbar() {
   const [isMagaDropdownOpen, setIsMagaDropdownOpen] = useState(false); // State for dropdown
@@ -43,7 +44,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4  flex items-center justify-between h-16">
         {/* Logo and Site Name */}
         <Link href="/" className="flex items-center gap-2">
-          <Logo />
+          <Image src={RLogo} height={30} width={30} alt="r-logo"></Image>
           <h1 className="text-xl font-bold whitespace-nowrap text-[#FF5E01]">
             ReCycleMart
           </h1>

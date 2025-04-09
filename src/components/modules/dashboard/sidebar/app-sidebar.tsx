@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { ChevronsUpDown, LogOut, Settings } from "lucide-react";
+import { ChevronsUpDown, LogOut } from "lucide-react";
 import {
   Home,
   User,
@@ -38,6 +38,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Logo from "@/assets/svgs/Logo";
 import React, { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface NavItem {
   title: string;
@@ -46,6 +47,7 @@ interface NavItem {
   matchExact?: boolean;
   matchPartial?: boolean;
   adminOnly?: boolean;
+  badge?: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -55,11 +57,11 @@ const NAV_ITEMS: NavItem[] = [
     icon: Home,
     matchExact: true,
   },
-  {
-    title: "Profile",
-    url: "/dashboard/profile",
-    icon: User,
-  },
+  //   {
+  //     title: "Profile",
+  //     url: "/dashboard/profile",
+  //     icon: User,
+  //   },
   {
     title: "Track Purchases",
     url: "/dashboard/purchase-history",
@@ -82,13 +84,13 @@ const NAV_ITEMS: NavItem[] = [
     matchPartial: true,
   },
   {
-    title: "Manage Messages",
+    title: "Messages",
     url: "/dashboard/messages",
     icon: Mail,
     adminOnly: true,
   },
   {
-    title: "Manage Newsletters",
+    title: "Newsletters",
     url: "/dashboard/newsletters",
     icon: Newspaper,
     adminOnly: true,
@@ -97,7 +99,7 @@ const NAV_ITEMS: NavItem[] = [
 
 export function NavUser() {
   const { isMobile } = useSidebar();
-  const { user, setIsLoading} = useUser();
+  const { user, setIsLoading } = useUser();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -108,7 +110,6 @@ export function NavUser() {
     try {
       setIsLoading(true);
       await logout();
-    //   clearUser();
 
       if (protectedRoutes.some((route) => pathname.match(route))) {
         router.push("/");
@@ -128,12 +129,16 @@ export function NavUser() {
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger
+            asChild
+            className="focus:outline-none rounded-lg"
+          >
             <SidebarMenuButton
               size="lg"
-              className="px-3 py-2 rounded-lg hover:bg-gray-100 data-[state=open]:bg-gray-100"
+              className="px-3 py-2 rounded-lg hover:bg-gray-50 data-[state=open]:bg-gray-100 transition-colors duration-200"
+              aria-label="User menu"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
+              <Avatar className="h-8 w-8 rounded-lg border border-gray-200">
                 <AvatarImage src={user?.avatar} alt={user?.name} />
                 <AvatarFallback className="rounded-lg bg-primary text-white font-medium">
                   {user?.name?.charAt(0)}
@@ -151,14 +156,14 @@ export function NavUser() {
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg shadow-lg border border-gray-200"
+            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg border border-gray-200 bg-white shadow-lg"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={8}
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-3 p-3 text-left">
-                <Avatar className="h-10 w-10 rounded-lg">
+                <Avatar className="h-10 w-10 rounded-lg border border-gray-200">
                   <AvatarImage src={user?.avatar} alt={user?.name} />
                   <AvatarFallback className="rounded-lg bg-primary text-white font-medium">
                     {user?.name?.charAt(0)}
@@ -175,19 +180,19 @@ export function NavUser() {
               </div>
             </DropdownMenuLabel>
 
-            <DropdownMenuSeparator className="my-1" />
+            <DropdownMenuSeparator className="my-1 bg-gray-200" />
 
             <DropdownMenuItem
-              onClick={() => router.push("/dashboard/settings")}
-              className="px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              onClick={() => router.push("/dashboard/profile")}
+              className="px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:bg-gray-50 cursor-pointer focus:outline-none"
             >
-              <Settings className="mr-2 size-4" />
-              Account Settings
+              <User className="mr-2 size-4" />
+              Profile
             </DropdownMenuItem>
 
             <DropdownMenuItem
               onClick={handleLogout}
-              className="px-3 py-2 text-sm text-red-600 hover:bg-red-50"
+              className="px-3 py-2 text-sm text-red-600 hover:bg-red-50 focus:bg-red-50 cursor-pointer focus:outline-none"
             >
               <LogOut className="mr-2 size-4" />
               Log out
@@ -244,18 +249,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         className="bg-white border-r border-gray-200 flex flex-col h-full"
       >
         <SidebarHeader className="px-4 py-6 border-b border-gray-200">
-          <div className="animate-pulse h-10 w-full rounded bg-gray-200" />
+          <Skeleton className="h-10 w-full rounded-lg" />
         </SidebarHeader>
         <SidebarContent className="px-2 py-4 flex-1 overflow-y-auto">
           <div className="space-y-2">
             {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="animate-pulse h-8 w-full rounded bg-gray-100"
-              />
+              <Skeleton key={i} className="h-8 w-full rounded" />
             ))}
           </div>
         </SidebarContent>
+        <div className="p-4 border-t border-gray-200">
+          <div className="flex items-center gap-3">
+            <Skeleton className="h-8 w-8 rounded-lg" />
+            <div className="flex-1 space-y-1">
+              <Skeleton className="h-4 w-3/4 rounded" />
+              <Skeleton className="h-3 w-1/2 rounded" />
+            </div>
+          </div>
+        </div>
       </Sidebar>
     );
   }
@@ -272,9 +283,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton
               size="lg"
               asChild
-              className="hover:bg-transparent"
+              className="hover:bg-transparent focus:outline-none"
             >
-              <Link href="/" className="flex items-center gap-3">
+              <Link
+                href="/"
+                className="flex items-center gap-3"
+                aria-label="ReCycleMart Home"
+              >
                 <div className="flex items-center justify-center bg-primary rounded-lg p-2">
                   <Logo />
                 </div>
@@ -293,35 +308,65 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
 
       <SidebarContent className="px-2 py-4 flex-1 overflow-y-auto">
-        <div className="space-y-1">
-          {filteredNavItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton
-                  asChild
-                  className={cn(
-                    "w-full justify-start",
-                    item.isActive && "bg-gray-100 font-medium text-primary"
-                  )}
-                >
-                  <Link href={item.url} className="flex items-center gap-3">
-                    <Icon
+        <nav aria-label="Main navigation">
+          <ul className="space-y-1">
+            {filteredNavItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.title}>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      asChild
                       className={cn(
-                        "h-5 w-5",
-                        item.isActive ? "text-primary" : "text-gray-500"
+                        "w-full justify-start transition-colors duration-200 focus:outline-none",
+                        item.isActive
+                          ? "bg-primary/10 font-medium text-primary"
+                          : "hover:bg-gray-50 text-gray-700"
                       )}
-                    />
-                    <span>{item.title}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            );
-          })}
-        </div>
+                    >
+                      <Link
+                        href={item.url}
+                        className="flex items-center gap-3 px-3 py-2 rounded-lg focus:outline-none"
+                        aria-current={item.isActive ? "page" : undefined}
+                      >
+                        <div
+                          className={cn(
+                            "p-1.5 rounded-md",
+                            item.isActive ? "bg-primary/20" : "bg-gray-100"
+                          )}
+                        >
+                          <Icon
+                            className={cn(
+                              "h-5 w-5 flex-shrink-0",
+                              item.isActive ? "text-primary" : "text-gray-600"
+                            )}
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <span className="truncate">{item.title}</span>
+                        {item.badge && (
+                          <span
+                            className={cn(
+                              "ml-auto px-2 py-0.5 rounded-full text-xs font-medium",
+                              item.isActive
+                                ? "bg-primary/10 text-primary"
+                                : "bg-gray-100 text-gray-600"
+                            )}
+                          >
+                            {item.badge}
+                          </span>
+                        )}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </SidebarContent>
 
-      <div className="p-4 border-t border-gray-200">
+      <div className="p-4 border-t border-gray-200 bg-gray-50">
         <NavUser />
       </div>
     </Sidebar>

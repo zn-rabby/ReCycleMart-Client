@@ -29,7 +29,7 @@ export default function SalesAnalytics({ data }: { data: TSalesData[] }) {
             <Line
               type="monotone"
               dataKey="totalSales"
-              stroke="#F59E0B"
+              stroke="#FF5E01"
               strokeWidth={3}
             />
           </LineChart>
@@ -45,7 +45,7 @@ export default function SalesAnalytics({ data }: { data: TSalesData[] }) {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="totalRevenue" fill="#F59E0B" />
+            <Bar dataKey="totalRevenue" fill="#FF5E01" />
           </BarChart>
         </ResponsiveContainer>
       </div>

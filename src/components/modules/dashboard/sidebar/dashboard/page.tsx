@@ -45,7 +45,7 @@ export default function DashboardOverview({
           <TrendingUpIcon className="h-6 w-6 text-red-500" />
         </CardHeader>
         <CardContent className="text-center">
-          <div className="text-3xl font-bold text-gray-800">৳ {totalSales}</div>
+          <div className="text-3xl font-bold text-gray-800">$ {totalSales}</div>
         </CardContent>
       </Card>
     </div>

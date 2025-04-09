@@ -34,7 +34,7 @@ export default function AddProductsForm() {
 
   const form = useForm<IProduct>({
     defaultValues: {
-      //   name: "",
+      name: "",
       title: "",
       description: "",
       ratingCount: 4,
@@ -96,7 +96,7 @@ export default function AddProductsForm() {
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {/* Name */}
-            {/* <FormField
+            <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
@@ -108,7 +108,7 @@ export default function AddProductsForm() {
                   <FormMessage />
                 </FormItem>
               )}
-            /> */}
+            />
 
             {/* Title */}
             <FormField

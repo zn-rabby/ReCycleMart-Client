@@ -1,4 +1,5 @@
 export interface IUser {
+    avatar: string | undefined;
     _id:string;
   name: string;
   email: string;

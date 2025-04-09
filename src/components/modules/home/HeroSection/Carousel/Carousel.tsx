@@ -81,7 +81,13 @@ const HeroCarousel = () => {
                           {banner.cta}
                         </Button>
                       </Link>
-                      <Link href={index % 2 === 0 ? "/sell" : "/about"}>
+                      <Link
+                        href={
+                          index % 2 === 0
+                            ? "/dashboard/listing/add-listing"
+                            : "/about"
+                        }
+                      >
                         <Button
                           variant="outline"
                           className="border-2 border-white bg-transparent hover:bg-white hover:text-[#FF5E01] font-semibold px-8 py-5 text-base transition-all duration-200 hover:scale-105"

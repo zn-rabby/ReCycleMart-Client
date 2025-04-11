@@ -15,7 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/context/UserContext";
+// import { useUser } from "@/context/UserContext";
 import { logout } from "@/services/AuthService";
 import { protectedRoutes } from "@/contants";
 import usaFlag from "@/assets/united-states.png";
@@ -23,17 +23,18 @@ import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
 import RLogo from "../../assets/svgs/RLogo.svg";
+import { IUser } from "@/types";
 
-export default function Navbar() {
+export default function Navbar({ user }: { user: IUser }) {
   const [isMagaDropdownOpen, setIsMagaDropdownOpen] = useState(false); // State for dropdown
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user, setIsLoading } = useUser();
+  //   const { user, setIsLoading } = useUser();
   const pathname = usePathname();
   const router = useRouter();
 
   const handleLogOut = () => {
     logout();
-    setIsLoading(true);
+    // setIsLoading(true);
     if (protectedRoutes.some((route) => pathname.match(route))) {
       router.push("/");
     }

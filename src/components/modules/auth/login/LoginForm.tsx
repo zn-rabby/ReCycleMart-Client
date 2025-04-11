@@ -42,7 +42,7 @@ export default function LoginForm() {
       const res = await loginUser(data);
       if (res?.success) {
         toast.success(res?.message);
-
+        localStorage.setItem("shouldReload", "true");
         router.push("/");
       } else {
         toast.error(res?.message);

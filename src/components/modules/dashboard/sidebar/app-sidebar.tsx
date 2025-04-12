@@ -166,11 +166,11 @@ export function NavUser() {
               <div className="flex items-center gap-3 p-3 text-left">
                 <Avatar className="h-10 w-10 rounded-lg border border-gray-200">
                   <AvatarImage src={user?.avatar} alt={user?.name} />
-                  <AvatarFallback className="rounded-lg bg-primary text-white font-medium">
+                  <AvatarFallback className="rounded-lg bg-primary text-white font-medium ">
                     {user?.name?.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="grid flex-1 text-left leading-tight">
+                <div className="grid flex-1 text-left leading-tight ">
                   <span className="truncate font-medium text-gray-900">
                     {user?.name}
                   </span>
@@ -187,7 +187,7 @@ export function NavUser() {
               onClick={() => router.push("/dashboard/profile")}
               className="px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:bg-gray-50 cursor-pointer focus:outline-none"
             >
-              <User className="mr-2 size-4" />
+              <User className="mr-2 size-4 text-5xl" />
               Profile
             </DropdownMenuItem>
 
@@ -284,11 +284,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton
               size="lg"
               asChild
-              className="hover:bg-transparent focus:outline-none"
+              className="hover:bg-transparent focus:outline-none bg-white"
             >
               <Link
                 href="/"
-                className="flex items-center gap-3"
+                className="flex items-center gap-3 bg-white"
                 aria-label="ReCycleMart Home"
               >
                 <div className="flex items-center justify-center bg-primary rounded-lg p-2">
@@ -300,7 +300,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   ></Image>
                 </div>
                 <div className="grid flex-1 text-left leading-tight">
-                  <h2 className="font-bold text-lg text-gray-800">
+                  <h2 className="font-bold text-lg text-[#FF5E01]">
                     ReCycleMart
                   </h2>
                   <p className="text-xs text-gray-500">

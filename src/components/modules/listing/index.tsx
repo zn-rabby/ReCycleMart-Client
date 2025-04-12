@@ -21,13 +21,13 @@ const ManageProducts = ({
   meta: IMeta;
 }) => {
   const router = useRouter();
-console.log("products page",products)
+  console.log("products page", products);
 
   const handleView = (product: IProduct) => {
     console.log("Viewing product:", product);
   };
 
-  const handleDelete = async(productId: string) => {
+  const handleDelete = async (productId: string) => {
     console.log("Deleting product with ID:", productId);
     try {
       if (productId) {
@@ -66,7 +66,7 @@ console.log("products page",products)
       header: "Category",
       cell: ({ row }) => <span>{row.original.title}</span>,
     },
-  
+
     {
       accessorKey: "stock",
       header: "Stock",
@@ -82,21 +82,21 @@ console.log("products page",products)
       header: "Price",
       cell: ({ row }) => <span>$ {row.original.price.toFixed(2)}</span>,
     },
- 
+
     {
       accessorKey: "action",
       header: "Action",
       cell: ({ row }) => (
         <div className="flex items-center space-x-3">
-      <Link href={`/products/${row.original._id}`} passHref>
-  <button
-    className="text-gray-500 hover:text-blue-500"
-    title="View"
-    onClick={() => handleView(row.original)}
-  >
-    <Eye className="w-5 h-5" />
-  </button>
-</Link>
+          <Link href={`/products/${row.original._id}`} passHref>
+            <button
+              className="text-gray-500 hover:text-blue-500"
+              title="View"
+              onClick={() => handleView(row.original)}
+            >
+              <Eye className="w-5 h-5" />
+            </button>
+          </Link>
           <button
             className="text-gray-500 hover:text-green-500"
             title="Edit"
@@ -129,6 +129,7 @@ console.log("products page",products)
           <Button
             onClick={() => router.push("/dashboard/listing/add-listing")}
             size="sm"
+            className="bg-[#FF5E01]"
           >
             Add Listing <Plus />
           </Button>
@@ -136,7 +137,7 @@ console.log("products page",products)
       </div>
       <NMTable columns={columns} data={products || []} />
       <div className="flex justify-end p-3">
-      <TablePagination totalPage={meta?.totalPage} />
+        <TablePagination totalPage={meta?.totalPage} />
       </div>
     </div>
   );

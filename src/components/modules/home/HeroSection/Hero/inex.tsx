@@ -53,10 +53,7 @@ export default function HeroSection() {
                   Browse Items
                 </Button>
               </Link>
-              <Link
-                href="/dashboard/listing/add-listing"
-                className="w-full sm:w-auto"
-              >
+              <Link href="/dashboard/listing" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="lg"

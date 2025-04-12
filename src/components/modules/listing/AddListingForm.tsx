@@ -15,7 +15,6 @@ import { Input } from "@/components/ui/input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
-import Logo from "@/assets/svgs/Logo";
 import {
   Select,
   SelectContent,
@@ -84,16 +83,12 @@ export default function AddProductsForm() {
   };
 
   return (
-    <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-2xl p-5">
+    <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-7xl p-5">
       <div className="flex items-center space-x-4 mb-5">
-        <Logo />
         <h1 className="text-xl font-bold">Add Product</h1>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="flex justify-between items-center border-t border-b py-3 my-5">
-            <p className="text-primary font-bold text-xl">Basic Information</p>
-          </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {/* Name */}
             <FormField
@@ -319,7 +314,11 @@ export default function AddProductsForm() {
           </div>
 
           {/* Submit Button */}
-          <Button type="submit" className="mt-5 w-full" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            className="mt-5 w-1/2 bg-[#FF5E01] hover:bg-[#E55601] mx-auto block"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? "Adding Listing....." : "Add Listing"}
           </Button>
         </form>

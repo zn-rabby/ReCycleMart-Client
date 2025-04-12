@@ -1,4 +1,5 @@
 export interface IUser {
+  [x: string]: any;
   avatar: string | undefined;
   _id: string;
   name: string;

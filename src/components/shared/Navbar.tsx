@@ -25,7 +25,7 @@ import Image from "next/image";
 import RLogo from "../../assets/svgs/RLogo.svg";
 import { IUser } from "@/types";
 
-export default function Navbar({ user }: { user: IUser }) {
+export  default  function Navbar({ user }: { user: IUser }) {
   const [isMagaDropdownOpen, setIsMagaDropdownOpen] = useState(false); // State for dropdown
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   //   const { user, setIsLoading } = useUser();

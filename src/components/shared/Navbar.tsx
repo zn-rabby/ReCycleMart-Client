@@ -25,7 +25,7 @@ import Image from "next/image";
 import RLogo from "../../assets/svgs/RLogo.svg";
 import { IUser } from "@/types";
 
-export  default  function Navbar({ user }: { user: IUser }) {
+export default function Navbar({ user }: { user: IUser }) {
   const [isMagaDropdownOpen, setIsMagaDropdownOpen] = useState(false); // State for dropdown
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   //   const { user, setIsLoading } = useUser();
@@ -95,15 +95,9 @@ export  default  function Navbar({ user }: { user: IUser }) {
               <Link href="/cart">
                 <Button
                   variant="ghost"
-                  className="rounded-full p-2 text-[#FF5E01] border border-[#FF5E01] hover:bg-[#FF5E01]/10 transition-colors duration-300 relative"
+                  className="rounded-full p-2 text-[#FF5E01] border border-[#FF5E01] hover:bg-[#FF5E01] hover:text-white transition-colors duration-300 relative"
                 >
-                  {/* Heart Icon */}
                   <Heart className="w-6 h-6" />
-
-                  {/* Wishlist Count Badge */}
-                  {/* <span className="absolute -top-2 -right-2 bg-[#FF5E01] text-white text-xs rounded-full px-2 py-1">
-                    {0}
-                  </span> */}
                 </Button>
               </Link>
               <DropdownMenu>

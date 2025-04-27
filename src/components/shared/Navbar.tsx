@@ -469,123 +469,73 @@ export default function Navbar({ user }: { user: IUser }) {
                 Products
               </Link> */}
               {/* Maga Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsMagaDropdownOpen(true)} // Open dropdown on hover
-                onMouseLeave={() => setIsMagaDropdownOpen(false)} // Close dropdown on hover out
-              >
-                <Link
-                  href="/products"
-                  className={`font-medium flex items-center space-x-1 ${
-                    pathname === "/products"
-                      ? "text-[#FF5E01] font-semibold"
-                      : "text-white hover:text-[#FF5E01]"
-                  }`}
+              <div className="relative group">
+                <div
+                  className="inline-block" // Added wrapper div
+                  onMouseEnter={() => setIsMagaDropdownOpen(true)}
+                  onMouseLeave={() => setIsMagaDropdownOpen(false)}
                 >
-                  <span>Products</span>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      isMagaDropdownOpen ? "transform rotate-180" : ""
+                  <Link
+                    href="/products"
+                    className={`font-medium flex items-center space-x-1 ${
+                      pathname === "/products"
+                        ? "text-[#FF5E01] font-semibold"
+                        : "text-white hover:text-[#FF5E01]"
                     }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </Link>
+                    <span>Products</span>
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isMagaDropdownOpen ? "transform rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </Link>
+                </div>
 
-                {/* Dropdown Menu */}
-                {isMagaDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in">
-                    <Link
-                      href="/category/mobiles"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Smartphones
-                    </Link>
-                    <Link
-                      href="/category/electronics"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Electronics
-                    </Link>
-                    <Link
-                      href="/category/vehicles"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Cars & Bikes
-                    </Link>
-                    <Link
-                      href="/category/property"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Real Estate
-                    </Link>
-                    <Link
-                      href="/category/home"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Home & Living
-                    </Link>
-                    <Link
-                      href="/category/pets"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Pets & Supplies
-                    </Link>
-                    <Link
-                      href="/category/cloths"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Cloths
-                    </Link>
-                    <Link
-                      href="/category/sports"
-                      className={`block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200 ${
-                        pathname === "/products"
-                          ? "text-[#FF5E01] font-semibold"
-                          : ""
-                      }`}
-                    >
-                      Sports & Outdoors
-                    </Link>
-                  </div>
-                )}
+                {/* Dropdown Menu with hover bridge */}
+                <div
+                  className="absolute top-full left-0 pt-2 invisible group-hover:visible"
+                  onMouseEnter={() => setIsMagaDropdownOpen(true)}
+                  onMouseLeave={() => setIsMagaDropdownOpen(false)}
+                >
+                  {isMagaDropdownOpen && (
+                    <div className="w-48 bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in border border-gray-100">
+                      {[
+                        { href: "/category/mobiles", text: "Smartphones" },
+                        { href: "/category/electronics", text: "Electronics" },
+                        { href: "/category/vehicles", text: "Cars & Bikes" },
+                        { href: "/category/property", text: "Real Estate" },
+                        { href: "/category/home", text: "Home & Living" },
+                        { href: "/category/pets", text: "Pets & Supplies" },
+                        { href: "/category/cloths", text: "Cloths" },
+                        { href: "/category/sports", text: "Sports & Outdoors" },
+                      ].map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`block px-4 py-2.5 text-gray-800 hover:bg-[#FF5E01]/10 transition-colors duration-150 ${
+                            pathname === item.href
+                              ? "text-[#FF5E01] font-medium bg-[#FF5E01]/5"
+                              : ""
+                          }`}
+                        >
+                          {item.text}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
               {/*  */}
               <Link

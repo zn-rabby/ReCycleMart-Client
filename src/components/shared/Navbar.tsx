@@ -24,6 +24,7 @@ import Image from "next/image";
 
 import RLogo from "../../assets/svgs/RLogo.svg";
 import { IUser } from "@/types";
+import { SearchBar } from "./search-bar";
 
 export default function Navbar({ user }: { user: IUser }) {
   const [isMagaDropdownOpen, setIsMagaDropdownOpen] = useState(false); // State for dropdown
@@ -53,12 +54,13 @@ export default function Navbar({ user }: { user: IUser }) {
 
         {/* Desktop Search Bar */}
         <div className="hidden md:flex flex-grow max-w-md mx-4 relative">
-          <input
+          <SearchBar></SearchBar>
+          {/* <input
             type="text"
             placeholder="Search for products"
             className="w-full border border-gray-100 rounded py-2 pl-5 pr-10 focus:outline-none focus:ring-2 "
           />
-          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-200" />
+          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-200" /> */}
         </div>
 
         {/* Desktop Navigation */}

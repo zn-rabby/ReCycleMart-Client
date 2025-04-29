@@ -2,6 +2,7 @@
 
 import { Button } from "../ui/button";
 import { Heart, LogOut, Menu, Search } from "lucide-react";
+import { User, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import {
   DropdownMenu,
@@ -97,7 +98,7 @@ export default function Navbar({ user }: { user: IUser }) {
               <Link href="/cart">
                 <Button
                   variant="ghost"
-                  className="rounded-full p-2 text-[#FF5E01] border border-[#FF5E01] hover:bg-[#FF5E01] hover:text-white transition-colors duration-300 relative"
+                  className="rounded-full p-2 text-[#FF5E01] border cursor-pointer border-[#FF5E01] hover:bg-[#FF5E01] hover:text-white transition-colors duration-300 relative"
                 >
                   <Heart className="w-6 h-6" />
                 </Button>
@@ -107,7 +108,7 @@ export default function Navbar({ user }: { user: IUser }) {
                   <Avatar className="cursor-pointer">
                     <AvatarImage
                       className="h-8 w-8"
-                      src="https://github.com/shadcn.png"
+                      src="https://randomuser.me/api/portraits/men/32.jpg"
                     />
                     <AvatarFallback>U</AvatarFallback>
                   </Avatar>
@@ -119,10 +120,11 @@ export default function Navbar({ user }: { user: IUser }) {
                     <DropdownMenuItem
                       className={
                         pathname === "/dashboard/profile"
-                          ? "bg-[#FF5E01] text-white"
-                          : ""
+                          ? "bg-[#FF5E01] text-white cursor-pointer"
+                          : "cursor-pointer"
                       }
                     >
+                      <User className="w-4 h-4 mr-2" />
                       Profile
                     </DropdownMenuItem>
                   </Link>
@@ -130,10 +132,11 @@ export default function Navbar({ user }: { user: IUser }) {
                     <DropdownMenuItem
                       className={
                         pathname === "/dashboard"
-                          ? "bg-[#FF5E01] text-white"
-                          : ""
+                          ? "bg-[#FF5E01] text-white cursor-pointer"
+                          : "cursor-pointer"
                       }
                     >
+                      <LayoutDashboard className="w-4 h-4 mr-2" />
                       Dashboard
                     </DropdownMenuItem>
                   </Link>
@@ -150,7 +153,7 @@ export default function Navbar({ user }: { user: IUser }) {
             </>
           ) : (
             <Link href="/login">
-              <Button className="rounded-lg bg-[#FF5E01] hover:bg-[#D94F01] text-white">
+              <Button className="rounded-lg bg-[#FF5E01] hover:bg-[#D94F01] text-white cursor-pointer">
                 Login
               </Button>
             </Link>
@@ -410,7 +413,7 @@ export default function Navbar({ user }: { user: IUser }) {
                 </Link>
                 <Link
                   href="/cart"
-                  className="flex items-center gap-2 text-white hover:text-[#FF5E01]"
+                  className="flex items-center gap-2 text-white hover:text-[#FF5E01] "
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Heart className="w-5 h-5 text-red-500" />

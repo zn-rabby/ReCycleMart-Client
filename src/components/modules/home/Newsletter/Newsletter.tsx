@@ -68,7 +68,7 @@ export default function Newsletter() {
   return (
     <section className="w-full my-16 px-4 py-12 flex justify-center items-center relative overflow-hidden">
       {/* Modern background with new color theme */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#101828] to-[#E45301] opacity-95"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E17] to-[#E45301] opacity-95"></div>
 
       {/* Decorative elements */}
       <Recycle className="absolute left-10 top-8 text-white/10 w-32 h-32" />
@@ -104,7 +104,7 @@ export default function Newsletter() {
                             {...field}
                             type="email"
                             placeholder="your.email@example.com"
-                            className="bg-[#101828]/80 text-white placeholder:text-white/70 border-[#E45301]/50 focus:ring-2 focus:ring-[#E97534] h-12 w-full"
+                            className="bg-[#0A0E17]/80 text-white placeholder:text-white/70 border-[#E45301]/50 focus:ring-2 focus:ring-[#E97534] h-12 w-full"
                           />
                         </FormControl>
                         <FormMessage className="text-[#E97534]" />

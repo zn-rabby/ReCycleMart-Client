@@ -43,7 +43,7 @@ export default function Navbar({ user }: { user: IUser }) {
   };
 
   return (
-    <header className="border-b w-full bg-[#101828] text-white  shadow-sm fixed top-0 z-50">
+    <header className="border-b w-full bg-[#0A0E17] text-white  shadow-sm fixed top-0 z-50">
       <div className="container mx-auto px-4  flex items-center justify-between h-16">
         {/* Logo and Site Name */}
         <Link href="/" className="flex items-center gap-2">
@@ -165,7 +165,7 @@ export default function Navbar({ user }: { user: IUser }) {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#101828] text-white border-t border-gray-200">
+        <div className="md:hidden bg-[#0A0E17] text-white border-t border-gray-200">
           <div className="p-4 flex flex-col gap-4">
             {/* Mobile Search Bar */}
             <div className="relative">
@@ -431,7 +431,7 @@ export default function Navbar({ user }: { user: IUser }) {
       )}
 
       <div className="container mx-auto px-4">
-        <div className="bg-[#101828] hidden md:flex text-white py-4  relative">
+        <div className="bg-[#0A0E17] hidden md:flex text-white py-4  relative">
           <div className="container mx-auto flex justify-between items-center">
             {/* Left Section: Discount Banner */}
             <div className="flex items-center">

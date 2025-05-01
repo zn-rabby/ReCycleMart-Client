@@ -97,7 +97,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#0A0E17] text-white">
       <NMContainer>
         <div className="py-12 md:py-16">
           {/* 4-Column Grid Layout */}

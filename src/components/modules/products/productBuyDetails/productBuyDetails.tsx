@@ -146,7 +146,7 @@ const ProductBuyDetails = ({ product }: { product: IProduct }) => {
             <div className="pt-4">
               <Button
                 onClick={handleOrder}
-                className="w-full py-6 text-lg font-medium bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 shadow-lg"
+                className="w-full py-6 text-lg font-medium bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 shadow-lg cursor-pointer"
               >
                 Proceed to Payment
                 <ChevronRight className="w-5 h-5 ml-2" />

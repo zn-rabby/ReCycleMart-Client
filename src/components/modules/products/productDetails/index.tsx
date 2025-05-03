@@ -445,7 +445,7 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
                 <Link href={`/buy/${product?._id}`} passHref className="w-full">
                   <Button
                     size="lg"
-                    className="w-full h-14 bg-gradient-to-r from-[#FF5E01] to-[#FF8C01] hover:from-[#E55601] hover:to-[#E57A01] text-white text-lg font-semibold shadow-md hover:shadow-lg transition-all"
+                    className="w-full h-14 bg-gradient-to-r from-[#FF5E01] to-[#FF8C01] hover:from-[#E55601] hover:to-[#E57A01] text-white text-lg font-semibold shadow-md hover:shadow-lg transition-all cursor-pointer"
                     disabled={product.status === "sold"}
                   >
                     {product.status === "sold" ? "Sold Out" : "Buy Now"}

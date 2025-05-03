@@ -89,13 +89,13 @@ export default function Newsletter() {
 
           <FormProvider {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="flex flex-col sm:flex-row gap-4 items-end justify-center w-full">
-                <div className="flex-1 w-full">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-end justify-center w-full">
+                <div className="w-full md:w-1/2">
                   <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                      <FormItem className="text-left">
+                      <FormItem className="text-left w-full">
                         <FormLabel className="text-white/90 text-sm font-medium">
                           Email Address
                         </FormLabel>
@@ -113,7 +113,7 @@ export default function Newsletter() {
                   />
                 </div>
                 <Button
-                  className="bg-gradient-to-r from-[#E45301] to-[#E97534] hover:from-[#E45301]/90 hover:to-[#E97534]/90 text-white h-12 px-8 font-medium transition-all hover:scale-105 hover:shadow-lg whitespace-nowrap"
+                  className="w-full sm:w-auto bg-gradient-to-r from-[#E45301] to-[#E97534] hover:from-[#E45301]/90 hover:to-[#E97534]/90 text-white h-12 px-8 font-medium transition-all hover:scale-105 hover:shadow-lg whitespace-nowrap cursor-pointer"
                   type="submit"
                   disabled={isSubmitting}
                 >

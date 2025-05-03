@@ -20,7 +20,9 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   const dispatch = useAppDispatch();
   const [isHeartClicked, setIsHeartClicked] = useState(false); // State to track if heart button is clicked
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
     e.currentTarget.src =
       "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png";
   };
@@ -69,18 +71,25 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       </CardHeader>
 
       <CardContent className="p-2">
-        <CardTitle
-          title={product?.title}
-          className="font-semibold cursor-pointer text-sm hover:text-blue-600 transition-colors duration-300"
-        >
-          {product?.title.length > 22 ? product?.title.slice(0, 22) + "..." : product?.title}
-        </CardTitle>
+        <Link href={`/products/${product?._id}`} passHref>
+          <CardTitle
+            title={product?.title}
+            className="font-semibold cursor-pointer text-sm hover:text-blue-600 transition-colors duration-300"
+          >
+            {product?.title.length > 22
+              ? product?.title.slice(0, 22) + "..."
+              : product?.title}
+          </CardTitle>
+        </Link>
 
         <div className="flex items-center justify-between mt-2">
           <p className="text-sm text-gray-600">
             <span className="font-semibold">Category:</span> {product?.category}
           </p>
-          <p className="text-sm font-semibold text-gray-800"><span className="text-bold">$ </span>{product?.price.toFixed(2)}</p>
+          <p className="text-sm font-semibold text-gray-800">
+            <span className="text-bold">$ </span>
+            {product?.price.toFixed(2)}
+          </p>
         </div>
 
         <div className="flex items-center mt-2">
@@ -88,9 +97,15 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             <Star
               key={index}
               className={`h-4 w-4 ${
-                index < (product?.ratingCount || 0) ? "text-yellow-400" : "text-gray-300"
+                index < (product?.ratingCount || 0)
+                  ? "text-yellow-400"
+                  : "text-gray-300"
               }`}
-              fill={index < (product?.ratingCount || 0) ? "currentColor" : "transparent"}
+              fill={
+                index < (product?.ratingCount || 0)
+                  ? "currentColor"
+                  : "transparent"
+              }
             />
           ))}
           <span className="text-sm text-gray-500 ml-2">
@@ -105,7 +120,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             <Button
               disabled={product?.status !== "available"}
               size="sm"
-              className="w-24 bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 transition-all duration-200"
+              className="w-24 bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
             >
               Details
             </Button>
@@ -114,7 +129,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             <Button
               disabled={product?.status !== "available"}
               size="sm"
-              className="w-24 bg-[#FF5E01] hover:bg-[#D94F01] text-white transition-all duration-200"
+              className="w-24 bg-[#FF5E01] hover:bg-[#D94F01] text-white transition-all duration-200 cursor-pointer"
             >
               Buy
             </Button>

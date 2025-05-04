@@ -104,15 +104,35 @@ const ContactPage = () => {
                     Chat with Us
                   </h3>
                   <div className="flex flex-wrap gap-4">
-                    <Button className="flex items-center gap-2 bg-[#1877F2] hover:bg-[#166FE5]">
-                      <Facebook className="w-5 h-5" /> Facebook
-                    </Button>
-                    <Button className="flex items-center gap-2 bg-[#0A66C2] hover:bg-[#0959B2]">
-                      <Linkedin className="w-5 h-5" /> LinkedIn
-                    </Button>
-                    <Button className="flex items-center gap-2 bg-[#1DA1F2] hover:bg-[#1A8CD8]">
-                      <Twitter className="w-5 h-5" /> Twitter
-                    </Button>
+                    <a
+                      href="https://www.facebook.com/YourPage"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="flex items-center gap-2 bg-[#1877F2] hover:bg-[#166FE5] cursor-pointer">
+                        <Facebook className="w-5 h-5" /> Facebook
+                      </Button>
+                    </a>
+
+                    <a
+                      href="https://www.linkedin.com/in/YourProfile"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="flex items-center gap-2 bg-[#0A66C2] hover:bg-[#0959B2] cursor-pointer">
+                        <Linkedin className="w-5 h-5" /> LinkedIn
+                      </Button>
+                    </a>
+
+                    <a
+                      href="https://twitter.com/YourProfile"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="flex items-center gap-2 bg-[#1DA1F2] hover:bg-[#1A8CD8] cursor-pointer">
+                        <Twitter className="w-5 h-5" /> Twitter
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </div>

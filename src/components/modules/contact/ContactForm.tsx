@@ -142,7 +142,7 @@ const ContactForm = () => {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full bg-[#FF5E01]"
+            className="w-full bg-[#FF5E01] cursor-pointer"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Sending..." : "Send Message"}

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "../ui/button";
-import { Heart, LogIn, LogOut, Menu } from "lucide-react";
+import { Heart, LogIn, LogOut, Menu, ShieldCheck } from "lucide-react";
 import { User, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import {
@@ -19,7 +19,6 @@ import { useRouter } from "next/navigation";
 // import { useUser } from "@/context/UserContext";
 import { logout } from "@/services/AuthService";
 import { protectedRoutes } from "@/contants";
-import usaFlag from "@/assets/united-states.png";
 import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
@@ -66,24 +65,30 @@ export default function Navbar({ user }: { user: IUser }) {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          {/* <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
-            Speacil Offet
-          </Button> */}
-          {/* right side */}
-          {/* contact info */}
+          {/* Contact Info Section */}
+          {/* Contact Info Section */}
           <div className="flex flex-col md:flex-row lg:items-center gap-2 md:gap-4">
-            <p className="text-sm">
-              <Phone size={18} className="inline text-[#D94F01]" /> Contact:
+            <a
+              href="tel:+8801540643211"
+              className="text-sm hover:underline flex items-center gap-1"
+            >
+              <Phone size={18} className="text-[#D94F01]" />
               +880 154 064 3211
-            </p>
-            <p className="text-sm">
-              <Mail size={18} className="inline text-[#D94F01]" />{" "}
+            </a>
+            <a
+              href="mailto:support@recyclemart.com"
+              className="text-sm hover:underline flex items-center gap-1"
+            >
+              <Mail size={18} className="text-[#D94F01]" />
               support@recyclemart.com
-            </p>
-            <div className="text-sm flex items-center gap-1">
-              <Image src={usaFlag} width={25} height={25} alt="usa flag" />
-              English
-            </div>
+            </a>
+            <a
+              href="#"
+              className="text-sm hover:underline flex items-center gap-1"
+            >
+              <ShieldCheck size={18} className="text-[#D94F01]" />
+              Buyer Guarantee
+            </a>
           </div>
 
           {/* User Menu */}

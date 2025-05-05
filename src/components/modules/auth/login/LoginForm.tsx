@@ -17,8 +17,6 @@ import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
 import { loginSchema } from "./loginValidation";
 import { useRouter } from "next/navigation";
-import RLogo from "../../../../assets/svgs/RLogo.svg";
-import Image from "next/image";
 
 export default function LoginForm() {
   // const searchParams = useSearchParams();
@@ -65,37 +63,50 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-8">
+    <div className="w-full p-4">
       {/* Logo and Heading */}
-      <div className="flex flex-col items-center mb-8">
-        <div className="flex justify-center items-center">
-          <Image src={RLogo} height={30} width={30} alt="r-logo"></Image>
-          <p className="text-xl font-bold text-[#FF5E01]">ReCycleMart</p>
-        </div>
-        <h1 className="text-3xl font-bold text-gray-800 mt-4">Welcome Back!</h1>
-        <p className="text-gray-600">Login to your ReCycleMart account</p>
+      <div className="text-center mb-8">
+        <h2 className="text-2xl font-bold text-gray-900">Login</h2>
+        <p className="text-gray-700 mt-2 font-semibold">
+          Access your ReCycleMart account
+        </p>
       </div>
 
       {/* Login Form */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {/* Email Field */}
-          <div className="flex flex-col gap-4 md:flex-row ">
+          <div className="flex justify-evenly ">
             <Button
               type="submit"
               onClick={handleUserButtonClick}
-              className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white flex-1  "
+              variant="outline"
+              className="border-[#FF965A] text-[#FF965A] hover:bg-blue-50 hover:text-[#FF965A] cursor-pointer"
             >
-              User
+              User Demo
             </Button>
+
             <Button
               type="submit"
               onClick={handleAdminButtonClick}
-              className="cursor-pointer bg-orange-600 hover:bg-orange-700 text-white flex-1 "
+              variant="outline"
+              className="border-orange-500 text-orange-500 hover:bg-orange-50 hover:text-orange-600 cursor-pointer"
             >
-              Admin
+              Admin Demo
             </Button>
           </div>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-gray-500">
+                Or continue with
+              </span>
+            </div>
+          </div>
+
           <FormField
             control={form.control}
             name="email"
@@ -138,7 +149,7 @@ export default function LoginForm() {
           {/* Login Button */}
           <Button
             type="submit"
-            className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white py-3 rounded-lg transition-colors duration-300"
+            className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white py-3 rounded-lg transition-colors duration-300 cursor-pointer"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Logging in..." : "Login"}
@@ -147,9 +158,12 @@ export default function LoginForm() {
       </Form>
 
       {/* Register Link */}
-      <p className="text-sm text-gray-600 text-center mt-6">
+      <p className="text-sm text-gray-700 text-center mt-6">
         Don{"'"}t have an account?{" "}
-        <Link href="/register" className="text-[#FF5E01] hover:underline">
+        <Link
+          href="/register"
+          className="text-[#FF5E01] hover:underline font-bold"
+        >
           Register
         </Link>
       </p>

@@ -16,12 +16,12 @@ import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationSchema } from "./registerValidation";
 import { toast } from "sonner";
-import RLogo from "../../../../assets/svgs/RLogo.svg";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { registerUser } from "@/services/AuthService";
 
 export default function RegisterForm() {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(registrationSchema),
   });
@@ -39,6 +39,7 @@ export default function RegisterForm() {
       const res = await registerUser(data);
       if (res?.success) {
         toast.success(res?.message);
+        router.push("/login");
       } else {
         toast.error(res?.message);
       }
@@ -48,18 +49,12 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-8">
+    <div className="w-full p-4 ">
       {/* Logo and Heading */}
-      <div className="flex flex-col items-center mb-8">
-        <div className="flex justify-center items-center">
-          <Image src={RLogo} height={30} width={30} alt="r-logo"></Image>
-          <p className="text-xl font-bold text-[#FF5E01]">ReCycleMart</p>
-        </div>
-        <h1 className="text-3xl font-bold text-gray-800 mt-4">
-          Join ReCycleMart
-        </h1>
-        <p className="text-gray-600">
-          Create your account and start your journey!
+      <div className="text-center mb-8">
+        <h2 className="text-2xl font-bold text-gray-900">Register</h2>
+        <p className="text-gray-700 mt-2 font-semibold">
+          Create Your ReCycleMart Account
         </p>
       </div>
 
@@ -184,9 +179,12 @@ export default function RegisterForm() {
       </Form>
 
       {/* Login Link */}
-      <p className="text-sm text-gray-600 text-center mt-6">
+      <p className="text-sm text-gray-700 text-center mt-6">
         Already have an account?{" "}
-        <Link href="/login" className="text-[#FF5E01] hover:underline">
+        <Link
+          href="/login"
+          className="text-[#FF5E01] hover:underline font-bold"
+        >
           Login
         </Link>
       </p>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "../ui/button";
-import { Heart, LogOut, Menu, Search } from "lucide-react";
+import { Heart, LogIn, LogOut, Menu } from "lucide-react";
 import { User, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import {
@@ -86,12 +86,6 @@ export default function Navbar({ user }: { user: IUser }) {
             </div>
           </div>
 
-          {/* <Link href="/dashboard/listing">
-            <Button className="bg-[#FF5E01] hover:bg-[#D94F01] text-white">
-              Sell Now
-            </Button>
-          </Link> */}
-
           {/* User Menu */}
           {user ? (
             <>
@@ -175,12 +169,7 @@ export default function Navbar({ user }: { user: IUser }) {
           <div className="p-4 flex flex-col gap-4">
             {/* Mobile Search Bar */}
             <div className="relative">
-              <input
-                type="text"
-                placeholder="Search for products"
-                className="w-full border border-gray-300 rounded-full py-2 pl-5 pr-10 focus:outline-none focus:ring-2 focus:ring-[#FF5E01]"
-              />
-              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <SearchBar></SearchBar>
             </div>
 
             {/* Mobile Navigation Links */}
@@ -399,28 +388,30 @@ export default function Navbar({ user }: { user: IUser }) {
               <>
                 <Link
                   href="/dashboard/profile"
-                  className="flex items-center gap-2 text-white hover:text-[#FF5E01]"
+                  className="flex items-center gap-2 text-white hover:text-[#FF5E01] cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
+                  <User className="w-5 h-5" />
                   <span>Profile</span>
                 </Link>
                 <Link
                   href="/dashboard"
-                  className="flex items-center gap-2 text-white hover:text-[#FF5E01]"
+                  className="flex items-center gap-2 text-white hover:text-[#FF5E01] cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
+                  <LayoutDashboard className="w-5 h-5" />
                   <span>Dashboard</span>
                 </Link>
                 <Link
                   href="/cart"
-                  className="flex items-center gap-2 text-white hover:text-[#FF5E01] "
+                  className="flex items-center gap-2 text-white hover:text-[#FF5E01] cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Heart className="w-5 h-5 text-red-500" />
                   <span>Wishlist</span>
                 </Link>
                 <button
-                  className="flex items-center gap-2 text-red-500 hover:text-red-600"
+                  className="flex items-center gap-2 text-red-500 hover:text-red-600 cursor-pointer"
                   onClick={handleLogOut}
                 >
                   <LogOut className="w-5 h-5" />
@@ -428,8 +419,9 @@ export default function Navbar({ user }: { user: IUser }) {
                 </button>
               </>
             ) : (
-              <Link href="/login">
-                <Button className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white">
+              <Link href="/login" className="w-full">
+                <Button className="w-full bg-[#FF5E01] hover:bg-[#D94F01] text-white flex items-center gap-2 cursor-pointer">
+                  <LogIn className="w-5 h-5" />
                   Login
                 </Button>
               </Link>

@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Search, X } from "lucide-react";
-// import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -28,16 +27,10 @@ interface Medicine {
 }
 
 interface SearchBarProps {
-  isSearchOpen?: boolean;
-  onSearchToggle?: () => void;
   className?: string;
 }
 
-export function SearchBar({
-  isSearchOpen,
-  onSearchToggle,
-  className,
-}: SearchBarProps) {
+export function SearchBar({ className }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState<Medicine[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -112,28 +105,8 @@ export function SearchBar({
 
   return (
     <div ref={searchRef} className={cn("relative w-full max-w-md", className)}>
-      {/* Mobile toggle button */}
-      <Button
-        onClick={onSearchToggle}
-        className="md:hidden p-2"
-        variant="ghost"
-        size="icon"
-      >
-        {isSearchOpen ? (
-          <X className="h-5 w-5" />
-        ) : (
-          <Search className="h-5 w-5" />
-        )}
-      </Button>
-
-      {/* Search input - exactly as in your example */}
-      <div
-        className={cn(
-          "relative",
-          isSearchOpen !== undefined &&
-            (isSearchOpen ? "block" : "hidden md:block")
-        )}
-      >
+      {/* Search input - always visible */}
+      <div className="relative">
         <input
           type="text"
           value={searchQuery}

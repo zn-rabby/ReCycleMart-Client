@@ -182,6 +182,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 For queries or support, feel free to reach out:
 
+- **Name**: Zulkar Naeem Rabby
 - **Email**: zn-rabby@gmail.com
 
 ---
